@@ -15,7 +15,7 @@ $(NAME) : $(OBJECTS)
 	@$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJECTS) -o $(NAME) $(LEAKSANITIZER)
 
 libmlx:
-		@if [ ! -d $(LIBMLX) ]; then git clone https://github.com/codam-coding-college/MLX42.git ; fi
+		@if [ ! -d $(LIBMLX)/build ]; then git clone https://github.com/codam-coding-college/MLX42.git ; fi
 		@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 
@@ -25,7 +25,7 @@ clean:
 
 fclean:
 	@rm -f  $(OBJECTS) $(NAME)
-	@rm -rf $(LIBMLX)
+	@rm -rf $(LIBMLX)/build
 
 re: fclean all
 
