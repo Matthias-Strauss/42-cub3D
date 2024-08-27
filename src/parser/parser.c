@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 16:36:14 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/27 19:01:44 by kklockow         ###   ########.fr       */
+/*   Created: 2024/08/27 18:59:18 by kklockow          #+#    #+#             */
+/*   Updated: 2024/08/27 19:45:01 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 
-void	free_main_struct(t_main *main)
+void	parse_arguments(int num_arg_strings, char **arg_strings, t_main *main)
 {
-	if (main->parser != NULL)
-		free (main->parser);
-	if (main != NULL)
-		free (main);
-}
-
-void	error_exit(t_main *main)
-{
-	free_main_struct(main);
-	perror("Error\ncub3d");
-	exit (errno);
-}
-
-int	main(int ac, char **av)
-{
-	t_main	*main;
-
-	main = init_main_struct();
-	parse_arguments(ac, av, main);
-	free_main_struct(main);
-	return (0);
+	parse_num_arg_strings(num_arg_strings, main);
+	parse_map_file_format(arg_strings[1], main);
+	parse_copy_map(main);
 }
