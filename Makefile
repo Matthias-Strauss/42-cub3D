@@ -9,23 +9,26 @@ SOURCE	 = 	main.c
 
 OBJECTS = $(SOURCE:.c=.o)
 
-all : libmlx $(NAME)
+all : libmlx LeakSanitizer $(NAME)
 
 $(NAME) : $(OBJECTS)
 	@$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJECTS) -o $(NAME) $(LEAKSANITIZER)
 
 libmlx:
-		@if [ ! -d $(LIBMLX)/build ]; then git clone https://github.com/codam-coding-college/MLX42.git ; fi
+		@if [ ! -d $(LIBMLX) ]; then git clone https://github.com/codam-coding-college/MLX42.git ; fi
 		@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
+LeakSanitizer:
+		@if [ ! -d LeakSanitizer/liblsan.dzlib ]; then git clone https://github.com/mhahnFr/LeakSanitizer.git ; fi
+		@cd LeakSanitizer && make
 
 clean:
 	@rm -f $(OBJECTS)
-	@rm -rf $(LIBMLX)/build
 
 fclean:
 	@rm -f  $(OBJECTS) $(NAME)
-	@rm -rf $(LIBMLX)/build
+	@rm -rf $(LIBMLX)
+	@rm -rf LeakSanitizer
 
 re: fclean all
 
