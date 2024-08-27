@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/27 19:45:59 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/27 20:18:49 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct s_parser
 {
 	char	*map_path_stack;
-	char	*map_copy_heap;
+	char	**map_copy_heap;
 	int		map_fd;
 }	t_parser;
 
@@ -31,7 +31,7 @@ typedef struct s_main
 
 //init.c
 
-t_main	*init_main_struct(void);
+t_main	*init_structs(void);
 
 //parser.c
 

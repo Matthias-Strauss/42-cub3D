@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:22 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/27 19:28:53 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/27 20:39:04 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,9 @@ void	init_parser_struct(t_main *main)
 	main->parser->map_path_stack = NULL;
 }
 
-void	init_nested_structs(t_main *main)
-{
-	init_parser_struct(main);
-}
-
 t_main	*init_main_struct(void)
 {
-	t_main	*main;
+	t_main *main;
 
 	main = malloc(sizeof (t_main) * 1);
 	if (main == NULL)
@@ -40,6 +35,15 @@ t_main	*init_main_struct(void)
 		errno = ENOMEM;
 		error_exit (main);
 	}
-	init_nested_structs(main);
+	main->parser = NULL;
+	return (main);
+}
+
+t_main	*init_structs(void)
+{
+	t_main	*main;
+
+	main = init_main_struct();
+	init_parser_struct(main);
 	return (main);
 }
