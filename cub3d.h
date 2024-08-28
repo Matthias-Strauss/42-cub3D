@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:44:15 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/28 18:00:02 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <fcntl.h>
 #include "libs/libs.h"
 
+//////////////////////////////////////////////////////////////////////////////
+
 typedef struct s_parser
 {
 	char	*map_path_stack;
@@ -25,16 +27,36 @@ typedef struct s_parser
 	int		map_fd;
 }	t_parser;
 
+//////////////////////////////////////////////////////////////////////////////
+
+typedef struct s_map_data
+{
+	char	*north_texture;
+	char	*east_texture;
+	char	*south_texture;
+	char	*west_texture;
+	int		*floor_color;
+	int		*ceiling_color;
+	char	**map_layout;
+}	t_map_data;
+
+//////////////////////////////////////////////////////////////////////////////
+
 typedef struct s_main
 {
 	t_parser	*parser;
+	t_map_data	*map_data;
 }	t_main;
 
-//init.c
+//////////////////////////////////////////////////////////////////////////////
+
+// init.c
 
 t_main	*init_structs(void);
 
-//parser.c
+//////////////////////////////////////////////////////////////////////////////
+
+// parser.c
 
 void	parse_arguments(int num_arg_strings, char **arg_strings, t_main *main);
 
@@ -51,6 +73,15 @@ void	parse_copy_map(t_main *main);
 
 void	parse_map(t_main *main);
 
-//main.c
+//////////////////////////////////////////////////////////////////////////////
+
+// free.c
+
+void	free_matrix(char **to_free);
+void	free_structs(t_main *main);
+
+//////////////////////////////////////////////////////////////////////////////
+
+// main.c
 
 void	error_exit(t_main *main);

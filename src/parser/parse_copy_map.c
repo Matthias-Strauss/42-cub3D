@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:03 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 16:16:40 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/28 16:40:04 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ void	parse_open_map(t_main *main)
 		error_exit (main);
 }
 
-void	parse_close_map(t_main *main)
-{
-	main->parser->map_fd = close(main->parser->map_fd);
-	if (main->parser->map_fd < 0)
-		error_exit (main);
-}
 
 char	*ft_strjoin_free(char *s1, char *s2)
 {
@@ -72,6 +66,13 @@ void	parse_create_copy(t_main *main)
 	free(line_buffer);
 	main->parser->map_copy_heap = ft_split(file_string, '\1');
 	free(file_string);
+}
+
+void	parse_close_map(t_main *main)
+{
+	main->parser->map_fd = close(main->parser->map_fd);
+	if (main->parser->map_fd < 0)
+		error_exit (main);
 }
 
 void	parse_copy_map(t_main *main)

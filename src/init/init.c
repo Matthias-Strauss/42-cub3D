@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:22 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/27 20:44:16 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/28 17:54:28 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,23 @@ void	init_parser_struct(t_main *main)
 	main->parser->map_path_stack = NULL;
 }
 
+void	init_map_data_struct(t_main *main)
+{
+	main->map_data = malloc(sizeof (t_map_data) * 1);
+	if (main->map_data == NULL)
+	{
+		errno = ENOMEM;
+		error_exit (main);
+	}
+	main->map_data->north_texture = NULL;
+	main->map_data->east_texture = NULL;
+	main->map_data->south_texture = NULL;
+	main->map_data->west_texture = NULL;
+	main->map_data->floor_color = NULL;
+	main->map_data->ceiling_color = NULL;
+	main->map_data->map_layout = NULL;
+}
+
 t_main	*init_main_struct(void)
 {
 	t_main	*main;
@@ -36,6 +53,7 @@ t_main	*init_main_struct(void)
 		error_exit (main);
 	}
 	main->parser = NULL;
+	main->map_data = NULL;
 	return (main);
 }
 
@@ -45,5 +63,6 @@ t_main	*init_structs(void)
 
 	main = init_main_struct();
 	init_parser_struct(main);
+	init_map_data_struct(main);
 	return (main);
 }

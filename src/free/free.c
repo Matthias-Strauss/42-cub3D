@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_basic.c                                      :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:41:46 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 16:53:34 by kklockow         ###   ########.fr       */
+/*   Created: 2024/08/28 16:56:40 by kklockow          #+#    #+#             */
+/*   Updated: 2024/08/28 18:45:30 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	parse_num_arg_strings(int num_arg_strings, t_main *main)
+void	free_matrix(char **to_free)
 {
-	if (num_arg_strings != 2)
+	int	i;
+
+	i = 0;
+	if (to_free != NULL)
 	{
-		errno = EINVAL;
-		error_exit (main);
+		while (to_free[i] != NULL)
+		{
+			free (to_free[i]);
+			i++;
+		}
+		free (to_free);
 	}
 }
 
-void	parse_map_file_format(char *arg_map_path, t_main *main)
+void	free_structs(t_main *main)
 {
-	int	map_path_len;
-
-	map_path_len = ft_strlen(arg_map_path);
-	if (ft_strncmp((arg_map_path + map_path_len - 4), ".cub", 4) != 0)
+	if (main->parser != NULL)
 	{
-		errno = EINVAL;
-		error_exit(main);
+		free_matrix (main->parser->map_copy_heap);
+		free (main->parser);
 	}
-	main->parser->map_path_stack = arg_map_path;
+	if (main->map_data != NULL)
+	{
+		free (main->map_data->north_texture);
+		free (main->map_data);
+	}
+	if (main != NULL)
+		free (main);
 }
