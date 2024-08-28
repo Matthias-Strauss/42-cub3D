@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   ft_printf_putchar.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/04/19 12:03:42 by kklockow          #+#    #+#             */
+/*   Updated: 2023/04/20 09:25:56 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "ft_printf.h"
 
-void	parse_map(t_main *main)
+int	ft_printf_putchar(int i, const char *format_string)
 {
-	if (!main)
-		error_exit(main);
+	int	write_val;
+
+	write_val = write(1, &format_string[i], 1);
+	return (write_val);
 }

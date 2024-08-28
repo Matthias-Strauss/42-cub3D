@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/27 20:18:49 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/28 13:44:15 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <fcntl.h>
+#include "libs/libs.h"
 
 typedef struct s_parser
 {
@@ -45,6 +46,10 @@ void	parse_map_file_format(char *arg_map_path, t_main *main);
 // parse_copy_map.c
 
 void	parse_copy_map(t_main *main);
+
+// parse_map.c
+
+void	parse_map(t_main *main);
 
 //main.c
 

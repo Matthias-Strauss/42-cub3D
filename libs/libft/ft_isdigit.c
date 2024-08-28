@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/03/14 11:20:33 by kklockow          #+#    #+#             */
+/*   Updated: 2023/03/14 13:24:55 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include <stdio.h>
 
-void	parse_map(t_main *main)
+int	ft_isdigit(int c)
 {
-	if (!main)
-		error_exit(main);
+	if (c > 47 && c < 58)
+		return (1);
+	else
+		return (0);
 }

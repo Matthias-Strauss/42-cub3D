@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/03/30 16:29:57 by kklockow          #+#    #+#             */
+/*   Updated: 2023/04/01 12:44:51 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "libft.h"
 
-void	parse_map(t_main *main)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	if (!main)
-		error_exit(main);
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 0;
+	j = ft_strlen(s);
+	while (i < j)
+	{
+		f(i, s);
+		i++;
+		s++;
+	}
 }

@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/03/15 13:13:18 by kklockow          #+#    #+#             */
+/*   Updated: 2023/04/01 19:45:18 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "libft.h"
+#include <stdio.h>
+#include <string.h>
 
-void	parse_map(t_main *main)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (!main)
-		error_exit(main);
+	unsigned int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	while (i > 0)
+	{
+		i--;
+		if (s[i] == (char)c)
+			return ((char *) s + i);
+	}
+	if (s[ft_strlen((char *)s)] == (char)c)
+		return ((char *) s + ft_strlen((char *)s));
+	return (0);
 }

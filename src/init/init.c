@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:22 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/27 20:39:04 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/27 20:44:16 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_parser_struct(t_main *main)
 
 t_main	*init_main_struct(void)
 {
-	t_main *main;
+	t_main	*main;
 
 	main = malloc(sizeof (t_main) * 1);
 	if (main == NULL)

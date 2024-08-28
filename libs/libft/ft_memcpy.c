@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/03/14 16:35:32 by kklockow          #+#    #+#             */
+/*   Updated: 2023/04/04 21:00:08 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include <stdio.h>
+#include <string.h>
 
-void	parse_map(t_main *main)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (!main)
-		error_exit(main);
+	size_t	i;
+	char	*arr;
+	char	*rra;
+
+	i = 0;
+	arr = (char *)src;
+	rra = (char *)dst;
+	if (dst == 0 && src == 0)
+		return (0);
+	while (n > i)
+	{
+		rra[i] = arr[i];
+		i++;
+	}
+	return ((void *)dst);
 }

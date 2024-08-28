@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/03/14 16:18:11 by kklockow          #+#    #+#             */
+/*   Updated: 2023/03/20 18:11:19 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include <stdio.h>
+#include <string.h>
 
-void	parse_map(t_main *main)
+void	ft_bzero(void *s, size_t n)
 {
-	if (!main)
-		error_exit(main);
+	unsigned int	i;
+	char			*arr;
+
+	i = 0;
+	arr = (char *)s;
+	while (i < n)
+	{
+		arr[i] = '\0';
+		i++;
+	}
 }

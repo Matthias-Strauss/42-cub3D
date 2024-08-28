@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/04/05 12:05:41 by kklockow          #+#    #+#             */
+/*   Updated: 2023/04/05 19:05:35 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "libft.h"
 
-void	parse_map(t_main *main)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (!main)
-		error_exit(main);
+	t_list	*current;
+
+	current = lst;
+	if (current == NULL)
+		return (NULL);
+	while (current->next != NULL)
+	{
+		current = current->next;
+	}
+	return (current);
 }

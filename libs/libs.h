@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   libs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/05/05 11:53:11 by kklockow          #+#    #+#             */
+/*   Updated: 2023/05/05 14:54:28 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#ifndef LIBS_H
+# define LIBS_H
 
-void	parse_map(t_main *main)
-{
-	if (!main)
-		error_exit(main);
-}
+# include "libft/libft.h"
+# include "get_next_line/get_next_line_bonus.h"
+# include "printf/ft_printf.h"
+
+#endif

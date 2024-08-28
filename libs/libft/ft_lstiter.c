@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/04/05 18:09:08 by kklockow          #+#    #+#             */
+/*   Updated: 2023/04/05 19:09:45 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "libft.h"
 
-void	parse_map(t_main *main)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (!main)
-		error_exit(main);
+	t_list	*current;
+
+	if (lst)
+	{
+		current = lst->next;
+		while (current != NULL)
+		{
+			f(lst->content);
+			lst = current;
+			current = current->next;
+		}
+		f(lst->content);
+	}
 }

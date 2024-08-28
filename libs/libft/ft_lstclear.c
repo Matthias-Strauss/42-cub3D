@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/04/05 17:14:48 by kklockow          #+#    #+#             */
+/*   Updated: 2023/04/05 18:01:42 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "libft.h"
 
-void	parse_map(t_main *main)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if (!main)
-		error_exit(main);
+	t_list	*current;
+
+	if (*lst)
+	{
+		current = (*lst)->next;
+		while (current != NULL)
+		{
+			del((*lst)->content);
+			free(*lst);
+			*lst = current;
+			current = current->next;
+		}
+		del((*lst)->content);
+		free(*lst);
+		*lst = NULL;
+	}
 }

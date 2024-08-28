@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/03/20 10:23:09 by kklockow          #+#    #+#             */
+/*   Updated: 2023/03/23 10:43:18 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include <stdio.h>
+#include <string.h>
 
-void	parse_map(t_main *main)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (!main)
-		error_exit(main);
+	size_t			i;
+	unsigned char	*s1c;
+	unsigned char	*s2c;
+
+	i = 0;
+	s1c = (unsigned char *)s1;
+	s2c = (unsigned char *)s2;
+	while (n > 0)
+	{
+		n--;
+		if (s1c[i] != s2c[i])
+			return ((s1c[i] - s2c[i]));
+		i++;
+	}
+	return (0);
 }

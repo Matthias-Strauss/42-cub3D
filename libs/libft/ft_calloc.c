@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 13:40:03 by kklockow         ###   ########.fr       */
+/*   Created: 2023/03/22 11:10:29 by kklockow          #+#    #+#             */
+/*   Updated: 2023/04/01 18:35:42 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include <stdlib.h>
+#include "libft.h"
+#include <stdio.h>
+#include <strings.h>
 
-void	parse_map(t_main *main)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (!main)
-		error_exit(main);
+	void	*tmp;
+
+	tmp = malloc(sizeof(char) * (count * size));
+	if (!tmp)
+		return (NULL);
+	ft_bzero(tmp, count * size);
+	return (tmp);
 }
