@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:48:08 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 16:25:22 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:56:07 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ int	get_path_len(char *to_copy, t_main *main)
 		len++;
 	}
 	if (len == 0)
-	{
-		errno = EINVAL;
-		error_exit(main);
-	}
+		error_exit(main, ERR_TIE_C);
 	return (len);
 }
 
@@ -70,7 +67,7 @@ char	*copy_path(char *to_copy, t_main *main)
 
 	to = 0;
 	in = 0;
-	in_copy = malloc(sizeof (char) * get_path_len(to_copy, main));
+	in_copy = malloc(sizeof (char) * get_path_len(to_copy, main) + 1);
 	while (to_copy[to] == ' ')
 		to++;
 	while (to_copy[to] && to_copy[to] != ' ' && to_copy[to] != '\n')

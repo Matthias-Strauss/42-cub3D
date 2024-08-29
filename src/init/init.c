@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:22 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 17:54:28 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:53:30 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ void	init_parser_struct(t_main *main)
 {
 	main->parser = malloc(sizeof (t_parser) * 1);
 	if (main->parser == NULL)
-	{
-		errno = ENOMEM;
-		error_exit (main);
-	}
+		error_exit(main, ERR_UAM_C);
 	main->parser->map_copy_heap = NULL;
 	main->parser->map_fd = 0;
 	main->parser->map_path_stack = NULL;
@@ -29,10 +26,7 @@ void	init_map_data_struct(t_main *main)
 {
 	main->map_data = malloc(sizeof (t_map_data) * 1);
 	if (main->map_data == NULL)
-	{
-		errno = ENOMEM;
-		error_exit (main);
-	}
+		error_exit(main, ERR_UAM_C);
 	main->map_data->north_texture = NULL;
 	main->map_data->east_texture = NULL;
 	main->map_data->south_texture = NULL;
@@ -48,10 +42,7 @@ t_main	*init_main_struct(void)
 
 	main = malloc(sizeof (t_main) * 1);
 	if (main == NULL)
-	{
-		errno = ENOMEM;
-		error_exit (main);
-	}
+		error_exit(main, ERR_UAM_C);
 	main->parser = NULL;
 	main->map_data = NULL;
 	return (main);

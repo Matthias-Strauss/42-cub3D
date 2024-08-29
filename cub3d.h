@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 16:48:01 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:38:07 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <errno.h>
 #include <fcntl.h>
 #include "libs/libs.h"
+#include "error_codes.h"
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -73,12 +73,9 @@ void	parse_copy_map(t_main *main);
 
 void	parse_map(t_main *main);
 
-// parse_set_type_path_direction.c
+// parse_set_types.c
 
-void	north_set_type_path(t_main *main, char *current);
-void	east_set_type_path(t_main *main, char *current);
-void	south_set_type_path(t_main *main, char *current);
-void	west_set_type_path(t_main *main, char *current);
+void	set_types(t_main *main);
 
 // parse_utils.c
 
@@ -97,4 +94,4 @@ void	free_structs(t_main *main);
 
 // main.c
 
-void	error_exit(t_main *main);
+void	error_exit(t_main *main, int error_code);
