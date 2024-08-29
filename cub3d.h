@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 18:00:02 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:48:01 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_map_data
 	char	*east_texture;
 	char	*south_texture;
 	char	*west_texture;
-	int		*floor_color;
-	int		*ceiling_color;
+	char	*floor_color;
+	char	*ceiling_color;
 	char	**map_layout;
 }	t_map_data;
 
@@ -72,6 +72,19 @@ void	parse_copy_map(t_main *main);
 // parse_map.c
 
 void	parse_map(t_main *main);
+
+// parse_set_type_path_direction.c
+
+void	north_set_type_path(t_main *main, char *current);
+void	east_set_type_path(t_main *main, char *current);
+void	south_set_type_path(t_main *main, char *current);
+void	west_set_type_path(t_main *main, char *current);
+
+// parse_utils.c
+
+char	*ft_strjoin_free(char *s1, char *s2);
+char	*copy_path(char *to_copy, t_main *main);
+
 
 //////////////////////////////////////////////////////////////////////////////
 
