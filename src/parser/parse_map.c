@@ -6,11 +6,11 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 18:59:01 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 19:48:08 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	check_types(t_main *main)
 {
@@ -32,5 +32,4 @@ void	parse_map(t_main *main)
 {
 	set_types(main);
 	check_types(main);
-	// get_map_content()
 }

@@ -6,16 +6,16 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 18:38:07 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 19:47:17 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42/include/MLX42/MLX42.h"
+#include "../MLX42/include/MLX42/MLX42.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
-#include "libs/libs.h"
+#include "../libs/libs.h"
 #include "error_codes.h"
 
 //////////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,6 @@ void	set_types(t_main *main);
 char	*ft_strjoin_free(char *s1, char *s2);
 char	*copy_path(char *to_copy, t_main *main);
 
-
 //////////////////////////////////////////////////////////////////////////////
 
 // free.c
@@ -92,6 +91,6 @@ void	free_structs(t_main *main);
 
 //////////////////////////////////////////////////////////////////////////////
 
-// main.c
+// error.c
 
 void	error_exit(t_main *main, int error_code);

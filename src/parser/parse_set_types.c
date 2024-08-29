@@ -6,17 +6,17 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 13:55:20 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 18:10:29 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 19:47:53 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../includes/cub3d.h"
 
 char	*set_type_path(char *id, char *current, t_main *main)
 {
 	if (ft_strncmp(current, id, ft_strlen(id)) == 0)
 	{
-		return(copy_path(current + ft_strlen(id), main));
+		return (copy_path(current + ft_strlen(id), main));
 	}
 	return (NULL);
 }

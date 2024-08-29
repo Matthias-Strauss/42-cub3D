@@ -6,11 +6,11 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:18 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/28 17:25:31 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 19:40:45 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	parse_arguments(int num_arg_strings, char **arg_strings, t_main *main)
 {

@@ -6,16 +6,17 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:56:40 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 18:21:35 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 19:40:09 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	save_free(void *to_free)
 {
 	if (to_free != NULL)
 		free (to_free);
+	to_free = NULL;
 }
 
 void	free_matrix(char **to_free)
@@ -34,13 +35,8 @@ void	free_matrix(char **to_free)
 	}
 }
 
-void	free_structs(t_main *main)
+void	free_map_data_struct(t_main *main)
 {
-	if (main->parser != NULL)
-	{
-		free_matrix (main->parser->map_copy_heap);
-		save_free (main->parser);
-	}
 	if (main->map_data != NULL)
 	{
 		save_free (main->map_data->north_texture);
@@ -51,6 +47,20 @@ void	free_structs(t_main *main)
 		save_free (main->map_data->floor_color);
 		save_free (main->map_data);
 	}
-	if (main != NULL)
-		save_free (main);
+}
+
+void	free_parser_struct(t_main *main)
+{
+	if (main->parser != NULL)
+	{
+		free_matrix (main->parser->map_copy_heap);
+		save_free (main->parser);
+	}
+}
+
+void	free_structs(t_main *main)
+{
+	free_parser_struct(main);
+	free_map_data_struct(main);
+	save_free (main);
 }
