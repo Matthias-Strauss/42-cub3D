@@ -9,6 +9,7 @@ MLXFLAGS = $(LIBMLX)/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/o
 SOURCE	 = 	main.c src/init/init.c src/parser/parser.c src/parser/parse_basic.c		\
 			src/parser/parse_copy_map.c	src/parser/parse_map.c src/free/free.c		\
 			src/parser/parse_set_types.c src/parser/parse_utils.c src/error/error.c	\
+			src/utils/utils.c
 
 OBJECTS = $(SOURCE:.c=.o)
 

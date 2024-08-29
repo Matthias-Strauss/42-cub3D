@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:03 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 19:40:24 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 20:01:52 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	parse_open_map(t_main *main)
 {
 	main->parser->map_fd = open(main->parser->map_path_stack, O_RDONLY);
 	if (main->parser->map_fd < 0)
-		error_exit (main, 4);
+		error_exit (main, ERR_UOF_C);
 }
 
 void	parse_create_copy(t_main *main)
@@ -34,16 +34,18 @@ void	parse_create_copy(t_main *main)
 		file_string = ft_strjoin_free(file_string, line_buffer_delimited);
 		line_buffer = get_next_line(main->parser->map_fd);
 	}
-	free(line_buffer);
+	save_free(line_buffer);
 	main->parser->map_copy_heap = ft_split(file_string, '\1');
-	free(file_string);
+	save_free(file_string);
+	if (main->parser->map_copy_heap == NULL)
+		error_exit(main, ERR_UAM_C);
 }
 
 void	parse_close_map(t_main *main)
 {
 	main->parser->map_fd = close(main->parser->map_fd);
 	if (main->parser->map_fd < 0)
-		error_exit (main, 5);
+		error_exit (main, ERR_UCF_C);
 }
 
 void	parse_copy_map(t_main *main)

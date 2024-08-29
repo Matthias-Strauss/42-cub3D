@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 19:47:17 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 20:38:45 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,16 @@ char	*copy_path(char *to_copy, t_main *main);
 
 void	free_matrix(char **to_free);
 void	free_structs(t_main *main);
+void	save_free(void *to_free);
 
 //////////////////////////////////////////////////////////////////////////////
 
 // error.c
 
 void	error_exit(t_main *main, int error_code);
+
+//////////////////////////////////////////////////////////////////////////////
+
+// utils.c
+
+int		skip_whitespaces(char *str, int i);

@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:48:08 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 19:40:41 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 20:40:49 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ char	*ft_strjoin_free(char *s1, char *s2)
 		j++;
 		i++;
 	}
-	free(s1);
-	free(s2);
+	save_free(s1);
+	save_free(s2);
 	dst[i] = '\0';
 	return (dst);
 }
@@ -45,10 +45,8 @@ int	get_path_len(char *to_copy, t_main *main)
 	int	i;
 	int	len;
 
-	i = 0;
 	len = 0;
-	while (to_copy[i] == ' ')
-		i++;
+	i = skip_whitespaces(to_copy, 0);
 	while (to_copy[i] && to_copy[i] != ' ' && to_copy[i] != '\n')
 	{
 		i++;
@@ -68,8 +66,9 @@ char	*copy_path(char *to_copy, t_main *main)
 	to = 0;
 	in = 0;
 	in_copy = malloc(sizeof (char) * get_path_len(to_copy, main) + 1);
-	while (to_copy[to] == ' ')
-		to++;
+	if (in_copy == NULL)
+		error_exit(main, ERR_UAM_C);
+	to = skip_whitespaces(to_copy, to);
 	while (to_copy[to] && to_copy[to] != ' ' && to_copy[to] != '\n')
 	{
 		in_copy[in] = to_copy[to];
