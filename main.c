@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:36:14 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 18:55:19 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/29 19:10:46 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	print_error_message(int error_code)
 {
-	printf("Error\n");
+	write(STDERR_FILENO, "Error\n", 6);
 	if (error_code == ERR_UAM_C)
-		printf(ERR_UAM_M);
+		write(STDERR_FILENO, ERR_UAM_M, ft_strlen(ERR_UAM_M));
 	if (error_code == ERR_WAA_C)
-		printf(ERR_WAA_M);
+		write(STDERR_FILENO, ERR_WAA_M, ft_strlen(ERR_WAA_M));
 	if (error_code == ERR_WFF_C)
-		printf(ERR_WFF_M);
+		write(STDERR_FILENO, ERR_WFF_M, ft_strlen(ERR_WFF_M));
 	if (error_code == ERR_UOF_C)
-		printf(ERR_UOF_M);
+		write(STDERR_FILENO, ERR_UOF_M, ft_strlen(ERR_UOF_M));
 	if (error_code == ERR_UCF_C)
-		printf(ERR_UCF_M);
+		write(STDERR_FILENO, ERR_UCF_M, ft_strlen(ERR_UCF_M));
 	if (error_code == ERR_TIE_C)
-		printf(ERR_TIE_M);
+		write(STDERR_FILENO, ERR_TIE_M, ft_strlen(ERR_TIE_M));
 	if (error_code == ERR_TNS_C)
-		printf(ERR_TNS_M);
+		write(STDERR_FILENO, ERR_TNS_M, ft_strlen(ERR_TNS_M));
 }
 
 void	error_exit(t_main *main, int error_code)
