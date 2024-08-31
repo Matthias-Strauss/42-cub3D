@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:56:40 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 19:40:09 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/31 11:17:28 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	free_map_data_struct(t_main *main)
 		save_free (main->map_data->west_texture);
 		save_free (main->map_data->ceiling_color);
 		save_free (main->map_data->floor_color);
+		free_matrix (main->map_data->map_layout);
 		save_free (main->map_data);
 	}
 }

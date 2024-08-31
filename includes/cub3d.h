@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 20:38:45 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/31 11:36:59 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ void	parse_map(t_main *main);
 // parse_set_types.c
 
 void	set_types(t_main *main);
+
+// parse_get_map_layout.c
+
+void	get_map_layout(t_main *main);
 
 // parse_utils.c
 

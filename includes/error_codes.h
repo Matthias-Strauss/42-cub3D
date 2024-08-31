@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:35:19 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 19:46:23 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/31 11:33:28 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,7 @@
 
 #define ERR_TNS_C	7
 #define ERR_TNS_M	"All types have to be set in mapfile\n"
+
+#define ERR_NMF_C	8
+#define ERR_NMF_M	"No map layout found (should be at end of file)\n"
+
