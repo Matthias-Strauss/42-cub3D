@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:35:46 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/31 15:13:02 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/31 15:25:09 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	find_first_line(t_main *main)
 	return (0);
 }
 
-char	*add_to_map_string(char *map_string, char *to_add)
+char	*add_to_map_str(char *map_string, char *to_add)
 {
 	char	*map_string_old;
 
@@ -63,7 +63,7 @@ void	get_map_layout(t_main *main)
 	map_string = calloc(1, 1);
 	while (main->parser->map_copy_heap[i])
 	{
-		map_string = add_to_map_string(map_string, main->parser->map_copy_heap[i]);
+		map_string = add_to_map_str(map_string, main->parser->map_copy_heap[i]);
 		i++;
 	}
 	main->map_data->map_layout = ft_split(map_string, '\1');
