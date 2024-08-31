@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:35:46 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/31 11:39:06 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/31 15:13:02 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,11 @@ bool	first_line_check_on(char *current)
 {
 	int	i;
 
-	i = 0;
-	while (current[i] && current[i] != '\n')
-	{
-		i = skip_whitespaces(current, i);
-		if (current[i] != '1')
-			return (false);
-		i++;
-	}
-	if (i == 0)
-		return (false);
-	return (true);
+	i = skip_whitespaces(current, 0);
+	if (current[i] != '\n' && current[i] != '\0')
+		return (true);
+	return (false);
+
 }
 
 int	find_first_line(t_main *main)
@@ -34,7 +28,7 @@ int	find_first_line(t_main *main)
 	int		i;
 	char	*current;
 
-	i = 0;
+	i = main->parser->last_type_index + 1;
 	while (main->parser->map_copy_heap[i])
 	{
 		current = main->parser->map_copy_heap[i];

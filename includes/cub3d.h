@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/31 11:36:59 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/31 14:09:02 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_parser
 	char	*map_path_stack;
 	char	**map_copy_heap;
 	int		map_fd;
+	bool	player_position_found;
+	int		last_type_index;
 }	t_parser;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -105,3 +107,4 @@ void	error_exit(t_main *main, int error_code);
 // utils.c
 
 int		skip_whitespaces(char *str, int i);
+int		reverse_skip_whitespaces(char *str, int i);

@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:35:19 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/31 11:33:28 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/31 12:48:19 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,7 @@
 
 #define ERR_NMF_C	8
 #define ERR_NMF_M	"No map layout found (should be at end of file)\n"
+
+#define ERR_WCF_C	9
+#define ERR_WCF_M	"Wrong character in map layout\n"
 

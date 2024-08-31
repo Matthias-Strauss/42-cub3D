@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:22 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 19:40:13 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/08/31 14:15:36 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	init_parser_struct(t_main *main)
 	main->parser->map_copy_heap = NULL;
 	main->parser->map_fd = 0;
 	main->parser->map_path_stack = NULL;
+	main->parser->player_position_found = false;
+	main->parser->last_type_index = 0;
 }
 
 void	init_map_data_struct(t_main *main)
