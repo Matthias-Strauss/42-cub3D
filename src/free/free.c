@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:56:40 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/31 11:17:28 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 15:05:42 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	save_free(void *to_free)
 {
 	if (to_free != NULL)
 		free (to_free);
-	to_free = NULL;
 }
 
 void	free_matrix(char **to_free)
@@ -47,6 +46,7 @@ void	free_map_data_struct(t_main *main)
 		save_free (main->map_data->floor_color);
 		free_matrix (main->map_data->map_layout);
 		save_free (main->map_data);
+		main->map_data = NULL;
 	}
 }
 
@@ -56,6 +56,7 @@ void	free_parser_struct(t_main *main)
 	{
 		free_matrix (main->parser->map_copy_heap);
 		save_free (main->parser);
+		main->parser = NULL;
 	}
 }
 

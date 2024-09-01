@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:18 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 13:26:12 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:55:43 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ void	parse_arguments(int num_arg_strings, char **arg_strings, t_main *main)
 	parse_map_file_format(arg_strings[1], main);
 	parse_copy_map(main);
 	parse_map(main);
+	free_parser_struct(main);
 }

@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:34:53 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 14:24:47 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:52:50 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_error_message(int error_code)
 {
-	write(STDERR_FILENO, "Error\n", 6);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
 	if (error_code == ERR_UAM_C)
 		ft_putstr_fd(ERR_UAM_M, STDERR_FILENO);
 	if (error_code == ERR_WAA_C)
