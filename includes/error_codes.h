@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:35:19 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 14:24:24 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:49:55 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@
 
 #define ERR_NPF_C	12
 #define ERR_NPF_M	"No player position found\n"
-
