@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/31 14:09:02 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 13:25:31 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,19 @@
 
 //////////////////////////////////////////////////////////////////////////////
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
+//////////////////////////////////////////////////////////////////////////////
+
 typedef struct s_parser
 {
 	char	*map_path_stack;
 	char	**map_copy_heap;
 	int		map_fd;
-	bool	player_position_found;
 	int		last_type_index;
 }	t_parser;
 
@@ -40,6 +47,8 @@ typedef struct s_map_data
 	char	*floor_color;
 	char	*ceiling_color;
 	char	**map_layout;
+	char	player_orientation;
+	t_point	player_position;
 }	t_map_data;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -82,6 +91,10 @@ void	set_types(t_main *main);
 // parse_get_map_layout.c
 
 void	get_map_layout(t_main *main);
+
+// parse_check_map_layout.c
+
+void	check_map_layout(t_main *main);
 
 // parse_utils.c
 

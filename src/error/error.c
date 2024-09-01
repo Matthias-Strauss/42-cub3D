@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:34:53 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/31 12:48:51 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 12:51:14 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ void	print_error_message(int error_code)
 		ft_putstr_fd(ERR_NMF_M, STDERR_FILENO);
 	if (error_code == ERR_WCF_C)
 		ft_putstr_fd(ERR_WCF_M, STDERR_FILENO);
+	if (error_code == ERR_ELM_C)
+		ft_putstr_fd(ERR_ELM_M, STDERR_FILENO);
+	if (error_code == ERR_NCW_C)
+		ft_putstr_fd(ERR_NCW_M, STDERR_FILENO);
 }
 
 void	error_exit(t_main *main, int error_code)
