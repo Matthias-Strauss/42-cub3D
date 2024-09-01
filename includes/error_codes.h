@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:35:19 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 12:48:09 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:24:24 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,7 @@
 
 #define ERR_NCW_C	11
 #define ERR_NCW_M	"Map is not closed by walls\n"
+
+#define ERR_NPF_C	12
+#define ERR_NPF_M	"No player position found\n"
 

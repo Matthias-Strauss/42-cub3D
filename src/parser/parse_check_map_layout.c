@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 13:21:33 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 14:14:11 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:24:17 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,6 @@ void	check_map_layout(t_main *main)
 		border_check(main->map_data->map_layout, i, main);
 		i++;
 	}
+	if (main->map_data->player_orientation == '\1')
+		error_exit(main, ERR_NPF_C);
 }

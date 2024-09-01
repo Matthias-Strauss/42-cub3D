@@ -7,11 +7,12 @@ USER = $(shell whoami)
 LEAKSANITIZER = -L"/$(PWD)/LeakSanitizer" -llsan
 MLXFLAGS = $(LIBMLX)/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
-SOURCE	 = 	main.c src/init/init.c src/parser/parser.c src/parser/parse_basic.c		\
-			src/parser/parse_copy_map.c	src/parser/parse_map.c src/free/free.c		\
-			src/parser/parse_set_types.c src/parser/parse_utils.c src/error/error.c	\
-			src/utils/utils.c src/parser/parse_get_map_layout.c						\
-			src/parser/parse_check_map_layout.c
+SOURCE	 = 	main.c src/init/init.c src/parser/parser.c src/parser/parse_basic.c			\
+			src/parser/parse_copy_map.c	src/parser/parse_map.c src/free/free.c			\
+			src/parser/parse_set_types.c src/parser/parse_utils.c src/error/error.c		\
+			src/utils/utils.c src/parser/parse_get_map_layout.c							\
+			src/parser/parse_check_map_layout.c											\
+			src/parser/parse_get_missing_information.c
 
 OBJECTS = $(SOURCE:.c=.o)
 
