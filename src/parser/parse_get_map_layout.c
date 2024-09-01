@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:35:46 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 11:51:14 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:15:26 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ bool	first_line_check_on(char *current)
 	if (current[i] != '\n' && current[i] != '\0')
 		return (true);
 	return (false);
-
 }
 
 int	find_first_line(t_main *main)

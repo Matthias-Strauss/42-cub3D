@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 13:25:31 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:10:12 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_map_data
 	char	*floor_color;
 	char	*ceiling_color;
 	char	**map_layout;
+	int		map_width;
+	int		map_height;
 	char	player_orientation;
 	t_point	player_position;
 }	t_map_data;

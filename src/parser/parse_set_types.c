@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 13:55:20 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/31 15:28:57 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:15:13 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 char	*set_type_path(char *id, char *current, t_main *main)
 {
-	if (ft_strncmp(current + skip_whitespaces(current, 0), id, ft_strlen(id)) == 0)
+	if (ft_strncmp(current + skip_whitespaces(current, 0),
+			id, ft_strlen(id)) == 0)
 	{
-		return (copy_path(current + ft_strlen(id) + skip_whitespaces(current, 0), main));
+		return (copy_path(current + ft_strlen(id)
+				+ skip_whitespaces(current, 0), main));
 	}
 	return (NULL);
 }

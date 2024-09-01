@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 13:21:33 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 13:30:05 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:14:11 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	border_check(char **map_layout, int y, t_main *main)
 	x = 0;
 	while (map_layout[y][x])
 	{
-		if (map_layout[y][x] == '0' || map_layout[y][x] == main->map_data->player_orientation)
+		if (map_layout[y][x] == '0'
+			|| map_layout[y][x] == main->map_data->player_orientation)
 		{
 			if (y == 0 || x == 0)
 				error_exit(main, ERR_NCW_C);

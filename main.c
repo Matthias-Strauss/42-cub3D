@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:36:14 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 13:49:16 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:11:35 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ int	main(int ac, char **av)
 	printf("%s\n", main->map_data->floor_color);
 	printf("y is %i and x is %i\n", main->map_data->player_position.y, main->map_data->player_position.x);
 	printf("orientation is %c\n", main->map_data->player_orientation);
-	// int	i = 0;
-	// while (main->map_data->map_layout[i])
-	// {
-	// 	printf("%s\n", main->map_data->map_layout[i]);
-	// 	i++;
-	// }
+	printf("map height is %i map width is %i\n", main->map_data->map_height, main->map_data->map_width);
+	int	i = 0;
+	while (main->map_data->map_layout[i])
+	{
+		printf("%s\n", main->map_data->map_layout[i]);
+		i++;
+	}
 	free_structs(main);
 	return (0);
 }
