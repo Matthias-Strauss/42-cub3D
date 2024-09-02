@@ -12,7 +12,8 @@ SOURCE	 = 	main.c src/init/init.c src/parser/parser.c src/parser/parse_basic.c		
 			src/parser/parse_set_types.c src/parser/parse_utils.c src/error/error.c		\
 			src/utils/utils.c src/parser/parse_get_map_layout.c							\
 			src/parser/parse_check_map_layout.c											\
-			src/parser/parse_get_missing_information.c
+			src/parser/parse_get_missing_information.c									\
+			src/parser/parse_check_for_garbage.c										\
 
 OBJECTS = $(SOURCE:.c=.o)
 

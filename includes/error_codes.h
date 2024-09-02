@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:35:19 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 14:49:55 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 12:49:26 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,9 @@
 
 #define ERR_NPF_C	12
 #define ERR_NPF_M	"No player position found\n"
+
+#define ERR_TCR_C	13
+#define ERR_TCR_M	"Types cant be set twice\n"
+
+#define ERR_GFM_C	14
+#define ERR_GFM_M	"Garbage found in mapfile\n"

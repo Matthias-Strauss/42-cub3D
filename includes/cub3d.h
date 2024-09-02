@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 14:55:24 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 12:58:44 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,12 @@ void	check_map_layout(t_main *main);
 
 // parse_get_missing_information.c
 
-int		get_player_position(t_map_data *map_data);
+void	get_player_position(t_map_data *map_data);
 void	get_map_dimensions(t_map_data *map_data);
+
+// parse_check_for_garbage.c
+
+void	check_for_garbage(t_main *main);
 
 // parse_utils.c
 

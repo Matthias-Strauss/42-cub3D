@@ -6,13 +6,13 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 14:19:17 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 14:45:32 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 11:39:39 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	get_player_position(t_map_data *map_data)
+void	get_player_position(t_map_data *map_data)
 {
 	int	y;
 	int	x;
@@ -27,13 +27,13 @@ int	get_player_position(t_map_data *map_data)
 			{
 				map_data->player_position.y = y;
 				map_data->player_position.x = x;
-				return (0);
+				return ;
 			}
 			x++;
 		}
 		y++;
 	}
-	return (1);
+	return ;
 }
 
 void	get_map_dimensions(t_map_data *map_data)

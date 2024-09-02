@@ -6,13 +6,13 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:34:53 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 14:52:50 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 12:55:20 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	print_error_message(int error_code)
+void	print_error_message_1(int error_code)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);
 	if (error_code == ERR_UAM_C)
@@ -41,9 +41,18 @@ void	print_error_message(int error_code)
 		ft_putstr_fd(ERR_NPF_M, STDERR_FILENO);
 }
 
+void	print_error_message_2(int error_code)
+{
+	if (error_code == ERR_TCR_C)
+		ft_putstr_fd(ERR_TCR_M, STDERR_FILENO);
+	if (error_code == ERR_GFM_C)
+		ft_putstr_fd(ERR_GFM_M, STDERR_FILENO);
+}
+
 void	error_exit(t_main *main, int error_code)
 {
 	free_structs(main);
-	print_error_message(error_code);
+	print_error_message_1(error_code);
+	print_error_message_2(error_code);
 	exit (error_code);
 }
