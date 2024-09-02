@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:41:46 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 19:40:17 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 13:11:13 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	parse_map_file_format(char *arg_map_path, t_main *main)
 	int	map_path_len;
 
 	map_path_len = ft_strlen(arg_map_path);
+	if (map_path_len < 4)
+		error_exit(main, ERR_WFF_C);
 	if (ft_strncmp((arg_map_path + map_path_len - 4), ".cub", 4) != 0)
 		error_exit(main, ERR_WFF_C);
 	main->parser->map_path_stack = arg_map_path;

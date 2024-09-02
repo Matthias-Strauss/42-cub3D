@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 13:21:33 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/02 11:05:04 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 13:26:19 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,18 @@ bool	check_surrounding(char **map_layout, int y, int x)
 
 void	border_check(char **map_layout, int y, t_main *main)
 {
-	int	x;
+	int		x;
+	char	player_orientation;
 
 	x = 0;
+	player_orientation = main->map_data->player_orientation;
 	while (map_layout[y][x])
 	{
-		if (map_layout[y][x] == '0'
-			|| map_layout[y][x] == main->map_data->player_orientation)
+		if (map_layout[y][x] == '0' || map_layout[y][x] == player_orientation)
 		{
 			if (y == 0 || x == 0)
+				error_exit(main, ERR_NCW_C);
+			if (map_layout[y + 1] == NULL)
 				error_exit(main, ERR_NCW_C);
 			if (check_surrounding(map_layout, y, x) == false)
 				error_exit(main, ERR_NCW_C);
