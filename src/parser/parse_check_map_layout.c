@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 13:21:33 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/02 13:26:19 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 13:51:28 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ void	border_check(char **map_layout, int y, t_main *main)
 			if (y == 0 || x == 0)
 				error_exit(main, ERR_NCW_C);
 			if (map_layout[y + 1] == NULL)
+				error_exit(main, ERR_NCW_C);
+			if ((int)ft_strlen(map_layout[y - 1]) < x)
+				error_exit(main, ERR_NCW_C);
+			if ((int)ft_strlen(map_layout[y + 1]) < x)
 				error_exit(main, ERR_NCW_C);
 			if (check_surrounding(map_layout, y, x) == false)
 				error_exit(main, ERR_NCW_C);
