@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:35:46 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 14:15:26 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:35:11 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ char	*add_to_map_str(char *map_string, char *to_add)
 	char	*map_string_old;
 
 	if (to_add[skip_whitespaces(to_add, 0)] == '\n')
+	{
+		free (map_string);
 		return (NULL);
+	}
 	map_string_old = map_string;
 	map_string = ft_strjoin(map_string_old, to_add);
 	save_free(map_string_old);
