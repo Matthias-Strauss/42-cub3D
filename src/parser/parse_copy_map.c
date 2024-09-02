@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:03 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 20:01:52 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:34:48 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	parse_create_copy(t_main *main)
 	char	*line_buffer_delimited;
 	char	*file_string;
 
-	file_string = calloc(1, 1);
+	file_string = ft_calloc(1, 1);
 	line_buffer = get_next_line(main->parser->map_fd);
 	while (line_buffer)
 	{

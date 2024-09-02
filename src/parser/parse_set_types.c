@@ -6,11 +6,28 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 13:55:20 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/02 12:56:59 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:24:16 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+bool	check_types(t_main *main)
+{
+	if (main->map_data->north_texture == NULL)
+		return (false);
+	if (main->map_data->east_texture == NULL)
+		return (false);
+	if (main->map_data->south_texture == NULL)
+		return (false);
+	if (main->map_data->west_texture == NULL)
+		return (false);
+	if (main->map_data->ceiling_color == NULL)
+		return (false);
+	if (main->map_data->floor_color == NULL)
+		return (false);
+	return (true);
+}
 
 char	*get_type_pointer(t_main *main, char *id)
 {
@@ -66,23 +83,6 @@ char	*set_type_path(char *id, char *current, t_main *main)
 		return (copy_path(current + id_len + skipped, main));
 	}
 	return (get_type_pointer(main, id));
-}
-
-bool	check_types(t_main *main)
-{
-	if (main->map_data->north_texture == NULL)
-		return (false);
-	if (main->map_data->east_texture == NULL)
-		return (false);
-	if (main->map_data->south_texture == NULL)
-		return (false);
-	if (main->map_data->west_texture == NULL)
-		return (false);
-	if (main->map_data->ceiling_color == NULL)
-		return (false);
-	if (main->map_data->floor_color == NULL)
-		return (false);
-	return (true);
 }
 
 void	set_types(t_main *main)

@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/02 12:58:44 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:33:43 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,3 +133,25 @@ void	error_exit(t_main *main, int error_code);
 
 int		skip_whitespaces(char *str, int i);
 int		reverse_skip_whitespaces(char *str, int i);
+
+//////////////////////////////////////////////////////////////////////////////
+
+// print all data
+
+// //////print data start
+	// printf("[%s]\n", main->map_data->north_texture);
+	// printf("[%s]\n", main->map_data->east_texture);
+	// printf("[%s]\n", main->map_data->west_texture);
+	// printf("[%s]\n", main->map_data->south_texture);
+	// printf("[%s]\n", main->map_data->ceiling_color);
+	// printf("[%s]\n", main->map_data->floor_color);
+	// printf("y is [%i] and x is [%i]\n", main->map_data->player_position.y, main->map_data->player_position.x);
+	// printf("orientation is [%c]\n", main->map_data->player_orientation);
+	// printf("map height is [%i] map width is [%i]\n", main->map_data->map_height, main->map_data->map_width);
+	// int	i = 0;
+	// while (main->map_data->map_layout[i])
+	// {
+	// 	printf("[%s]\n", main->map_data->map_layout[i]);
+	// 	i++;
+	// }
+// ////print data fin

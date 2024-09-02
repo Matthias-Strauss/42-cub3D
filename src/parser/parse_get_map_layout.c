@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:35:46 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/02 14:35:11 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:32:30 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	get_map_layout(t_main *main)
 	i = find_first_line(main);
 	if (i == 0)
 		error_exit(main, 8);
-	map_string = calloc(1, 1);
+	map_string = ft_calloc(1, 1);
 	while (main->parser->map_copy_heap[i])
 	{
 		map_string = add_to_map_str(map_string, main->parser->map_copy_heap[i]);
