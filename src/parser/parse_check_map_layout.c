@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 13:21:33 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 11:56:45 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/03 12:55:09 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ void	character_check(char *to_check, t_main *main)
 		if (to_check[i] != '1' && to_check[i] != '0')
 		{
 			if (main->map_data->player_orientation != '\1')
-			{
-				printf("hi\n");
 				error_exit(main, ERR_WCF_C);
-			}
 			else if (to_check[i] == 'N')
 				main->map_data->player_orientation = 'N';
 			else if (to_check[i] == 'E')

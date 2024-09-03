@@ -13,6 +13,7 @@ SOURCE	 = 	main.c src/init/init.c src/parser/parser.c src/parser/parse_basic.c		
 			src/parser/parse_check_map_layout.c											\
 			src/parser/parse_get_missing_information.c									\
 			src/parser/parse_check_for_garbage.c										\
+			src/parser/parse_convert_colors.c
 
 OBJECTS = $(SOURCE:.c=.o)
 
