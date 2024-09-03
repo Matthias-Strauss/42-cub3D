@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:34:53 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/02 12:55:20 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/03 11:10:44 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	print_error_message_2(int error_code)
 		ft_putstr_fd(ERR_TCR_M, STDERR_FILENO);
 	if (error_code == ERR_GFM_C)
 		ft_putstr_fd(ERR_GFM_M, STDERR_FILENO);
+	if (error_code == ERR_CNC_C)
+		ft_putstr_fd(ERR_CNC_M, STDERR_FILENO);
 }
 
 void	error_exit(t_main *main, int error_code)

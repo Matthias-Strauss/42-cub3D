@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:56:40 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 15:05:42 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/03 11:53:38 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	free_map_data_struct(t_main *main)
 		save_free (main->map_data->east_texture);
 		save_free (main->map_data->south_texture);
 		save_free (main->map_data->west_texture);
-		save_free (main->map_data->ceiling_color);
-		save_free (main->map_data->floor_color);
 		free_matrix (main->map_data->map_layout);
 		save_free (main->map_data);
 		main->map_data = NULL;
@@ -55,6 +53,8 @@ void	free_parser_struct(t_main *main)
 	if (main->parser != NULL)
 	{
 		free_matrix (main->parser->map_copy_heap);
+		save_free (main->parser->ceiling_color);
+		save_free (main->parser->floor_color);
 		save_free (main->parser);
 		main->parser = NULL;
 	}

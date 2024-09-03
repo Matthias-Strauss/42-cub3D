@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:35:19 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/02 12:49:26 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/03 11:10:19 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,6 @@
 
 #define ERR_GFM_C	14
 #define ERR_GFM_M	"Garbage found in mapfile\n"
+
+#define ERR_CNC_C	15
+#define ERR_CNC_M	"Colors not set correctly\n"

@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:22 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/01 15:34:32 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/03 11:52:36 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	init_parser_struct(t_main *main)
 	main->parser->map_fd = 0;
 	main->parser->map_path_stack = NULL;
 	main->parser->last_type_index = 0;
+	main->parser->floor_color = NULL;
+	main->parser->ceiling_color = NULL;
 }
 
 void	init_map_data_struct(t_main *main)
@@ -32,8 +34,6 @@ void	init_map_data_struct(t_main *main)
 	main->map_data->east_texture = NULL;
 	main->map_data->south_texture = NULL;
 	main->map_data->west_texture = NULL;
-	main->map_data->floor_color = NULL;
-	main->map_data->ceiling_color = NULL;
 	main->map_data->map_layout = NULL;
 	main->map_data->player_orientation = '\1';
 }
