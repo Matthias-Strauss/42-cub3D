@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:48:08 by kklockow          #+#    #+#             */
-/*   Updated: 2024/08/29 20:40:49 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:14:26 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,39 +42,28 @@ char	*ft_strjoin_free(char *s1, char *s2)
 
 int	get_path_len(char *to_copy, t_main *main)
 {
-	int	i;
+	int	start;
+	int	end;
 	int	len;
 
-	len = 0;
-	i = skip_whitespaces(to_copy, 0);
-	while (to_copy[i] && to_copy[i] != ' ' && to_copy[i] != '\n')
-	{
-		i++;
-		len++;
-	}
-	if (len == 0)
+	start = skip_whitespaces(to_copy, 0);
+	end = reverse_skip_whitespaces(to_copy, ft_strlen(to_copy) - 1);
+	len = end - start + 1;
+	if (len == 0 || to_copy[0] == '\n')
 		error_exit(main, ERR_TIE_C);
 	return (len);
 }
 
 char	*copy_path(char *to_copy, t_main *main)
 {
-	int		to;
-	int		in;
 	char	*in_copy;
+	int		start;
+	int		len;
 
-	to = 0;
-	in = 0;
-	in_copy = malloc(sizeof (char) * get_path_len(to_copy, main) + 1);
+	start = skip_whitespaces(to_copy, 0);
+	len = get_path_len(to_copy, main);
+	in_copy = ft_substr(to_copy, start, len);
 	if (in_copy == NULL)
 		error_exit(main, ERR_UAM_C);
-	to = skip_whitespaces(to_copy, to);
-	while (to_copy[to] && to_copy[to] != ' ' && to_copy[to] != '\n')
-	{
-		in_copy[in] = to_copy[to];
-		to++;
-		in++;
-	}
-	in_copy[in] = '\0';
 	return (in_copy);
 }
