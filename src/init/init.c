@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:22 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 11:52:36 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:07:39 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_main	*init_main_struct(void)
 		error_exit(main, ERR_UAM_C);
 	main->parser = NULL;
 	main->map_data = NULL;
+	main->mlx = NULL;
 	return (main);
 }
 

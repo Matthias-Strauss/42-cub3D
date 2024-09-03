@@ -1,7 +1,6 @@
 CC = cc
 NAME = cub3D
-CFLAGS = -Wall -Werror -Wextra -O3 -ffast-math -g
-#-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -O3 -ffast-math -g -fsanitize=address
 LIBMLX = MLX42
 USER = $(shell whoami)
 LEAKSANITIZER = -L"/$(PWD)/LeakSanitizer" -llsan

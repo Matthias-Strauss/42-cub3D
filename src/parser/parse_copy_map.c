@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:03 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 14:39:25 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:17:11 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	parse_check_file_len(t_main *main)
 		save_free (line_buffer);
 		////leaks with current state of get_next_line//////
 		if (count > 1000)
-			error_exit(main, 16);
+			error_exit(main, ERR_MTL_C);
 		///////////////////////////////////////////////////
 		count++;
 		line_buffer = get_next_line(main->parser->map_fd);
