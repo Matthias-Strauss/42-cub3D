@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:35:19 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 12:42:29 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:21:07 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,6 @@
 
 #define ERR_CNC_C	15
 #define ERR_CNC_M	"Colors not set correctly\n"
+
+#define ERR_MTL_C	16
+#define ERR_MTL_M	"Map file is to large\n"

@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:53:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 13:01:08 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/03 13:50:06 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ int	get_only_number(char *str)
 	return (number);
 }
 
+void	error_during_conversion(t_main *main, char **to_free)
+{
+	free_matrix(to_free);
+	error_exit(main, ERR_CNC_C);
+}
+
 int	convert_string_to_color(t_main *main, char *str)
 {
 	int		r;
@@ -53,21 +59,19 @@ int	convert_string_to_color(t_main *main, char *str)
 	r = get_only_number(seperated[0]);
 	if (r == -1)
 	{
-		free_matrix(seperated);
-		error_exit(main, ERR_CNC_C);
+		error_during_conversion(main, seperated);
 	}
 	g = get_only_number(seperated[1]);
 	if (g == -1)
 	{
-		free_matrix(seperated);
-		error_exit(main, ERR_CNC_C);
+		error_during_conversion(main, seperated);
 	}
 	b = get_only_number(seperated[2]);
 	if (b == -1)
 	{
-		free_matrix(seperated);
-		error_exit(main, ERR_CNC_C);
+		error_during_conversion(main, seperated);
 	}
+	free_matrix(seperated);
 	return (r << 24 | g << 16 | b << 8 | 100);
 }
 
