@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:48:08 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 18:34:24 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:10:07 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,11 @@ int	get_path_len(char *to_copy, t_main *main)
 	int	len;
 
 	start = skip_whitespaces(to_copy, 0);
+	if (to_copy[start] == '\n')
+		error_exit(main, ERR_TIE_C);
 	end = reverse_skip_whitespaces(to_copy, ft_strlen(to_copy) - 1);
 	len = end - start + 1;
-	if (len == 0 || to_copy[0] == '\n')
+	if (len == 0)
 		error_exit(main, ERR_TIE_C);
 	return (len);
 }

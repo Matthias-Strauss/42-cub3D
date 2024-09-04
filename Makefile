@@ -1,6 +1,7 @@
 CC = cc
 NAME = cub3D
-CFLAGS = -Wall -Werror -Wextra -O3 -ffast-math -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -O3 -ffast-math -g
+#-fsanitize=address
 LIBMLX = MLX42
 USER = $(shell whoami)
 LEAKSANITIZER = -L"/$(PWD)/LeakSanitizer" -llsan
@@ -20,8 +21,8 @@ OBJECTS = $(SOURCE:.c=.o)
 all : libmlx $(NAME)
 #LeakSanitizer
 $(NAME) : $(OBJECTS)
-	@cd libs && make
-	@$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJECTS) libs/libs.a -o $(NAME)
+	@cd libft && make
+	@$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJECTS) libft/libft.a -o $(NAME)
 #$(LEAKSANITIZER)
 
 libmlx:
@@ -39,7 +40,7 @@ fclean:
 	@rm -f  $(OBJECTS) $(NAME)
 	@rm -rf $(LIBMLX)
 	@rm -rf LeakSanitizer
-	@cd libs && make fclean
+	@cd libft && make fclean
 
 re: fclean all
 

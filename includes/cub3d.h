@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 18:06:45 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:53:13 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
-#include "../libs/libs.h"
+#include "../libft/libft.h"
 #include "error_codes.h"
 
 //////////////////////////////////////////////////////////////////////////////
