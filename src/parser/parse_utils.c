@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:48:08 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 17:37:42 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 20:31:43 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,12 @@
 
 char	*ft_strjoin_free(char *s1, char *s2)
 {
-	size_t	i;
-	size_t	j;
-	char	*dst;
+	char *joined;
 
-	i = 0;
-	j = 0;
-	dst = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (dst == NULL)
-		return (NULL);
-	while (s1[i] != '\0')
-	{
-		dst[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		dst[i] = s2[j];
-		j++;
-		i++;
-	}
+	joined = ft_strjoin(s1, s2);
 	save_free(s1);
 	save_free(s2);
-	dst[i] = '\0';
-	return (dst);
+	return (joined);
 }
 
 int	get_path_len(char *to_copy, t_main *main)

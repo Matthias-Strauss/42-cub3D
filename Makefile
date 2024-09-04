@@ -43,6 +43,7 @@ LeakSanitizer:
 
 clean:
 	@rm -f $(OBJECTS)
+	@cd libft && make clean
 
 fclean:
 	@rm -f  $(OBJECTS) $(NAME)
