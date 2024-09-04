@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 13:37:07 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:38:27 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,17 @@ char	*ft_strjoin_free(char *s1, char *s2);
 char	*copy_path(char *to_copy, t_main *main);
 int		skip_whitespaces(char *str, int i);
 int		reverse_skip_whitespaces(char *str, int i);
+
+//////////////////////////////////////////////////////////////////////////////
+
+// game.c
+
+void	start_game(t_main *main);
+void	end_game(t_main *main);
+
+// game_key_hooks.c
+
+void	key_hooks(mlx_key_data_t keydata, void *main);
 
 //////////////////////////////////////////////////////////////////////////////
 

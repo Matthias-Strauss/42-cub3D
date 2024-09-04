@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:35:19 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 14:21:07 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:18:49 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 #define ERR_WCF_M	"Wrong character in map layout\n"
 
 #define ERR_ELM_C	10
-#define ERR_ELM_M	"Empty line in map layout\n"
+#define ERR_ELM_M	"Wrong character in map layout\n"
 
 #define ERR_NCW_C	11
 #define ERR_NCW_M	"Map is not closed by walls\n"

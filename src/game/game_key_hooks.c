@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game_key_hooks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 16:36:14 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 14:37:02 by kklockow         ###   ########.fr       */
+/*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
+/*   Updated: 2024/09/04 14:57:15 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int	main(int ac, char **av)
+void	escape(mlx_key_data_t keydata, t_main *main)
 {
-	t_main	*main;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		mlx_close_window(main->mlx);
+}
 
-	main = init_structs();
-	parse_arguments(ac, av, main);
-	start_game(main);
-	end_game(main);
-	free_structs(main);
-	return (0);
+void	key_hooks(mlx_key_data_t keydata, void *main)
+{
+	escape(keydata, (t_main *)main);
 }

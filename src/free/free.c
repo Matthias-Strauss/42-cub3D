@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:56:40 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 11:53:38 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:25:39 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	free_matrix(char **to_free)
 
 void	free_map_data_struct(t_main *main)
 {
-	if (main->map_data != NULL)
+	if (main != NULL && main->map_data != NULL)
 	{
 		save_free (main->map_data->north_texture);
 		save_free (main->map_data->east_texture);
@@ -50,7 +50,7 @@ void	free_map_data_struct(t_main *main)
 
 void	free_parser_struct(t_main *main)
 {
-	if (main->parser != NULL)
+	if (main != NULL && main->parser != NULL)
 	{
 		free_matrix (main->parser->map_copy_heap);
 		save_free (main->parser->ceiling_color);

@@ -1,20 +1,28 @@
 CC = cc
 NAME = cub3D
-CFLAGS = -Wall -Werror -Wextra -O3 -ffast-math -g
-#-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -O3 -ffast-math -g -fsanitize=address
 LIBMLX = MLX42
 USER = $(shell whoami)
 LEAKSANITIZER = -L"/$(PWD)/LeakSanitizer" -llsan
 MLXFLAGS = $(LIBMLX)/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
-SOURCE	 = 	main.c src/init/init.c src/parser/parser.c src/parser/parse_basic.c			\
-			src/parser/parse_copy_map.c	src/parser/parse_map.c src/free/free.c			\
-			src/parser/parse_set_types.c src/parser/parse_utils.c src/error/error.c		\
-			src/parser/parse_get_map_layout.c											\
-			src/parser/parse_check_map_layout.c											\
-			src/parser/parse_get_missing_information.c									\
-			src/parser/parse_check_for_garbage.c										\
-			src/parser/parse_convert_colors.c
+SOURCE	 = 	main.c										\
+			src/init/init.c								\
+			src/parser/parser.c							\
+			src/parser/parse_basic.c					\
+			src/parser/parse_copy_map.c					\
+			src/parser/parse_map.c						\
+			src/parser/parse_set_types.c				\
+			src/parser/parse_utils.c					\
+			src/parser/parse_get_map_layout.c			\
+			src/parser/parse_check_map_layout.c			\
+			src/parser/parse_get_missing_information.c	\
+			src/parser/parse_check_for_garbage.c		\
+			src/parser/parse_convert_colors.c			\
+			src/game/game.c								\
+			src/game/game_key_hooks.c					\
+			src/free/free.c								\
+			src/error/error.c
 
 OBJECTS = $(SOURCE:.c=.o)
 
