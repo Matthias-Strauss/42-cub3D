@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_check_for_garabage.c                         :+:      :+:    :+:   */
+/*   parse_check_for_garbage.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 12:57:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/02 12:58:38 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:42:08 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	check_for_garbage(t_main *main)
 	{
 		current = main->parser->map_copy_heap[i];
 		if (is_type(current) == false && is_empty(current) == false)
-			error_exit(main, ERR_GFM_C);
+			error_exit(main, ERR_GFM);
 		i++;
 	}
 }

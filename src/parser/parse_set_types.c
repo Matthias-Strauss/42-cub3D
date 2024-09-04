@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 13:55:20 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 16:34:18 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:37:28 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*set_type_path(char *id, char *current, t_main *main)
 	if (ft_strncmp(current + skipped, id, id_len) == 0)
 	{
 		if (is_already_set(main, id) == true)
-			error_exit(main, ERR_TCR_C);
+			error_exit(main, ERR_TCR);
 		return (copy_path(current + id_len + skipped, main));
 	}
 	return (get_type_pointer(main, id));
@@ -105,5 +105,5 @@ void	set_types(t_main *main)
 		i++;
 	}
 	if (main->parser->last_type_index == 0)
-		error_exit(main, ERR_TNS_C);
+		error_exit(main, ERR_TNS);
 }

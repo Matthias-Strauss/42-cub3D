@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:03 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 16:46:24 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:37:06 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	parse_open_map(t_main *main)
 {
 	main->parser->map_fd = open(main->parser->map_path_stack, O_RDONLY);
 	if (main->parser->map_fd < 0)
-		error_exit (main, ERR_UOF_C);
+		error_exit (main, ERR_UOF);
 }
 
 void	parse_check_file_len(t_main *main)
@@ -31,7 +31,7 @@ void	parse_check_file_len(t_main *main)
 		save_free (line_buffer);
 		////leaks with current state of get_next_line//////
 		if (count > 1000)
-			error_exit(main, ERR_MTL_C);
+			error_exit(main, ERR_MTL);
 		///////////////////////////////////////////////////
 		count++;
 		line_buffer = get_next_line(main->parser->map_fd);
@@ -58,14 +58,14 @@ void	parse_create_copy(t_main *main)
 	main->parser->map_copy_heap = ft_split(file_string, '\1');
 	save_free(file_string);
 	if (main->parser->map_copy_heap == NULL)
-		error_exit(main, ERR_UAM_C);
+		error_exit(main, ERR_UAM);
 }
 
 void	parse_close_map(t_main *main)
 {
 	main->parser->map_fd = close(main->parser->map_fd);
 	if (main->parser->map_fd < 0)
-		error_exit (main, ERR_UCF_C);
+		error_exit (main, ERR_UCF);
 }
 
 void	parse_copy_map(t_main *main)

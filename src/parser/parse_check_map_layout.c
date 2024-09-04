@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 13:21:33 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 12:55:09 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:38:30 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	character_check(char *to_check, t_main *main)
 		if (to_check[i] != '1' && to_check[i] != '0')
 		{
 			if (main->map_data->player_orientation != '\1')
-				error_exit(main, ERR_WCF_C);
+				error_exit(main, ERR_WCF);
 			else if (to_check[i] == 'N')
 				main->map_data->player_orientation = 'N';
 			else if (to_check[i] == 'E')
@@ -35,7 +35,7 @@ void	character_check(char *to_check, t_main *main)
 			else if (to_check[i] == 'W')
 				main->map_data->player_orientation = 'W';
 			else
-				error_exit(main, ERR_WCF_C);
+				error_exit(main, ERR_WCF);
 		}
 		i++;
 	}
@@ -66,15 +66,15 @@ void	border_check(char **map_layout, int y, t_main *main)
 		if (map_layout[y][x] == '0' || map_layout[y][x] == player_orientation)
 		{
 			if (y == 0 || x == 0)
-				error_exit(main, ERR_NCW_C);
+				error_exit(main, ERR_NCW);
 			if (map_layout[y + 1] == NULL)
-				error_exit(main, ERR_NCW_C);
+				error_exit(main, ERR_NCW);
 			if ((int)ft_strlen(map_layout[y - 1]) < x)
-				error_exit(main, ERR_NCW_C);
+				error_exit(main, ERR_NCW);
 			if ((int)ft_strlen(map_layout[y + 1]) < x)
-				error_exit(main, ERR_NCW_C);
+				error_exit(main, ERR_NCW);
 			if (check_surrounding(map_layout, y, x) == false)
-				error_exit(main, ERR_NCW_C);
+				error_exit(main, ERR_NCW);
 		}
 		x++;
 	}
@@ -92,5 +92,5 @@ void	check_map_layout(t_main *main)
 		i++;
 	}
 	if (main->map_data->player_orientation == '\1')
-		error_exit(main, ERR_NPF_C);
+		error_exit(main, ERR_NPF);
 }

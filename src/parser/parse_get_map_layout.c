@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:35:46 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/02 17:32:30 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:37:55 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	get_map_layout(t_main *main)
 	{
 		map_string = add_to_map_str(map_string, main->parser->map_copy_heap[i]);
 		if (map_string == NULL)
-			error_exit(main, ERR_ELM_C);
+			error_exit(main, ERR_ELM);
 		i++;
 	}
 	main->map_data->map_layout = ft_split(map_string, '\n');

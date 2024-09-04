@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:53:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/03 13:50:06 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:42:18 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	get_only_number(char *str)
 void	error_during_conversion(t_main *main, char **to_free)
 {
 	free_matrix(to_free);
-	error_exit(main, ERR_CNC_C);
+	error_exit(main, ERR_CNC);
 }
 
 int	convert_string_to_color(t_main *main, char *str)
