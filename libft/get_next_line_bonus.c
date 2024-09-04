@@ -5,104 +5,104 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 18:34:34 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/09/04 12:55:28 by kklockow         ###   ########.fr       */
+/*   Created: 2023/04/18 11:21:49 by kklockow          #+#    #+#             */
+/*   Updated: 2024/09/04 20:03:11 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/// @brief writes n zeroed bytes to the string s
-/// @param s string to be written to
-/// @param n amount of bytes to be written
-void	gnl_bzero(void *s, size_t n)
+char	*read_text(int fd, char *text)
 {
-	unsigned char	*d;
+	int		count_byte;
+	char	*buffer;
 
-	d = s;
-	while (0 < n)
-		d[--n] = 0;
-}
-
-/// @brief Determines char string length
-/// @param s String to measure
-/// @return Length of string including Nul-terminator
-int	gnl_strlen(const char *s)
-{
-	int	i;
-
-	if (s == NULL)
-		return (0);
-	i = -1;
-	while (s[++i] != '\0')
-		;
-	return (i);
-}
-
-/// @brief reads more content from file using read() until new line is reached
-/// @param tmp String to be built on
-/// @param buffer Location to save the rest
-/// @param fd filedescriptor to read from
-/// @return built string, tmp
-static char	*gnl_get_more(char *tmp, char *buffer, int fd)
-{
-	char	*new;
-	int		bytes_read;
-
-	bytes_read = 1;
-	if (tmp == NULL)
-		tmp = gnl_calloc(1, sizeof(char));
-	if (tmp == NULL)
+	count_byte = 1;
+	buffer = ft_calloc_gl((BUFFER_SIZE + 1), sizeof(char));
+	if (!buffer)
 		return (NULL);
-	new = gnl_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (new == NULL)
-		return (free(tmp), NULL);
-	while (bytes_read && gnl_strchr(tmp, '\n') == -1)
+	while (count_byte != 0 && ft_strchr_gl(text, '\n') == 0)
 	{
-		bytes_read = read(fd, new, BUFFER_SIZE);
-		if (bytes_read == -1)
-			return (gnl_bzero(buffer, BUFFER_SIZE), gnl_bzero(new, BUFFER_SIZE),
-				free(new), NULL);
-		new[bytes_read] = '\0';
-		tmp = gnl_strjoin(tmp, new);
-		if (tmp == NULL)
-			return (free(new), free(tmp), NULL);
-		if (gnl_strlen(tmp) == 0)
-			return (free(new), free(tmp), NULL);
+		count_byte = read(fd, buffer, BUFFER_SIZE);
+		if (count_byte == -1)
+		{
+			free(buffer);
+			free(text);
+			text = NULL;
+			return (NULL);
+		}
+		buffer[count_byte] = '\0';
+		text = ft_strjoin_gl(text, buffer);
 	}
-	return (free(new), tmp);
+	free(buffer);
+	return (text);
 }
 
-/// @brief 		Gets the next line from the file pointed to by fd,
-///				returning the corresponding following line in concurrent calls
-/// @param fd 	filedescriptor to read from
-/// @return 	Read line:  correct behavior
-/// 			NULL: there is nothing else to read, or an error occurred
-char	*get_next_line(int fd)
+char	*get_the_line(char *str)
 {
-	static char	buffer[1024][BUFFER_SIZE + 1];
-	char		*tmp;
-	char		*final;
-	int			nl_index;
+	int		i;
+	char	*line;
 
-	if (fd > 1023 || fd < 0)
+	i = 0;
+	if (!str[i])
 		return (NULL);
-	if (read(fd, NULL, 0) < 0 || BUFFER_SIZE <= 0)
-		return (gnl_bzero(buffer[fd], BUFFER_SIZE + 1), NULL);
-	tmp = gnl_strdup(buffer[fd]);
-	if (tmp == NULL)
+	while (str[i] != '\n' && str[i])
+		i++;
+	if (str[i] == '\n')
+		i++;
+	line = ft_calloc_gl((i + 1), sizeof(char));
+	if (!line)
 		return (NULL);
-	gnl_bzero(buffer[fd], BUFFER_SIZE);
-	tmp = gnl_get_more(tmp, buffer[fd], fd);
-	if (tmp == NULL)
+	i = 0;
+	while (str[i] != '\n' && str[i] != '\0')
+	{
+		line[i] = str[i];
+		i++;
+	}
+	if (str[i] == '\n')
+		line[i] = '\n';
+	return (line);
+}
+
+char	*update_text(char *text)
+{
+	char	*updated;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (text[i] != '\n' && text[i] != '\0')
+		i++;
+	if (text[i] == '\0')
+	{
+		free(text);
 		return (NULL);
-	nl_index = gnl_strchr(tmp, '\n');
-	if ((nl_index == 0 && tmp[0] != '\n') || nl_index == -1)
-		return (tmp);
-	final = gnl_calloc(nl_index + 2, sizeof(char));
-	if (final == NULL)
-		return (free(tmp), NULL);
-	gnl_strlcpy(buffer[fd], &tmp[nl_index + 1], BUFFER_SIZE);
-	gnl_strlcpy(final, tmp, nl_index + 2);
-	return (free(tmp), final);
+	}
+	updated = ft_calloc_gl((ft_strlen_gl(text) - i + 1), sizeof(char));
+	if (!updated)
+		return (free(text), NULL);
+	if (text[i] == '\n')
+		i++;
+	j = 0;
+	while (text[i] != '\0')
+		updated[j++] = text[i++];
+	free(text);
+	return (updated);
+}
+
+char	*get_next_line(int fd, bool finished)
+{
+	static char		*text[4096];
+	char			*line;
+
+	if (finished == true)
+		return (free(text[fd]), NULL);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	text[fd] = read_text(fd, text[fd]);
+	if (text[fd] == NULL)
+		return (free(text[fd]), NULL);
+	line = get_the_line(text[fd]);
+	text[fd] = update_text(text[fd]);
+	return (line);
 }

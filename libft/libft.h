@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:43:04 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/04/10 20:30:14 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/09/04 20:01:08 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include "../MLX42/include/MLX42/MLX42.h"
 
 ssize_t				write(int fd, const void *buf, size_t count);
 
@@ -89,16 +90,14 @@ int					pf_putptr(unsigned long int n);
 
 // #############################  GET NEXT LINE  #############################
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
+#  define BUFFER_SIZE 1024
 # endif
 
-char				*get_next_line(int fd);
-void				*gnl_calloc(size_t count, size_t size);
-char				*gnl_strdup(char *s1);
-char				*gnl_strjoin(char *s1, char *s2);
-int					gnl_strlen(const char *s);
-int					gnl_strchr(char *s, int c);
-// void				gnl_bzero(void *s, size_t n);
-size_t				gnl_strlcpy(char *dst, char *src, size_t dstsize);
+char				*get_next_line(int fd, bool finished);
+char				*ft_strjoin_gl(char *s1, char *s2);
+int					ft_strchr_gl(const char *s, char c);
+size_t				ft_strlen_gl(const char *c);
+void				ft_bzero_gl(void *s, size_t n);
+void				*ft_calloc_gl(size_t count, size_t size);
 
 #endif
