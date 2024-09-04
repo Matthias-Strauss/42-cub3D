@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 12:53:13 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:37:07 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ void	convert_colors(t_main *main);
 
 char	*ft_strjoin_free(char *s1, char *s2);
 char	*copy_path(char *to_copy, t_main *main);
+int		skip_whitespaces(char *str, int i);
+int		reverse_skip_whitespaces(char *str, int i);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -133,13 +135,6 @@ void	save_free(void *to_free);
 // error.c
 
 void	error_exit(t_main *main, int error_code);
-
-//////////////////////////////////////////////////////////////////////////////
-
-// utils.c
-
-int		skip_whitespaces(char *str, int i);
-int		reverse_skip_whitespaces(char *str, int i);
 
 //////////////////////////////////////////////////////////////////////////////
 

@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:48:08 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 13:10:07 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:36:33 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,20 @@ char	*copy_path(char *to_copy, t_main *main)
 	if (in_copy == NULL)
 		error_exit(main, ERR_UAM_C);
 	return (in_copy);
+}
+
+int	skip_whitespaces(char *str, int i)
+{
+	while (str[i] == ' ')
+		i++;
+	return (i);
+}
+
+int	reverse_skip_whitespaces(char *str, int i)
+{
+	if (str[i] == '\n' && i > 0)
+		i--;
+	while (str[i] == ' ' && i > 0)
+		i--;
+	return (i);
 }
