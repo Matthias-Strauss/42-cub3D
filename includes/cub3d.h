@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 18:18:09 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 19:03:17 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ int		reverse_skip_whitespaces(char *str, int i);
 // game.c
 
 void	start_game(t_main *main);
+void	during_game(t_main *main);
 void	end_game(t_main *main);
 
 // game_key_hooks.c
