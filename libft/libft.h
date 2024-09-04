@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:43:04 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/09/04 20:01:08 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/04 20:07:03 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,6 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
-
-// #################################  PRINTF  #################################
-int					pf_printf(const char *str, ...);
-int					pf_tohexlower(unsigned long n);
-int					pf_tohexupper(unsigned long n);
-int					pf_utoa(unsigned int n);
-int					pf_itoa(int n);
-int					pf_putstr(char *s, int fd);
-int					pf_putptr(unsigned long int n);
 
 // #############################  GET NEXT LINE  #############################
 # ifndef BUFFER_SIZE

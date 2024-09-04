@@ -50,11 +50,6 @@ SRCS =	ft_atoi.c\
 		ft_lstdelone.c\
 		ft_lstclear.c\
 		ft_lstiter.c ft_lstmap.c\
-		pf_printf.c\
-		pf_putptr.c\
-		pf_tohex.c\
-		pf_utoa.c\
-		pf_itoa.c\
 		get_next_line_bonus.c\
 		get_next_line_utils_bonus.c
 
