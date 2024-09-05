@@ -1,10 +1,11 @@
 CC = cc
 NAME = cub3D
-CFLAGS = -Wall -Werror -Wextra -O3 -ffast-math -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -O3 -ffast-math -g
+#-fsanitize=address
 LIBMLX = MLX42
 USER = $(shell whoami)
 LEAKSANITIZER = -L"/$(PWD)/LeakSanitizer" -llsan
-MLXFLAGS = $(LIBMLX)/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+MLXFLAGS = $(LIBMLX)/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
 SOURCE	 = 	main.c										\
 			src/init/init.c								\
@@ -30,8 +31,8 @@ all : libmlx $(NAME)
 #LeakSanitizer
 $(NAME) : $(OBJECTS)
 	@cd libft && make
-	@$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJECTS) libft/libft.a -o $(NAME)
-#$(LEAKSANITIZER)
+	@$(CC) $(OBJECTS) $(CFLAGS) $(MLXFLAGS) libft/libft.a -o $(NAME)
+# $(LEAKSANITIZER)
 
 libmlx:
 		@if [ ! -d $(LIBMLX) ]; then git clone https://github.com/codam-coding-college/MLX42.git ; fi

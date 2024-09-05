@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:43:04 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/09/04 20:55:52 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/05 12:54:17 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include "../MLX42/include/MLX42/MLX42.h"
+# include <stdbool.h>
 
 ssize_t				write(int fd, const void *buf, size_t count);
 

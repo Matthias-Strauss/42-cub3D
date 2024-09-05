@@ -6,9 +6,12 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 19:03:17 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/05 13:06:03 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef CUB3D_H
+# define CUB3D_H
 
 #include "../MLX42/include/MLX42/MLX42.h"
 #include <stdlib.h>
@@ -149,3 +152,5 @@ void	save_free(void *to_free);
 void	error_exit(t_main *main, int error_code);
 
 //////////////////////////////////////////////////////////////////////////////
+
+#endif
