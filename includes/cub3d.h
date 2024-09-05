@@ -6,20 +6,20 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/05 13:06:03 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/05 19:54:34 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "../MLX42/include/MLX42/MLX42.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include "../libft/libft.h"
-#include "error_codes.h"
+# include "../MLX42/include/MLX42/MLX42.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include "../libft/libft.h"
+# include "error_codes.h"
 
 //////////////////////////////////////////////////////////////////////////////
 

@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:48:08 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 20:31:43 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/05 19:55:48 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strjoin_free(char *s1, char *s2)
 {
-	char *joined;
+	char	*joined;
 
 	joined = ft_strjoin(s1, s2);
 	save_free(s1);
