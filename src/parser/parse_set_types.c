@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 13:55:20 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 17:37:28 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:49:25 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,12 @@ void	set_types(t_main *main)
 	while (main->parser->map_copy_heap[i])
 	{
 		current = main->parser->map_copy_heap[i];
-		main->map_data->north_texture = set_type_path("NO", current, main);
-		main->map_data->east_texture = set_type_path("EA", current, main);
-		main->map_data->south_texture = set_type_path("SO", current, main);
-		main->map_data->west_texture = set_type_path("WE", current, main);
-		main->parser->ceiling_color = set_type_path("C", current, main);
-		main->parser->floor_color = set_type_path("F", current, main);
+		main->map_data->north_texture = set_type_path("NO ", current, main);
+		main->map_data->east_texture = set_type_path("EA ", current, main);
+		main->map_data->south_texture = set_type_path("SO ", current, main);
+		main->map_data->west_texture = set_type_path("WE ", current, main);
+		main->parser->ceiling_color = set_type_path("C ", current, main);
+		main->parser->floor_color = set_type_path("F ", current, main);
 		if (main->parser->last_type_index == 0 && check_types(main) == true)
 			main->parser->last_type_index = i;
 		i++;
