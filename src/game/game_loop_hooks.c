@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/10 19:06:58 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/10 20:43:24 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	draw_line(int x1, int y1, int x2, int y2, t_main *main)
     int err = dx - dy; // Error term
 
     while (1) {
-        if (x1 >= 0 && y1 >= 0 && x1 <= WIDTH && y1 <= HEIGHT)
+        // if (x1 >= 0 && y1 >= 0 && x1 <= WIDTH && y1 <= HEIGHT)
 			mlx_put_pixel(main->image, x1, y1, main->map_data->ceiling_color); // Plot the current point
         // Check if we have reached the end point
         if (x1 == x2 && y1 == y2)
@@ -107,6 +107,11 @@ void	draw_player(t_main *main)
 	draw_line(x, y, x + dx, y + dy, main);
 }
 
+float distance(float ax, float ay, float bx, float by)
+{
+	return (sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
+}
+
 void	draw_rays(t_main *main)
 {
 	float	angle;
@@ -120,13 +125,29 @@ void	draw_rays(t_main *main)
 	float	yo;
 	int		mx;
 	int		my;
+	float	dish;
+	float	disv;
+	float	dis;
+	float	hx;
+	float	hy;
+	float	vx;
+	float	vy;
+	float	lineh;
+	int		draw_start = 500;
 
-	angle = main->player->angle;
+	angle = main->player->angle - DR * 30;
+	if (angle < 0)
+		angle += 2 * M_PI;
+	if (angle > 2 * M_PI)
+		angle -= 2 * M_PI;
 	i = 0;
-	while (i < 1)
+	while (i < 60)
 	{
 		dof = 0;
 		aTan = -1/tan(angle);
+		dish = 10000;
+		hx = 0;
+		hy = 0;
 		if (angle > M_PI)
 		{
 			ry = (((int)main->player->position.y >> 6) << 6) -0.0001;
@@ -151,9 +172,12 @@ void	draw_rays(t_main *main)
 		{
 			mx = (int)rx >> 6;
 			my = (int)ry >> 6;
-			if (mx >= 0 && mx <= main->map_data->map_width && my >= 0 && my < main->map_data->map_height && main->map_data->map_layout[my][mx] == '1')
+			if (mx >= 0 && mx <= main->map_data->map_width && my >= 0 && my < main->map_data->map_height && mx < ft_strlen(main->map_data->map_layout[my]) && main->map_data->map_layout[my][mx] == '1')
 			{
-					dof = 8;
+				dish = distance(main->player->position.x, main->player->position.y, rx, ry);
+				hx = rx;
+				hy = ry;
+				dof = 8;
 			}
 			else
 			{
@@ -164,6 +188,9 @@ void	draw_rays(t_main *main)
 		}
 		dof = 0;
 		nTan = -tan(angle);
+		disv = 10000;
+		vx = main->player->position.x;
+		vy = main->player->position.y;
 		if (angle > (M_PI / 2) && angle < (M_PI * 3 / 2))
 		{
 			rx = (((int)main->player->position.x >> 6) << 6) -0.0001;
@@ -188,19 +215,52 @@ void	draw_rays(t_main *main)
 		{
 			mx = (int)rx >> 6;
 			my = (int)ry >> 6;
-			if (mx >= 0 && mx <= main->map_data->map_width && my >= 0 && my < main->map_data->map_height && main->map_data->map_layout[my][mx] == '1')
+			if (mx >= 0 && mx <= main->map_data->map_width && my >= 0 && my < main->map_data->map_height && mx < ft_strlen(main->map_data->map_layout[my]) && main->map_data->map_layout[my][mx] == '1')
 			{
-					dof = 8;
+				disv = distance(main->player->position.x, main->player->position.y, rx, ry);
+				vx = rx;
+				vy = ry;
+				dof = 8;
 			}
 			else
 			{
+				dof++;
 				rx += xo;
 				ry += yo;
-				dof++;
 			}
 		}
-		draw_line(main->player->position.x, main->player->position.y, rx, ry, main);
+		if (disv < dish)
+		{
+			rx = vx;
+			ry = vy;
+			dis = disv;
+		}
+		if (disv > dish)
+		{
+			rx = hx;
+			ry = hy;
+			dis = dish;
+		}
+		if (rx >= 0 && ry >= 0)
+			draw_line(main->player->position.x, main->player->position.y, rx, ry, main);
+
+		float lol = main->player->angle - angle;
+		dis = dis * cos(lol);
+		lineh = TILESIZE * 320 / dis;
+		if (lineh > 320)
+			lineh = 320;
+		float lineo = 160 - lineh/2;
+		for (int o = 0; o < 8; o++)
+		{
+			draw_line(draw_start + o, lineo, draw_start + o, lineo + lineh, main);
+			draw_start++;
+		}
 		i++;
+		angle += DR;
+		if (angle < 0)
+			angle += 2 * M_PI;
+		if (angle > 2 * M_PI)
+			angle -= 2 * M_PI;
 	}
 }
 
