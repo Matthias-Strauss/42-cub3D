@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/10 15:48:42 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:20:46 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,27 +174,3 @@ void	error_exit(t_main *main, int error_code);
 //////////////////////////////////////////////////////////////////////////////
 
 #endif
-
-// void draw_line(int x0, int y0, int x1, int y1, t_main *main)
-// {
-//     int dx, dy, p, x, y;
-//     dx=x1-x0;
-//     dy=y1-y0;
-//     x=x0;
-//     y=y0;
-//     p=2*dy-dx;
-//     while(x<x1)
-//     {
-//         if(p>=0)
-//         {
-//             mlx_put_pixel(main->image, x, y, main->map_data->ceiling_color);
-//             y=y+1;
-//             p=p+2*dy-2*dx;
-//         }
-//         else
-//         {
-//             mlx_put_pixel(main->image, x, y, main->map_data->ceiling_color);
-//             p=p+2*dy;}
-//             x=x+1;
-//         }
-// }

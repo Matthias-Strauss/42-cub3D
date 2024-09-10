@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/10 15:48:55 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:19:43 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	draw_player(t_main *main)
 	dy = main->player->delta.y;
 	mlx_put_pixel(main->image, x, y, main->map_data->ceiling_color);
 	mlx_put_pixel(main->image, x + dx, y + dy, main->map_data->ceiling_color);
+
 }
 
 void	loop_hooks(void *param)
