@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/10 21:58:04 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/10 22:28:13 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	draw_rays(t_main *main)
 	float	vx;
 	float	vy;
 	float	lineh;
-	int		draw_start = 500;
+	int		draw_start = 0;
 
 	angle = main->player->angle - DR * 30;
 	if (angle < 0)
@@ -141,7 +141,7 @@ void	draw_rays(t_main *main)
 	if (angle > 2 * M_PI)
 		angle -= 2 * M_PI;
 	i = 0;
-	while (i < 90)
+	while (i < 60)
 	{
 		dof = 0;
 		aTan = -1/tan(angle);
@@ -246,30 +246,32 @@ void	draw_rays(t_main *main)
 			ry = hy;
 			dis = dish;
 		}
+		// if ((rx == hx || rx == vx) && (ry == hy || ry == vy))
+		// 	draw_line(main->player->position.x, main->player->position.y, rx, ry, main, 16777215);
 		if ((rx == hx || rx == vx) && (ry == hy || ry == vy))
-			draw_line(main->player->position.x, main->player->position.y, rx, ry, main, 16777215);
-
-		float lol = main->player->angle - angle;
-		dis = dis * cos(lol);
-		if (dis < 0)
-			dis += 2 * M_PI;
-		if (dis > 2 * M_PI)
-			dis -= 2 * M_PI;
-		lineh = TILESIZE * 320 / dis;
-		if (lineh > 320)
-			lineh = 320;
-		float lineo = 160 - lineh/2;
-		for (int o = 0; o < 4; o++)
 		{
-			draw_line(draw_start + o, lineo, draw_start + o, lineo + lineh, main, main->map_data->ceiling_color);
-			draw_start++;
+			float lol = main->player->angle - angle;
+			if (lol < 0)
+				lol += 2 * M_PI;
+			if (lol > 2 * M_PI)
+				lol -= 2 * M_PI;
+			dis = dis * cos(lol);
+			lineh = (TILESIZE * HEIGHT / 2) / dis;
+			if (lineh > HEIGHT / 2)
+				lineh = HEIGHT / 2;
+			float lineo = HEIGHT / 2 - lineh/2;
+			for (int o = 0; o < 16; o++)
+			{
+				draw_line(draw_start + o, lineo, draw_start + o, lineo + lineh, main, main->map_data->ceiling_color);
+				draw_start++;
+			}
+			i++;
+			angle += DR;
+			if (angle < 0)
+				angle += 2 * M_PI;
+			if (angle > 2 * M_PI)
+				angle -= 2 * M_PI;
 		}
-		i++;
-		angle += DR;
-		if (angle < 0)
-			angle += 2 * M_PI;
-		if (angle > 2 * M_PI)
-			angle -= 2 * M_PI;
 	}
 }
 
@@ -280,8 +282,8 @@ void	loop_hooks(void *param)
 	main = param;
 	mlx_delete_image(main->mlx, main->image);
 	main->image = mlx_new_image(main->mlx, WIDTH, HEIGHT);
-	draw_map(main);
-	draw_player(main);
 	draw_rays(main);
+	// draw_map(main);
+	// draw_player(main);
 	mlx_image_to_window(main->mlx, main->image, 0, 0);
 }
