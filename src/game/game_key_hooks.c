@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/10 15:21:03 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:34:46 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void	movement(mlx_key_data_t keydata, t_main *main)
 		main->player->angle -= 0.1;
 		if (main->player->angle < 0)
 			main->player->angle += 2 * M_PI;
-		main->player->delta.x = cos(main->player->angle) * 5;
-		main->player->delta.y = sin(main->player->angle) * 5;
+		main->player->delta.x = cos(main->player->angle) * ANGLEOFFSET;
+		main->player->delta.y = sin(main->player->angle) * ANGLEOFFSET;
 	}
 	if (keydata.key == MLX_KEY_RIGHT)
 	{
 		main->player->angle += 0.1;
 		if (main->player->angle > 2 * M_PI)
 			main->player->angle -= 2 * M_PI;
-		main->player->delta.x = cos(main->player->angle) * 5;
-		main->player->delta.y = sin(main->player->angle) * 5;
+		main->player->delta.x = cos(main->player->angle) * ANGLEOFFSET;
+		main->player->delta.y = sin(main->player->angle) * ANGLEOFFSET;
 	}
 
 }

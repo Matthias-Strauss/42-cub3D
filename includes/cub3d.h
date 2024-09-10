@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/10 16:20:46 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:22:15 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 
 #define WIDTH 2000
 #define HEIGHT 1000
-#define	TILESIZE 100
+#define	TILESIZE 64
+#define	ANGLEOFFSET 5
 
 //////////////////////////////////////////////////////////////////////////////
 
