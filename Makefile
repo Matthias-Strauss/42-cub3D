@@ -22,6 +22,7 @@ SOURCE	 = 	main.c										\
 			src/game/game.c								\
 			src/game/game_key_hooks.c					\
 			src/game/game_loop_hooks.c					\
+			src/rays/rays.c								\
 			src/free/free.c								\
 			src/error/error.c
 

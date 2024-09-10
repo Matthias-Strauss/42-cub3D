@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/10 21:54:09 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/10 23:18:05 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 #define	ANGLEOFFSET 5
 #define DR 0.0174533
 #define RD 20
+#define FOV 60
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -74,6 +75,19 @@ typedef struct s_player
 	t_point	delta;
 	double	angle;
 }	t_player;
+
+//////////////////////////////////////////////////////////////////////////////
+
+typedef struct s_ray
+{
+	float	x;
+	float	y;
+	float	x_offset;
+	float	y_offset;
+	float	tan;
+	double	angle;
+	float	distance;
+}	t_ray;
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -158,6 +172,13 @@ void	key_hooks(mlx_key_data_t keydata, void *main);
 // game_loop_hooks.c
 
 void	loop_hooks(void *param);
+void	draw_line(int x1, int y1, int x2, int y2, t_main *main, int color);
+
+//////////////////////////////////////////////////////////////////////////////
+
+// ray.c
+
+void	draw_rays(t_main *main);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -177,3 +198,48 @@ void	error_exit(t_main *main, int error_code);
 //////////////////////////////////////////////////////////////////////////////
 
 #endif
+
+
+		// dof = 0;
+		// nTan = -tan(angle);
+		// disv = 10000;
+		// vx = main->player->position.x;
+		// vy = main->player->position.y;
+		// if (angle > (M_PI / 2) && angle < (M_PI * 3 / 2))
+		// {
+		// 	rx = (((int)main->player->position.x >> 6) << 6) -0.0001;
+		// 	ry = (main->player->position.x - rx) * nTan + main->player->position.y;
+		// 	xo = -64;
+		// 	yo = -xo * nTan;
+		// }
+		// if (angle < (M_PI / 2) || angle > (M_PI * 3 / 2))
+		// {
+		// 	rx = (((int)main->player->position.x >> 6) << 6) + 64;
+		// 	ry = (main->player->position.x - rx) * nTan + main->player->position.y;
+		// 	xo = 64;
+		// 	yo = -xo * nTan;
+		// }
+		// if (angle == 0 || angle == M_PI)
+		// {
+		// 	rx = main->player->position.x;
+		// 	ry = main->player->position.y;
+		// 	dof = RD;
+		// }
+		// while (dof < RD)
+		// {
+		// 	mx = (int)rx >> 6;
+		// 	my = (int)ry >> 6;
+		// 	if (mx >= 0 && mx <= main->map_data->map_width && my >= 0 && my < main->map_data->map_height && mx < ft_strlen(main->map_data->map_layout[my]) && main->map_data->map_layout[my][mx] == '1')
+		// 	{
+		// 		disv = distance(main->player->position.x, main->player->position.y, rx, ry);
+		// 		vx = rx;
+		// 		vy = ry;
+		// 		dof = RD;
+		// 	}
+		// 	else
+		// 	{
+		// 		rx += xo;
+		// 		ry += yo;
+		// 		dof++;
+		// 	}
+		// }
