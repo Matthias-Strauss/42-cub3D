@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/10 20:43:24 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/10 21:58:04 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	draw_map(t_main *main)
 	}
 }
 
-void	draw_line(int x1, int y1, int x2, int y2, t_main *main)
+void	draw_line(int x1, int y1, int x2, int y2, t_main *main, int color)
 {
 	int dx = abs(x2 - x1); // Calculate the difference in x
     int dy = abs(y2 - y1); // Calculate the difference in y
@@ -72,7 +72,7 @@ void	draw_line(int x1, int y1, int x2, int y2, t_main *main)
 
     while (1) {
         // if (x1 >= 0 && y1 >= 0 && x1 <= WIDTH && y1 <= HEIGHT)
-			mlx_put_pixel(main->image, x1, y1, main->map_data->ceiling_color); // Plot the current point
+			mlx_put_pixel(main->image, x1, y1, color); // Plot the current point
         // Check if we have reached the end point
         if (x1 == x2 && y1 == y2)
             break;
@@ -104,7 +104,7 @@ void	draw_player(t_main *main)
 	y = main->player->position.y;
 	dx = main->player->delta.x;
 	dy = main->player->delta.y;
-	draw_line(x, y, x + dx, y + dy, main);
+	draw_line(x, y, x + dx, y + dy, main, main->map_data->ceiling_color);
 }
 
 float distance(float ax, float ay, float bx, float by)
@@ -141,13 +141,13 @@ void	draw_rays(t_main *main)
 	if (angle > 2 * M_PI)
 		angle -= 2 * M_PI;
 	i = 0;
-	while (i < 60)
+	while (i < 90)
 	{
 		dof = 0;
 		aTan = -1/tan(angle);
 		dish = 10000;
-		hx = 0;
-		hy = 0;
+		hx = main->player->position.x;
+		hy = main->player->position.y;
 		if (angle > M_PI)
 		{
 			ry = (((int)main->player->position.y >> 6) << 6) -0.0001;
@@ -166,9 +166,9 @@ void	draw_rays(t_main *main)
 		{
 			rx = main->player->position.x;
 			ry = main->player->position.y;
-			dof = 8;
+			dof = RD;
 		}
-		while (dof < 8)
+		while (dof < RD)
 		{
 			mx = (int)rx >> 6;
 			my = (int)ry >> 6;
@@ -177,7 +177,7 @@ void	draw_rays(t_main *main)
 				dish = distance(main->player->position.x, main->player->position.y, rx, ry);
 				hx = rx;
 				hy = ry;
-				dof = 8;
+				dof = RD;
 			}
 			else
 			{
@@ -186,6 +186,8 @@ void	draw_rays(t_main *main)
 				dof++;
 			}
 		}
+		// if (hx == rx)
+		// 	draw_line(main->player->position.x, main->player->position.y, rx, ry, main, 65280);
 		dof = 0;
 		nTan = -tan(angle);
 		disv = 10000;
@@ -209,9 +211,9 @@ void	draw_rays(t_main *main)
 		{
 			rx = main->player->position.x;
 			ry = main->player->position.y;
-			dof = 8;
+			dof = RD;
 		}
-		while (dof < 8)
+		while (dof < RD)
 		{
 			mx = (int)rx >> 6;
 			my = (int)ry >> 6;
@@ -220,15 +222,18 @@ void	draw_rays(t_main *main)
 				disv = distance(main->player->position.x, main->player->position.y, rx, ry);
 				vx = rx;
 				vy = ry;
-				dof = 8;
+				dof = RD;
 			}
 			else
 			{
-				dof++;
 				rx += xo;
 				ry += yo;
+				dof++;
 			}
 		}
+		// if (vx == rx)
+		// 	draw_line(main->player->position.x, main->player->position.y, rx, ry, main, 255);
+		dis = disv;
 		if (disv < dish)
 		{
 			rx = vx;
@@ -241,18 +246,22 @@ void	draw_rays(t_main *main)
 			ry = hy;
 			dis = dish;
 		}
-		if (rx >= 0 && ry >= 0)
-			draw_line(main->player->position.x, main->player->position.y, rx, ry, main);
+		if ((rx == hx || rx == vx) && (ry == hy || ry == vy))
+			draw_line(main->player->position.x, main->player->position.y, rx, ry, main, 16777215);
 
 		float lol = main->player->angle - angle;
 		dis = dis * cos(lol);
+		if (dis < 0)
+			dis += 2 * M_PI;
+		if (dis > 2 * M_PI)
+			dis -= 2 * M_PI;
 		lineh = TILESIZE * 320 / dis;
 		if (lineh > 320)
 			lineh = 320;
 		float lineo = 160 - lineh/2;
-		for (int o = 0; o < 8; o++)
+		for (int o = 0; o < 4; o++)
 		{
-			draw_line(draw_start + o, lineo, draw_start + o, lineo + lineh, main);
+			draw_line(draw_start + o, lineo, draw_start + o, lineo + lineh, main, main->map_data->ceiling_color);
 			draw_start++;
 		}
 		i++;
