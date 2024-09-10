@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:22 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 17:18:10 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/06 17:18:22 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ void	init_map_data_struct(t_main *main)
 	main->map_data->player_orientation = '\1';
 }
 
+void	init_player_struct(t_main *main)
+{
+	main->player = malloc(sizeof (t_player) * 1);
+	if (main->player == NULL)
+		error_exit(main, ERR_UAM);
+	main->player->position.x = 0;
+	main->player->position.y = 0;
+}
+
 t_main	*init_main_struct(void)
 {
 	t_main	*main;
@@ -47,7 +56,9 @@ t_main	*init_main_struct(void)
 		error_exit(main, ERR_UAM);
 	main->parser = NULL;
 	main->map_data = NULL;
+	main->player = NULL;
 	main->mlx = NULL;
+	main->image = NULL;
 	return (main);
 }
 
@@ -58,5 +69,6 @@ t_main	*init_structs(void)
 	main = init_main_struct();
 	init_parser_struct(main);
 	init_map_data_struct(main);
+	init_player_struct(main);
 	return (main);
 }

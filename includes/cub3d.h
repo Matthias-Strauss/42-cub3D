@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/05 19:54:34 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:48:42 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,20 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 # include "../libft/libft.h"
 # include "error_codes.h"
+
+#define WIDTH 2000
+#define HEIGHT 1000
+#define	TILESIZE 100
 
 //////////////////////////////////////////////////////////////////////////////
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
+	float	x;
+	float	y;
 }	t_point;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -60,11 +65,22 @@ typedef struct s_map_data
 
 //////////////////////////////////////////////////////////////////////////////
 
+typedef struct s_player
+{
+	t_point	position;
+	t_point	delta;
+	double	angle;
+}	t_player;
+
+//////////////////////////////////////////////////////////////////////////////
+
 typedef struct s_main
 {
 	t_parser	*parser;
 	t_map_data	*map_data;
+	t_player	*player;
 	mlx_t		*mlx;
+	mlx_image_t	*image;
 }	t_main;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -136,6 +152,10 @@ void	end_game(t_main *main);
 
 void	key_hooks(mlx_key_data_t keydata, void *main);
 
+// game_loop_hooks.c
+
+void	loop_hooks(void *param);
+
 //////////////////////////////////////////////////////////////////////////////
 
 // free.c
@@ -154,3 +174,27 @@ void	error_exit(t_main *main, int error_code);
 //////////////////////////////////////////////////////////////////////////////
 
 #endif
+
+// void draw_line(int x0, int y0, int x1, int y1, t_main *main)
+// {
+//     int dx, dy, p, x, y;
+//     dx=x1-x0;
+//     dy=y1-y0;
+//     x=x0;
+//     y=y0;
+//     p=2*dy-dx;
+//     while(x<x1)
+//     {
+//         if(p>=0)
+//         {
+//             mlx_put_pixel(main->image, x, y, main->map_data->ceiling_color);
+//             y=y+1;
+//             p=p+2*dy-2*dx;
+//         }
+//         else
+//         {
+//             mlx_put_pixel(main->image, x, y, main->map_data->ceiling_color);
+//             p=p+2*dy;}
+//             x=x+1;
+//         }
+// }

@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/05 13:00:33 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:21:03 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,39 @@ void	escape(mlx_key_data_t keydata, t_main *main)
 		mlx_close_window(main->mlx);
 }
 
+void	movement(mlx_key_data_t keydata, t_main *main)
+{
+	if (keydata.key == MLX_KEY_W)
+	{
+		main->player->position.y += main->player->delta.y;
+		main->player->position.x += main->player->delta.x;
+	}
+	if (keydata.key == MLX_KEY_S)
+	{
+		main->player->position.y -= main->player->delta.y;
+		main->player->position.x -= main->player->delta.x;
+	}
+	if (keydata.key == MLX_KEY_LEFT)
+	{
+		main->player->angle -= 0.1;
+		if (main->player->angle < 0)
+			main->player->angle += 2 * M_PI;
+		main->player->delta.x = cos(main->player->angle) * 5;
+		main->player->delta.y = sin(main->player->angle) * 5;
+	}
+	if (keydata.key == MLX_KEY_RIGHT)
+	{
+		main->player->angle += 0.1;
+		if (main->player->angle > 2 * M_PI)
+			main->player->angle -= 2 * M_PI;
+		main->player->delta.x = cos(main->player->angle) * 5;
+		main->player->delta.y = sin(main->player->angle) * 5;
+	}
+
+}
+
 void	key_hooks(mlx_key_data_t keydata, void *main)
 {
 	escape(keydata, (t_main *)main);
+	movement(keydata, (t_main *)main);
 }
