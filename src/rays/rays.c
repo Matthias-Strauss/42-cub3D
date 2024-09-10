@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/10 23:38:59 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/10 23:54:55 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	draw_wall(t_ray ray, double angle, t_main *main, int start)
 	if (line_height > HEIGHT)
 		line_height = HEIGHT;
 	float lineo = HEIGHT/2 - line_height/2;
-	for (int o = 0; o < 8; o++)
+	for (int o = 0; o < 16; o++)
 	{
 		draw_line(start + o, lineo, start + o, lineo + line_height, main, main->map_data->ceiling_color);
 		start++;
@@ -147,13 +147,14 @@ void	draw_rays(t_main *main)
 	t_ray	ray_v;
 	float	angle;
 	int		i;
-	int		start = 0;
+	int		start;
 
 	angle = main->player->angle - DR * (FOV / 2);
 	if (angle < 0)
 		angle += 2 * M_PI;
 	if (angle > 2 * M_PI)
 		angle -= 2 * M_PI;
+	start = 0;
 	i = 0;
 	while (i < FOV)
 	{
