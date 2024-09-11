@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/11 16:55:20 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:11:50 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 # include "../libft/libft.h"
 # include "error_codes.h"
 
-#define WIDTH 2000
-#define HEIGHT 1000
-#define	TILESIZE 64
-#define	ANGLEOFFSET 5
-#define DR 0.0174533
-#define RD 32
-#define FOV 90
-#define	LT 8
+# define WIDTH 			2400
+# define HEIGHT 		1200
+# define TILESIZE 		64
+# define ANGLEOFFSET 	5
+# define DR 			0.0174533	//radian increment value
+# define RD 			32			//render distance
+# define FOV 			90			//field of view
+# define LT 			10			//line thickness
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -89,6 +89,7 @@ typedef struct s_ray
 	double	angle;
 	float	distance;
 	bool	no_hit;
+	int		dof;
 }	t_ray;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -181,7 +182,7 @@ void	draw_line(int x1, int y1, int x2, int y2, t_main *main, int color);
 // ray.c
 
 void	draw_rays(t_main *main);
-float 	distance(float ax, float ay, float bx, float by);
+float	distance(float ax, float ay, float bx, float by);
 
 // ray_horizontal.c
 
