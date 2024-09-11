@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:56:40 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 16:25:39 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/11 00:05:34 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,19 @@ void	free_parser_struct(t_main *main)
 	}
 }
 
+void	free_player_struct(t_main *main)
+{
+	if (main != NULL && main->player != NULL)
+	{
+		save_free (main->player);
+		main->parser = NULL;
+	}
+}
+
 void	free_structs(t_main *main)
 {
 	free_parser_struct(main);
 	free_map_data_struct(main);
+	free_player_struct(main);
 	save_free (main);
 }

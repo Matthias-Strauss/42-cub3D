@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/10 16:34:46 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:18:12 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,45 @@ void	escape(mlx_key_data_t keydata, t_main *main)
 		mlx_close_window(main->mlx);
 }
 
+bool	wallcheck(char *id, t_main *main)
+{
+	int	x;
+	int	y;
+
+	if (ft_strncmp("UP", id, 2) == 0)
+	{
+		x = (int)(main->player->position.x + main->player->delta.x) >> 6;
+		y = (int)(main->player->position.y + main->player->delta.y) >> 6;
+		if (main->map_data->map_layout[y][x] == '1')
+			return (true);
+	}
+	if (ft_strncmp("DOWN", id, 4) == 0)
+	{
+		x = (int)(main->player->position.x - main->player->delta.x) >> 6;
+		y = (int)(main->player->position.y - main->player->delta.y) >> 6;
+		if (main->map_data->map_layout[y][x] == '1')
+			return (true);
+	}
+	return (false);
+}
+
 void	movement(mlx_key_data_t keydata, t_main *main)
 {
-	if (keydata.key == MLX_KEY_W)
+	if (keydata.key == MLX_KEY_UP)
 	{
-		main->player->position.y += main->player->delta.y;
-		main->player->position.x += main->player->delta.x;
+		if (wallcheck("UP", main) == false)
+		{
+			main->player->position.y += main->player->delta.y;
+			main->player->position.x += main->player->delta.x;
+		}
 	}
-	if (keydata.key == MLX_KEY_S)
+	if (keydata.key == MLX_KEY_DOWN)
 	{
-		main->player->position.y -= main->player->delta.y;
-		main->player->position.x -= main->player->delta.x;
+		if (wallcheck("DOWN", main) == false)
+		{
+			main->player->position.y -= main->player->delta.y;
+			main->player->position.x -= main->player->delta.x;
+		}
 	}
 	if (keydata.key == MLX_KEY_LEFT)
 	{

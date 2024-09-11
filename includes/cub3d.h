@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/10 23:55:30 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:55:20 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@
 #define	TILESIZE 64
 #define	ANGLEOFFSET 5
 #define DR 0.0174533
-#define RD 20
-#define FOV 70
+#define RD 32
+#define FOV 90
+#define	LT 8
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -87,6 +88,7 @@ typedef struct s_ray
 	float	tan;
 	double	angle;
 	float	distance;
+	bool	no_hit;
 }	t_ray;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -179,6 +181,15 @@ void	draw_line(int x1, int y1, int x2, int y2, t_main *main, int color);
 // ray.c
 
 void	draw_rays(t_main *main);
+float 	distance(float ax, float ay, float bx, float by);
+
+// ray_horizontal.c
+
+t_ray	ray_horizontal(t_main *main, double angle);
+
+// ray_vertical.c
+
+t_ray	ray_vertical(t_main *main, double angle);
 
 //////////////////////////////////////////////////////////////////////////////
 

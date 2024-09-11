@@ -1,6 +1,7 @@
 CC = cc
 NAME = cub3D
-CFLAGS = -Wall -Werror -Wextra -O3 -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra -O3 -ffast-math -fsanitize=address -g
+#-fsanitize=address
 LIBMLX = MLX42
 USER = $(shell whoami)
 LEAKSANITIZER = -L"/$(PWD)/LeakSanitizer" -llsan
@@ -23,6 +24,8 @@ SOURCE	 = 	main.c										\
 			src/game/game_key_hooks.c					\
 			src/game/game_loop_hooks.c					\
 			src/rays/rays.c								\
+			src/rays/ray_horizontal.c					\
+			src/rays/ray_vertical.c						\
 			src/free/free.c								\
 			src/error/error.c
 
