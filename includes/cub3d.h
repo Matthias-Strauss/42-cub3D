@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 13:55:01 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:55:57 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 # define HEIGHT 		1200
 # define TILESIZE 		64 //messes up raycaster when changed
 # define ANGLEOFFSET 	5		//speed
-# define ANGLE_INCREMENT	0.0174533 / 2	//ray angle increment value
+# define ANGLE_INCREMENT	0.0174533	//ray angle increment value
 # define RD 			32			//render distance
 # define FOV 			90			//field of view
-# define LT 			10			//line thickness
+# define LT 			WIDTH / FOV 			//line thickness
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -235,3 +235,18 @@ void	draw_line(int x1, int y1, int x2, int y2, t_main *main, int color);
 	// rayAngle = rayAngle + subAngle -- Because we subtract from it once the loop starts
 
 	// rayAngle = math.deg(math.atan2(screenWidth/2 - (ray - 0.5), distToPlane)) + self.player.angle
+
+// Now let's go for the math to make it look right.
+// You first need to define the length from the POV to the projection plane.
+// Let's define it as 1 unit of distance. Now, you want to determine how large is the screen,
+// in distance units, with the given angle of view
+// (AOV, which is in my opinion a more proper term for the angle that you call FOV).
+// Since the distance to the screen is 1, that happens to be tan(AOV/2)*2
+// (we're calculating one half first and then duplicating it). I can make a diagram if you need more explanations.
+
+// That's the segment that you need to divide by the number of pixels,
+// 500 in your case. Remember to keep half of them above and half below zero.
+//  Now, to cast the ray, the angle you need is the angle of the vector that goes from the POV to each pixel,
+//   i.e. to each subdivision. To calculate that angle,
+//   you can use atan(X coordinate of the subdivision).
+//   Again, I can make a diagram if you need to see why.

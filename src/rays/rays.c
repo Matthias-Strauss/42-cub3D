@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 13:46:29 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:56:03 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	draw_wall_segment(t_ray ray, t_main *main, int start, int color)
 		fisheye_fix -= 2 * M_PI;
 	ray.distance = ray.distance * cos(fisheye_fix);
 	line_height = (TILESIZE * HEIGHT) / ray.distance;
-	if (line_height >= HEIGHT)
-		line_height = HEIGHT;
+	if (line_height >= HEIGHT - LT)
+		line_height = HEIGHT - LT;
 	line_offset = (HEIGHT / 2) - (line_height / 2);
 	i = 0;
 	while (i < LT)
@@ -74,7 +74,7 @@ void	draw_rays(t_main *main)
 		ray.angle += 2 * M_PI;
 	if (ray.angle > 2 * M_PI)
 		ray.angle -= 2 * M_PI;
-	start = 500;
+	start = LT;
 	i = 0;
 	while (i < FOV)
 	{
