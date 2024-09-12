@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/11 18:11:50 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:55:01 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 
 # define WIDTH 			2400
 # define HEIGHT 		1200
-# define TILESIZE 		64
-# define ANGLEOFFSET 	5
-# define DR 			0.0174533	//radian increment value
+# define TILESIZE 		64 //messes up raycaster when changed
+# define ANGLEOFFSET 	5		//speed
+# define ANGLE_INCREMENT	0.0174533 / 2	//ray angle increment value
 # define RD 			32			//render distance
 # define FOV 			90			//field of view
 # define LT 			10			//line thickness
@@ -38,6 +38,18 @@ typedef struct s_point
 	float	x;
 	float	y;
 }	t_point;
+
+//////////////////////////////////////////////////////////////////////////////
+
+typedef struct s_line
+{
+	int	x_diff;
+	int	y_diff;
+	int	x_step;
+	int	y_step;
+	int	error;
+	int	error2;
+}	t_line;
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -175,7 +187,6 @@ void	key_hooks(mlx_key_data_t keydata, void *main);
 // game_loop_hooks.c
 
 void	loop_hooks(void *param);
-void	draw_line(int x1, int y1, int x2, int y2, t_main *main, int color);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -186,11 +197,11 @@ float	distance(float ax, float ay, float bx, float by);
 
 // ray_horizontal.c
 
-t_ray	ray_horizontal(t_main *main, double angle);
+t_ray	ray_horizontal(t_main *main, t_ray ray);
 
 // ray_vertical.c
 
-t_ray	ray_vertical(t_main *main, double angle);
+t_ray	ray_vertical(t_main *main, t_ray ray);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -209,4 +220,18 @@ void	error_exit(t_main *main, int error_code);
 
 //////////////////////////////////////////////////////////////////////////////
 
+// draw_line.c
+
+void	draw_line(int x1, int y1, int x2, int y2, t_main *main, int color);
+
+//////////////////////////////////////////////////////////////////////////////
+
 #endif
+
+	// distToPlane = math.floor((screenWidth / 2) / tan(rad( FOV / 2 )))
+	// subAngle = FOV / screenWidth -- angle of subsequent rays
+
+	// rayAngle = self.player.angle + FOV / 2
+	// rayAngle = rayAngle + subAngle -- Because we subtract from it once the loop starts
+
+	// rayAngle = math.deg(math.atan2(screenWidth/2 - (ray - 0.5), distToPlane)) + self.player.angle

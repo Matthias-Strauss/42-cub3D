@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:22:56 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/11 18:07:58 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:16:07 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,8 @@ t_ray	v_cast_current_ray(t_ray ray, t_main *main)
 	return (ray);
 }
 
-t_ray	ray_vertical(t_main *main, double angle)
+t_ray	ray_vertical(t_main *main, t_ray ray)
 {
-	t_ray	ray;
-
-	ray.angle = angle;
 	ray.dof = 0;
 	ray.no_hit = false;
 	ray.tan = -tan(ray.angle);

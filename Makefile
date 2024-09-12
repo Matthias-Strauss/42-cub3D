@@ -26,6 +26,7 @@ SOURCE	 = 	main.c										\
 			src/rays/rays.c								\
 			src/rays/ray_horizontal.c					\
 			src/rays/ray_vertical.c						\
+			src/utils/draw_line.c						\
 			src/free/free.c								\
 			src/error/error.c
 
