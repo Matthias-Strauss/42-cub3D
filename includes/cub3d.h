@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 18:02:49 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 20:17:14 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@
 # include "../libft/libft.h"
 # include "error_codes.h"
 
-# define WIDTH 			2400
-# define HEIGHT 		1200
+# define WIDTH 			2400  //2400
+# define HEIGHT 		1200  //1200
 # define TILESIZE 		64 //messes up raycaster when changed
 # define ANGLEOFFSET 	5		//speed
 # define ANGLE_INCREMENT	0.0174533	//ray angle increment value
 # define RD 			32			//render distance
 # define FOV 			70			//field of view
 # define LT 			WIDTH / FOV 			//line thickness
+# define MINIMAP_SIZE	8 // 1 is whole screen
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -120,6 +121,9 @@ typedef struct s_main
 	t_player	*player;
 	mlx_t		*mlx;
 	mlx_image_t	*image;
+	double		time;
+	double		tmpfps;
+	double		fps;
 }	t_main;
 
 //////////////////////////////////////////////////////////////////////////////

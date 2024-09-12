@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 18:15:43 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:41:06 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	draw_rays(t_main *main)
 		ray.angle += 2 * M_PI;
 	if (ray.angle > 2 * M_PI)
 		ray.angle -= 2 * M_PI;
-	start = LT;
+	start = (WIDTH - LT * FOV) / 2;
 	i = 0;
 	while (i < FOV)
 	{
