@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 15:56:03 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:38:36 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,28 @@ float	distance(float ax, float ay, float bx, float by)
 
 void	draw_wall_segment(t_ray ray, t_main *main, int start, int color)
 {
-	int		line_height;
 	int		i;
-	float	line_offset;
-	float	fisheye_fix;
+	t_point	start_point;
+	t_point	end_point;
 
-	fisheye_fix = main->player->angle - ray.angle;
-	if (fisheye_fix < 0)
-		fisheye_fix += 2 * M_PI;
-	if (fisheye_fix > 2 * M_PI)
-		fisheye_fix -= 2 * M_PI;
-	ray.distance = ray.distance * cos(fisheye_fix);
-	line_height = (TILESIZE * HEIGHT) / ray.distance;
-	if (line_height >= HEIGHT - LT)
-		line_height = HEIGHT - LT;
-	line_offset = (HEIGHT / 2) - (line_height / 2);
+	ray.fisheye_fix = main->player->angle - ray.angle;
+	if (ray.fisheye_fix < 0)
+		ray.fisheye_fix += 2 * M_PI;
+	if (ray.fisheye_fix > 2 * M_PI)
+		ray.fisheye_fix -= 2 * M_PI;
+	ray.distance = ray.distance * cos(ray.fisheye_fix);
+	ray.line_height = (TILESIZE * HEIGHT) / ray.distance;
+	if (ray.line_height >= HEIGHT - LT)
+		ray.line_height = HEIGHT - LT;
+	ray.line_offset = (HEIGHT / 2) - (ray.line_height / 2);
 	i = 0;
 	while (i < LT)
 	{
-		draw_line(start + i, line_offset, start + i, line_offset + line_height, main, color);
+		start_point.x = start + i;
+		start_point.y = ray.line_offset;
+		end_point.x = start + i;
+		end_point.y = ray.line_offset + ray.line_height;
+		draw_line(start_point, end_point, main, color);
 		i++;
 	}
 }
@@ -54,12 +57,12 @@ void	draw_current_wall_segment(t_main *main, t_ray ray, int start)
 	else if (ray_h.distance < ray_v.distance)
 	{
 		draw_wall_segment(ray_h, main, start, main->map_data->ceiling_color);
-		draw_line(main->player->position.x, main->player->position.y, ray_h.x, ray_h.y, main, 65280);
+		// draw_line(main->player->position.x, main->player->position.y, ray_h.x, ray_h.y, main, 65280);
 	}
 	else
 	{
 		draw_wall_segment(ray_v, main, start,  main->map_data->ceiling_color + 50);
-		draw_line(main->player->position.x, main->player->position.y, ray_v.x, ray_v.y, main, 65280);
+		// draw_line(main->player->position.x, main->player->position.y, ray_v.x, ray_v.y, main, 65280);
 	}
 }
 

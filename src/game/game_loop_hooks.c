@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 13:38:21 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:42:58 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,14 @@ void	draw_map(t_main *main)
 
 void	draw_player(t_main *main)
 {
-	float	x;
-	float	y;
-	float	dx;
-	float	dy;
+	t_point start_point;
+	t_point	end_point;
 
-	x = main->player->position.x;
-	y = main->player->position.y;
-	dx = main->player->delta.x;
-	dy = main->player->delta.y;
-	draw_line(x, y, x + dx, y + dy, main, 65535);
+	start_point.x = main->player->position.x;
+	start_point.y = main->player->position.y;
+	end_point.x = start_point.x + main->player->delta.x;
+	end_point.y = start_point.y + main->player->delta.y;
+	draw_line(start_point, end_point, main, 65535);
 }
 
 void	loop_hooks(void *param)

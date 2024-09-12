@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 15:55:57 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:14:27 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define ANGLEOFFSET 	5		//speed
 # define ANGLE_INCREMENT	0.0174533	//ray angle increment value
 # define RD 			32			//render distance
-# define FOV 			90			//field of view
+# define FOV 			70			//field of view
 # define LT 			WIDTH / FOV 			//line thickness
 
 //////////////////////////////////////////////////////////////////////////////
@@ -49,6 +49,10 @@ typedef struct s_line
 	int	y_step;
 	int	error;
 	int	error2;
+	int	x;
+	int	y;
+	int	x_end;
+	int	y_end;
 }	t_line;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -102,6 +106,9 @@ typedef struct s_ray
 	float	distance;
 	bool	no_hit;
 	int		dof;
+	int		line_height;
+	float	line_offset;
+	float	fisheye_fix;
 }	t_ray;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -222,31 +229,42 @@ void	error_exit(t_main *main, int error_code);
 
 // draw_line.c
 
-void	draw_line(int x1, int y1, int x2, int y2, t_main *main, int color);
+void	draw_line(t_point start, t_point end, t_main *main, int color);
 
 //////////////////////////////////////////////////////////////////////////////
 
 #endif
 
-	// distToPlane = math.floor((screenWidth / 2) / tan(rad( FOV / 2 )))
-	// subAngle = FOV / screenWidth -- angle of subsequent rays
+// void	draw_line(int x1, int y1, int x2, int y2, t_main *main, int color)
+// {
+// 	int dx = abs(x2 - x1); // Calculate the difference in x
+//     int dy = abs(y2 - y1); // Calculate the difference in y
 
-	// rayAngle = self.player.angle + FOV / 2
-	// rayAngle = rayAngle + subAngle -- Because we subtract from it once the loop starts
+//     int sx = (x1 < x2) ? 1 : -1; // Determine step direction for x
+//     int sy = (y1 < y2) ? 1 : -1; // Determine step direction for y
 
-	// rayAngle = math.deg(math.atan2(screenWidth/2 - (ray - 0.5), distToPlane)) + self.player.angle
+//     int err = dx - dy; // Error term
 
-// Now let's go for the math to make it look right.
-// You first need to define the length from the POV to the projection plane.
-// Let's define it as 1 unit of distance. Now, you want to determine how large is the screen,
-// in distance units, with the given angle of view
-// (AOV, which is in my opinion a more proper term for the angle that you call FOV).
-// Since the distance to the screen is 1, that happens to be tan(AOV/2)*2
-// (we're calculating one half first and then duplicating it). I can make a diagram if you need more explanations.
+//     while (1)
+// 	{
+//         if (x1 >= 0 && y1 >= 0 && x1 < WIDTH && y1 < HEIGHT)
+// 			mlx_put_pixel(main->image, x1, y1, color); // Plot the current point
+//         // Check if we have reached the end point
+//         if (x1 == x2 && y1 == y2)
+//             break;
 
-// That's the segment that you need to divide by the number of pixels,
-// 500 in your case. Remember to keep half of them above and half below zero.
-//  Now, to cast the ray, the angle you need is the angle of the vector that goes from the POV to each pixel,
-//   i.e. to each subdivision. To calculate that angle,
-//   you can use atan(X coordinate of the subdivision).
-//   Again, I can make a diagram if you need to see why.
+//         int e2 = 2 * err;
+
+//         // Adjust x and error
+//         if (e2 > -dy) {
+//             err -= dy;
+//             x1 += sx;
+//         }
+
+//         // Adjust y and error
+//         if (e2 < dx) {
+//             err += dx;
+//             y1 += sy;
+//         }
+//     }
+// }
