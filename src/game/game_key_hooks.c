@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/11 16:18:12 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:13:38 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	movement(mlx_key_data_t keydata, t_main *main)
 		main->player->delta.x = cos(main->player->angle) * ANGLEOFFSET;
 		main->player->delta.y = sin(main->player->angle) * ANGLEOFFSET;
 	}
-
 }
 
 void	key_hooks(mlx_key_data_t keydata, void *main)

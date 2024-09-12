@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 16:42:58 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:14:13 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_map(t_main *main)
 
 void	draw_player(t_main *main)
 {
-	t_point start_point;
+	t_point	start_point;
 	t_point	end_point;
 
 	start_point.x = main->player->position.x;

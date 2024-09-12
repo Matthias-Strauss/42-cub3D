@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:22:56 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 13:16:07 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:15:06 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_ray	v_set_values_for_current_angle(t_ray ray, t_main *main)
 {
 	if (ray.angle > (M_PI / 2) && ray.angle < (M_PI * 3 / 2))
 	{
-		ray.x = (((int)main->player->position.x >> 6) << 6) -0.0001;
+		ray.x = (((int)main->player->position.x >> 6) << 6) - 0.0001;
 		ray.y = (main->player->position.x - ray.x) * ray.tan + main->player->position.y;
 		ray.x_offset = -64;
 		ray.y_offset = -ray.x_offset * ray.tan;

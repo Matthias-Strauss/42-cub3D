@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 17:14:27 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:02:49 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,37 +234,3 @@ void	draw_line(t_point start, t_point end, t_main *main, int color);
 //////////////////////////////////////////////////////////////////////////////
 
 #endif
-
-// void	draw_line(int x1, int y1, int x2, int y2, t_main *main, int color)
-// {
-// 	int dx = abs(x2 - x1); // Calculate the difference in x
-//     int dy = abs(y2 - y1); // Calculate the difference in y
-
-//     int sx = (x1 < x2) ? 1 : -1; // Determine step direction for x
-//     int sy = (y1 < y2) ? 1 : -1; // Determine step direction for y
-
-//     int err = dx - dy; // Error term
-
-//     while (1)
-// 	{
-//         if (x1 >= 0 && y1 >= 0 && x1 < WIDTH && y1 < HEIGHT)
-// 			mlx_put_pixel(main->image, x1, y1, color); // Plot the current point
-//         // Check if we have reached the end point
-//         if (x1 == x2 && y1 == y2)
-//             break;
-
-//         int e2 = 2 * err;
-
-//         // Adjust x and error
-//         if (e2 > -dy) {
-//             err -= dy;
-//             x1 += sx;
-//         }
-
-//         // Adjust y and error
-//         if (e2 < dx) {
-//             err += dx;
-//             y1 += sy;
-//         }
-//     }
-// }
