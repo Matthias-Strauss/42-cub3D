@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 19:41:06 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/09/12 20:29:16 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	draw_current_wall_segment(t_main *main, t_ray ray, int start)
 	else if (ray_h.distance < ray_v.distance)
 	{
 		draw_wall_segment(ray_h, main, start, main->map_data->ceiling_color);
+
 	}
 	else
 	{
