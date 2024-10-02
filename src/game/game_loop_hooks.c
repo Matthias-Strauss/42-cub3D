@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/02 12:48:08 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/02 13:54:04 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	draw_tile(t_main *main, int x, int y, char id)
 	if (id == '1')
 		color = main->map_data->ceiling_color;
 	else
-		color = main->map_data->floor_color;
+		return ;
+		// color = main->map_data->floor_color;
 	x = x * TILESIZE;
 	y = y * TILESIZE;
 	ii = 1;
@@ -90,7 +91,8 @@ void	draw_tile(t_main *main, int x, int y, char id)
 		i = 0;
 		while (i < TILESIZE -1)
 		{
-			mlx_put_pixel(main->image, x + i, y + ii, color);
+			if (x + i < WIDTH && y + ii < HEIGHT)
+				mlx_put_pixel(main->image, x + i, y + ii, color);
 			i++;
 		}
 		ii++;
@@ -139,8 +141,8 @@ void	loop_hooks(void *param)
 	main = param;
 	mlx_delete_image(main->mlx, main->image);
 	main->image = mlx_new_image(main->mlx, WIDTH, HEIGHT);
-	draw_rays(main);
 	draw_map(main);
+	draw_rays(main);
 	draw_player(main);
 	mlx_image_to_window(main->mlx, main->image, 0, 0);
 }
