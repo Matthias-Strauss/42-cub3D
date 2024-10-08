@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/08 13:19:56 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:05:51 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define ANGLEOFFSET 	5		//speed
 # define ANGLE_INCREMENT	0.0174533	//ray angle increment value
 # define RD 			64			//render distance
-# define FOV 			70			//field of view
+# define FOV 			90			//field of view
 # define LT 			WIDTH / FOV 			//line thickness
 # define MINIMAP_SIZE	4 // 1 is whole screen
 
@@ -235,6 +235,7 @@ void	error_exit(t_main *main, int error_code);
 // draw_line.c
 
 void	draw_line(t_point start, t_point end, t_main *main, int color);
+void	draw_line_minimap(t_point start, t_point end, t_main *main, int color);
 
 //////////////////////////////////////////////////////////////////////////////
 

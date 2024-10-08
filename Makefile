@@ -1,6 +1,6 @@
 CC = cc
 NAME = cub3D
-CFLAGS = -fsanitize=address -g
+CFLAGS = -fsanitize=address -g -Ofast -ffast-math -march=native -mtune=native -funroll-loops
 #-fsanitize=address-Wall -Werror -Wextra
 LIBMLX = MLX42
 USER = $(shell whoami)
@@ -41,7 +41,7 @@ $(NAME) : $(OBJECTS)
 
 libmlx:
 		@if [ ! -d $(LIBMLX) ]; then git clone https://github.com/codam-coding-college/MLX42.git ; fi
-		@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+		@cmake $(LIBMLX) -B $(LIBMLX)/build -DCMAKE_C_FLAGS="-Ofast -ffast-math -march=native -mtune=native -funroll-loops" && make -C $(LIBMLX)/build -j4
 
 LeakSanitizer:
 		@if [ ! -d LeakSanitizer/liblsan.dzlib ]; then git clone https://github.com/mhahnFr/LeakSanitizer.git ; fi

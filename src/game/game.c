@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/08 12:53:40 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:02:38 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ void	start_game(t_main *main)
 	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 	if (main->mlx == NULL)
 		error_exit(main, mlx_errno);
+	main->image = mlx_new_image(main->mlx, WIDTH, HEIGHT);
+	main->minimap = mlx_new_image(main->mlx, WIDTH / MINIMAP_SIZE, HEIGHT / MINIMAP_SIZE);
+	mlx_image_to_window(main->mlx, main->image, 0, 0);
+	mlx_image_to_window(main->mlx, main->minimap, 0, 0);
 }
 
 void	fps(void *param)
@@ -62,5 +66,6 @@ void	during_game(t_main *main)
 void	end_game(t_main *main)
 {
 	mlx_delete_image(main->mlx, main->image);
+	mlx_delete_image(main->mlx, main->minimap);
 	mlx_terminate(main->mlx);
 }

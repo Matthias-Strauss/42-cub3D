@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/08 12:57:03 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:02:30 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	draw_tile_minimap(t_main *main, int x, int y, char id)
 		i = 0;
 		while (i <= WIDTH / MINIMAP_SIZE / main->map_data->map_width)
 		{
-			mlx_put_pixel(main->image, x + i, y + ii, color);
+			mlx_put_pixel(main->minimap, x + i, y + ii, color);
 			i++;
 		}
 		ii++;
@@ -69,7 +69,7 @@ void	draw_player_minimap(t_main *main)
 	start_point.y = (main->player->position.y - TILESIZE / 2) / TILESIZE * HEIGHT / MINIMAP_SIZE / main->map_data->map_height;
 	end_point.x = start_point.x + (main->player->delta.x / TILESIZE * WIDTH / MINIMAP_SIZE / main->map_data->map_width) * 5;
 	end_point.y = start_point.y + (main->player->delta.y / TILESIZE * HEIGHT / MINIMAP_SIZE / main->map_data->map_height) * 5;
-	draw_line(start_point, end_point, main, main->map_data->ceiling_color);
+	draw_line_minimap(start_point, end_point, main, main->map_data->ceiling_color);
 }
 
 void	draw_tile(t_main *main, int x, int y, char id)
@@ -129,8 +129,8 @@ void	draw_player(t_main *main)
 
 	start_point.x = main->player->position.x;
 	start_point.y = main->player->position.y;
-	end_point.x = start_point.x + main->player->delta.x;
-	end_point.y = start_point.y + main->player->delta.y;
+	end_point.x = start_point.x + (main->player->delta.x / 2);
+	end_point.y = start_point.y + (main->player->delta.y / 2);
 	draw_line(start_point, end_point, main, 65535);
 }
 
@@ -163,14 +163,15 @@ void	loop_hooks(void *param)
 	t_main	*main;
 
 	main = param;
-	mlx_delete_image(main->mlx, main->image);
-	mlx_delete_image(main->mlx, main->minimap);
-	main->image = mlx_new_image(main->mlx, WIDTH, HEIGHT);
-	main->minimap = mlx_new_image(main->mlx, WIDTH, HEIGHT);
-	draw_map(main);
+	// mlx_delete_image(main->mlx, main->minimap);
+	// mlx_delete_image(main->mlx, main->image);
+	// main->image = mlx_new_image(main->mlx, WIDTH, HEIGHT);
+	// main->minimap = mlx_new_image(main->mlx, WIDTH / MINIMAP_SIZE, HEIGHT / MINIMAP_SIZE);
+	// draw_map(main);
 	draw_rays(main);
 	draw_minimap(main);
-	draw_player(main);
-	mlx_image_to_window(main->mlx, main->image, 0, 0);
-	mlx_image_to_window(main->mlx, main->minimap, 0, 0);
+	// draw_player(main);
+	// mlx_image_to_window(main->mlx, main->minimap, 0, 0);
+	// mlx_image_to_window(main->mlx, main->image, 0, 0);
+	// mlx_image_to_window(main->mlx, main->minimap, 0, 0);
 }
