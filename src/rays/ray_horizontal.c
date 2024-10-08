@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:22:06 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/02 13:34:46 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:21:22 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_ray	h_set_values_for_current_angle(t_ray ray, t_main *main)
 {
 	if (ray.angle > M_PI)
 	{
-		ray.y = (((int)main->player->position.y >> 6) << 6) - 0.0001;
+		ray.y = (((int)main->player->position.y >> 6) << 6) - 0.0002;
 		ray.x = (main->player->position.y - ray.y) * ray.tan + main->player->position.x;
 		ray.y_offset = -64;
 		ray.x_offset = -ray.y_offset * ray.tan;
@@ -69,7 +69,7 @@ t_ray	ray_horizontal(t_main *main, t_ray ray)
 	ray.dof = 0;
 	ray.no_hit = false;
 	ray.tan = -1 / tan(ray.angle);
-	ray.distance = 10000;
+	ray.distance = 100000;
 	ray = h_set_values_for_current_angle(ray, main);
 	ray = h_cast_current_ray(ray, main);
 	return (ray);

@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/02 14:08:55 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/08 13:19:56 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define TILESIZE 		64 //messes up raycaster when changed
 # define ANGLEOFFSET 	5		//speed
 # define ANGLE_INCREMENT	0.0174533	//ray angle increment value
-# define RD 			32			//render distance
+# define RD 			64			//render distance
 # define FOV 			70			//field of view
 # define LT 			WIDTH / FOV 			//line thickness
 # define MINIMAP_SIZE	4 // 1 is whole screen
@@ -121,6 +121,7 @@ typedef struct s_main
 	t_player	*player;
 	mlx_t		*mlx;
 	mlx_image_t	*image;
+	mlx_image_t	*minimap;
 	double		time;
 	double		tmpfps;
 	double		fps;
