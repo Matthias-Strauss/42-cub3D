@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_get_map_layout.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:35:46 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 17:37:55 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/10 13:24:55 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*add_to_map_str(char *map_string, char *to_add)
 	}
 	map_string_old = map_string;
 	map_string = ft_strjoin(map_string_old, to_add);
-	save_free(map_string_old);
+	safe_free(map_string_old);
 	return (map_string);
 }
 

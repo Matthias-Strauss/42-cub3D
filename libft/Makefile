@@ -55,6 +55,7 @@ SRCS =	ft_atoi.c\
 
 OBJECTS 	= $(SRCS:%.c=%.o)
 BONUS_OBJS 	= $(BONUS:%.c=%.o)
+INC			= -Iincludes/
 CC 			= cc
 CFLAGS 		= -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops #-lm
 

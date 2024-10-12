@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop_hooks.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/08 17:02:30 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:55:22 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,16 @@ void	draw_player_minimap(t_main *main)
 	t_point	start_point;
 	t_point	end_point;
 
-	start_point.x = (main->player->position.x - TILESIZE / 2) / TILESIZE * WIDTH / MINIMAP_SIZE / main->map_data->map_width;
-	start_point.y = (main->player->position.y - TILESIZE / 2) / TILESIZE * HEIGHT / MINIMAP_SIZE / main->map_data->map_height;
-	end_point.x = start_point.x + (main->player->delta.x / TILESIZE * WIDTH / MINIMAP_SIZE / main->map_data->map_width) * 5;
-	end_point.y = start_point.y + (main->player->delta.y / TILESIZE * HEIGHT / MINIMAP_SIZE / main->map_data->map_height) * 5;
-	draw_line_minimap(start_point, end_point, main, main->map_data->ceiling_color);
+	start_point.x = (main->player->position.x - TILESIZE / 2) / TILESIZE * WIDTH
+		/ MINIMAP_SIZE / main->map_data->map_width;
+	start_point.y = (main->player->position.y - TILESIZE / 2) / TILESIZE
+		* HEIGHT / MINIMAP_SIZE / main->map_data->map_height;
+	end_point.x = start_point.x + (main->player->delta.x / TILESIZE * WIDTH
+			/ MINIMAP_SIZE / main->map_data->map_width) * 5;
+	end_point.y = start_point.y + (main->player->delta.y / TILESIZE * HEIGHT
+			/ MINIMAP_SIZE / main->map_data->map_height) * 5;
+	draw_line_minimap(start_point, end_point, main,
+		main->map_data->ceiling_color);
 }
 
 void	draw_tile(t_main *main, int x, int y, char id)
@@ -82,14 +87,14 @@ void	draw_tile(t_main *main, int x, int y, char id)
 		color = main->map_data->ceiling_color;
 	else
 		return ;
-		// color = main->map_data->floor_color;
+	// color = main->map_data->floor_color;
 	x = x * TILESIZE;
 	y = y * TILESIZE;
 	ii = 1;
-	while (ii < TILESIZE -1)
+	while (ii < TILESIZE - 1)
 	{
 		i = 0;
-		while (i < TILESIZE -1)
+		while (i < TILESIZE - 1)
 		{
 			if (x + i < WIDTH && y + ii < HEIGHT)
 				mlx_put_pixel(main->image, x + i, y + ii, color);
@@ -166,9 +171,11 @@ void	loop_hooks(void *param)
 	// mlx_delete_image(main->mlx, main->minimap);
 	// mlx_delete_image(main->mlx, main->image);
 	// main->image = mlx_new_image(main->mlx, WIDTH, HEIGHT);
-	// main->minimap = mlx_new_image(main->mlx, WIDTH / MINIMAP_SIZE, HEIGHT / MINIMAP_SIZE);
+	// main->minimap = mlx_new_image(main->mlx, WIDTH / MINIMAP_SIZE, HEIGHT
+	// / MINIMAP_SIZE);
 	// draw_map(main);
 	draw_rays(main);
+	// render_3d(main);
 	draw_minimap(main);
 	// draw_player(main);
 	// mlx_image_to_window(main->mlx, main->minimap, 0, 0);

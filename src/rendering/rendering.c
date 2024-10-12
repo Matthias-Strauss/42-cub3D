@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 16:36:14 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/12 18:00:07 by mstrauss         ###   ########.fr       */
+/*   Created: 2024/10/10 14:21:34 by mstrauss          #+#    #+#             */
+/*   Updated: 2024/10/12 18:58:15 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "cub3d.h"
 
-int	main(int ac, char **av)
+void	render_3d(t_main *main)
 {
-	t_main	*main;
+	int		i;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
 
-	main = init_structs();
-	parse_arguments(ac, av, main);
-	start_game(main);
-	during_game(main);
-	end_game(main);
-	free_structs(main);
-	return (0);
+	i = 0;
+	while (i < main->mlx->width)
+	{
+		camera_x = 2 * i / (double)main->mlx->width - 1;
+		
+	}
+	
 }

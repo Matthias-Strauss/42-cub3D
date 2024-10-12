@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_copy_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:03 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 20:53:26 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:00:20 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	parse_open_map(t_main *main)
 {
 	main->parser->map_fd = open(main->parser->map_path_stack, O_RDONLY);
 	if (main->parser->map_fd < 0)
-		error_exit (main, ERR_UOF);
+		error_exit(main, ERR_UOF);
 }
 
 void	parse_check_file_len(t_main *main)
@@ -28,7 +28,7 @@ void	parse_check_file_len(t_main *main)
 	line_buffer = get_next_line(main->parser->map_fd, false);
 	while (line_buffer)
 	{
-		save_free (line_buffer);
+		safe_free(line_buffer);
 		if (count > 512)
 		{
 			get_next_line(main->parser->map_fd, true);
@@ -37,7 +37,7 @@ void	parse_check_file_len(t_main *main)
 		count++;
 		line_buffer = get_next_line(main->parser->map_fd, false);
 	}
-	save_free(line_buffer);
+	safe_free(line_buffer);
 }
 
 void	parse_create_copy(t_main *main)
@@ -51,13 +51,13 @@ void	parse_create_copy(t_main *main)
 	while (line_buffer)
 	{
 		line_buffer_delimited = ft_strjoin(line_buffer, "\1");
-		free (line_buffer);
+		free(line_buffer);
 		file_string = ft_strjoin_free(file_string, line_buffer_delimited);
 		line_buffer = get_next_line(main->parser->map_fd, false);
 	}
-	save_free(line_buffer);
+	safe_free(line_buffer);
 	main->parser->map_copy_heap = ft_split(file_string, '\1');
-	save_free(file_string);
+	safe_free(file_string);
 	if (main->parser->map_copy_heap == NULL)
 		error_exit(main, ERR_UAM);
 }
@@ -66,7 +66,7 @@ void	parse_close_map(t_main *main)
 {
 	main->parser->map_fd = close(main->parser->map_fd);
 	if (main->parser->map_fd < 0)
-		error_exit (main, ERR_UCF);
+		error_exit(main, ERR_UCF);
 }
 
 void	parse_copy_map(t_main *main)
