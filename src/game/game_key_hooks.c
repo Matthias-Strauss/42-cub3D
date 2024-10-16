@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_key_hooks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/12 18:13:38 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/15 16:02:56 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,37 @@ bool	wallcheck(char *id, t_main *main)
 
 void	movement(mlx_key_data_t keydata, t_main *main)
 {
-	if (keydata.key == MLX_KEY_UP)
+	if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 	{
 		if (wallcheck("UP", main) == false)
 		{
-			main->player->position.y += main->player->delta.y;
-			main->player->position.x += main->player->delta.x;
+			main->player->position.y += main->player->delta.y * PLAYER_SPEED;
+			main->player->position.x += main->player->delta.x * PLAYER_SPEED;
 		}
 	}
-	if (keydata.key == MLX_KEY_DOWN)
+	{
+		if (wallcheck("UP", main) == false)
+		{
+			main->player->position.y += main->player->delta.y * PLAYER_SPEED;
+			main->player->position.x += main->player->delta.x * PLAYER_SPEED;
+		}
+	}
+	if (keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
 	{
 		if (wallcheck("DOWN", main) == false)
 		{
-			main->player->position.y -= main->player->delta.y;
-			main->player->position.x -= main->player->delta.x;
+			main->player->position.y -= main->player->delta.y * PLAYER_SPEED;
+			main->player->position.x -= main->player->delta.x * PLAYER_SPEED;
 		}
 	}
-	if (keydata.key == MLX_KEY_LEFT)
+	{
+		if (wallcheck("DOWN", main) == false)
+		{
+			main->player->position.y -= main->player->delta.y * PLAYER_SPEED;
+			main->player->position.x -= main->player->delta.x * PLAYER_SPEED;
+		}
+	}
+	if (keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
 	{
 		main->player->angle -= 0.1;
 		if (main->player->angle < 0)
@@ -66,7 +80,7 @@ void	movement(mlx_key_data_t keydata, t_main *main)
 		main->player->delta.x = cos(main->player->angle) * ANGLEOFFSET;
 		main->player->delta.y = sin(main->player->angle) * ANGLEOFFSET;
 	}
-	if (keydata.key == MLX_KEY_RIGHT)
+	if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
 	{
 		main->player->angle += 0.1;
 		if (main->player->angle > 2 * M_PI)

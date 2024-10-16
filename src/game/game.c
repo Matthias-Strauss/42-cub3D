@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/12 18:23:03 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:15:35 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,19 @@ void	set_player_data(t_main *main)
 
 void	start_game(t_main *main)
 {
-	// int32_t	width;
-	// int32_t	height;
-	// mlx_get_monitor_size(0, &width, &height);
+	int32_t	width;
+	int32_t	height;
+
 	set_player_data(main);
-	mlx_set_setting(MLX_FULLSCREEN, true);
-	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
+	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (main->mlx == NULL)
 		error_exit(main, mlx_errno);
-	main->image = mlx_new_image(main->mlx, WIDTH, HEIGHT);
-	main->minimap = mlx_new_image(main->mlx, WIDTH / MINIMAP_SIZE, HEIGHT
-			/ MINIMAP_SIZE);
+	mlx_get_monitor_size(0, &width, &height);
+	mlx_set_window_size(main->mlx, width, height);
+	mlx_set_setting(MLX_FULLSCREEN, true);
+	main->image = mlx_new_image(main->mlx, main->mlx->width, main->mlx->height);
+	main->minimap = mlx_new_image(main->mlx, main->mlx->width / MINIMAP_SIZE,
+			main->mlx->height / MINIMAP_SIZE);
 	mlx_image_to_window(main->mlx, main->image, 0, 0);
 	mlx_image_to_window(main->mlx, main->minimap, 0, 0);
 }

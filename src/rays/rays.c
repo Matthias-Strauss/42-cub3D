@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/08 18:31:22 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:20:46 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_wall_segment(t_ray ray, t_main *main, int start, int color)
 	t_point	end;
 	t_point	begin;
 
-	end.y = HEIGHT;
+	end.y = main->mlx->height;
 	begin.y = 0;
 	ray.fisheye_fix = main->player->angle - ray.angle;
 	if (ray.fisheye_fix < 0)
@@ -33,10 +33,10 @@ void	draw_wall_segment(t_ray ray, t_main *main, int start, int color)
 	if (ray.fisheye_fix > 2 * M_PI)
 		ray.fisheye_fix -= 2 * M_PI;
 	ray.distance = ray.distance * cos(ray.fisheye_fix);
-	ray.line_height = (TILESIZE * HEIGHT) / ray.distance;
-	if (ray.line_height >= HEIGHT - LT)
-		ray.line_height = HEIGHT - LT;
-	ray.line_offset = (HEIGHT / 2) - (ray.line_height / 2);
+	ray.line_height = (TILESIZE * main->mlx->height) / ray.distance;
+	if (ray.line_height >= main->mlx->height - LT)
+		ray.line_height = main->mlx->height - LT;
+	ray.line_offset = (main->mlx->height / 2) - (ray.line_height / 2);
 	i = 0;
 	while (i < LT)
 	{
@@ -104,7 +104,7 @@ void	draw_rays(t_main *main)
 		ray.angle += 2 * M_PI;
 	if (ray.angle > 2 * M_PI)
 		ray.angle -= 2 * M_PI;
-	start = (WIDTH - LT * FOV) / 2;
+	start = (main->mlx->width - LT * FOV) / 2;
 	i = 0;
 	while (i < FOV)
 	{

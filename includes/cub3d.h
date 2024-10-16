@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/13 15:50:49 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:35:36 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define FOV 90                    // field of view
 # define LT WIDTH / FOV            // line thickness
 # define MINIMAP_SIZE 4            // 1 is whole screen
+# define PLAYER_SPEED 2            // player speed
 
 //////////////////////////////////////////////////////////////////////////////
 
