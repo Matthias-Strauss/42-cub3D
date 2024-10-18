@@ -51,6 +51,12 @@ libmlx:
 		git checkout 26fdbd950fd3a4d035fa55af9c02112ffcd4608c; \
 	fi
 	@cmake $(LIBMLX) -B $(LIBMLX)/build -DCMAKE_C_FLAGS="-Ofast -ffast-math -march=native -mtune=native -funroll-loops" && make -C $(LIBMLX)/build -j4
+	@if [ ! -d $(LIBMLX) ]; then \
+		git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX) && \
+		cd $(LIBMLX) && \
+		git checkout 26fdbd950fd3a4d035fa55af9c02112ffcd4608c; \
+	fi
+	@cmake $(LIBMLX) -B $(LIBMLX)/build -DCMAKE_C_FLAGS="-Ofast -ffast-math -march=native -mtune=native -funroll-loops" && make -C $(LIBMLX)/build -j4
 
 clean:
 	@rm -rf objs
