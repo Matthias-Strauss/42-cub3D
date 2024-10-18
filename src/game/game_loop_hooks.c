@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/08 17:02:30 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:20:19 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,55 +72,55 @@ void	draw_player_minimap(t_main *main)
 	draw_line_minimap(start_point, end_point, main, main->map_data->ceiling_color);
 }
 
-void	draw_tile(t_main *main, int x, int y, char id)
-{
-	int	i;
-	int	ii;
-	int	color;
+// void	draw_tile(t_main *main, int x, int y, char id)
+// {
+// 	int	i;
+// 	int	ii;
+// 	int	color;
 
-	if (id == '1')
-		color = main->map_data->ceiling_color;
-	else
-		return ;
-		// color = main->map_data->floor_color;
-	x = x * TILESIZE;
-	y = y * TILESIZE;
-	ii = 1;
-	while (ii < TILESIZE -1)
-	{
-		i = 0;
-		while (i < TILESIZE -1)
-		{
-			if (x + i < WIDTH && y + ii < HEIGHT)
-				mlx_put_pixel(main->image, x + i, y + ii, color);
-			i++;
-		}
-		ii++;
-	}
-}
+// 	if (id == '1')
+// 		color = main->map_data->ceiling_color;
+// 	else
+// 		return ;
+// 		// color = main->map_data->floor_color;
+// 	x = x * TILESIZE;
+// 	y = y * TILESIZE;
+// 	ii = 1;
+// 	while (ii < TILESIZE -1)
+// 	{
+// 		i = 0;
+// 		while (i < TILESIZE -1)
+// 		{
+// 			if (x + i < WIDTH && y + ii < HEIGHT)
+// 				mlx_put_pixel(main->image, x + i, y + ii, color);
+// 			i++;
+// 		}
+// 		ii++;
+// 	}
+// }
 
-void	draw_map(t_main *main)
-{
-	char	**map;
-	int		y;
-	int		x;
+// void	draw_map(t_main *main)
+// {
+// 	char	**map;
+// 	int		y;
+// 	int		x;
 
-	map = main->map_data->map_layout;
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == '1')
-				draw_tile(main, x, y, '1');
-			else if (map[y][x] != ' ')
-				draw_tile(main, x, y, '0');
-			x++;
-		}
-		y++;
-	}
-}
+// 	map = main->map_data->map_layout;
+// 	y = 0;
+// 	while (map[y])
+// 	{
+// 		x = 0;
+// 		while (map[y][x])
+// 		{
+// 			if (map[y][x] == '1')
+// 				draw_tile(main, x, y, '1');
+// 			else if (map[y][x] != ' ')
+// 				draw_tile(main, x, y, '0');
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }
 
 void	draw_player(t_main *main)
 {

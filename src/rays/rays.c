@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/08 15:41:19 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:53:17 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_wall_segment(t_ray ray, t_main *main, int start, int color)
 		ray.line_height = HEIGHT - LT;
 	ray.line_offset = (HEIGHT / 2) - (ray.line_height / 2);
 	i = 0;
-	while (i < LT)
+	while (i <= LT)
 	{
 		start_point.x = start + i;
 		start_point.y = ray.line_offset;
