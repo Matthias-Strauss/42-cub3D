@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/18 18:35:31 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/18 21:17:56 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	draw_tile_minimap(t_main *main, int x, int y, char id)
 	int	color;
 
 	if (id == '1')
-		color = 0;
-	else
 		color = 16777215;
+	else
+		color = 0;
 	x = x * main->mlx->width / MINIMAP_SIZE / main->map_data->map_width;
 	y = y * main->mlx->height / MINIMAP_SIZE / main->map_data->map_height;
 	ii = 0;
@@ -162,6 +162,34 @@ void	draw_minimap(t_main *main)
 		y++;
 	}
 	draw_player_minimap(main);
+}
+
+void	draw_background(t_main *main)
+{
+	uint32_t	x;
+	unsigned int	y;
+
+	y = 0;
+	while(y < main->image->height / 2)
+	{
+		x = 0;
+		while(x < main->image->width)
+		{
+			mlx_put_pixel(main->image, x, y, main->map_data->ceiling_color);
+			x++;
+		}
+		y++;
+	}
+	while(y < main->image->height)
+	{
+		x = 0;
+		while(x < main->image->width)
+		{
+			mlx_put_pixel(main->image, x, y, main->map_data->floor_color);
+			x++;
+		}
+		y++;
+	}
 }
 
 void	loop_hooks(void *param)

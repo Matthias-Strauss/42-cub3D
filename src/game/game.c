@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/16 15:42:04 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/18 21:02:29 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	fps(void *param)
 void	during_game(t_main *main)
 {
 	mlx_loop_hook(main->mlx, fps, main);
+	mlx_loop_hook(main->mlx, key_hooks, main);
 	mlx_loop_hook(main->mlx, loop_hooks, main);
-	mlx_key_hook(main->mlx, key_hooks, main);
 	mlx_loop(main->mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/18 20:10:22 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/18 21:17:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ void	draw_wall_segment(t_ray ray, t_main *main, int start, int color)
 		end_point.y = ray.line_offset + ray.line_height;
 		end.x = start + i;
 		begin.x = start + i;
-		draw_line(begin, start_point, main, main->map_data->ceiling_color);
 		draw_line(start_point, end_point, main, color);
-		draw_line(end_point, end, main, main->map_data->floor_color);
 		i++;
 	}
 }
@@ -104,9 +102,9 @@ void	draw_rays(t_main *main)
 		ray.angle += 2 * M_PI;
 	if (ray.angle > 2 * M_PI)
 		ray.angle -= 2 * M_PI;
-	start = (main->mlx->width - LT * FOV) / 2;
+	start = 0;
 	i = 0;
-	while (i < FOV)
+	while (i <= FOV)
 	{
 		draw_current_wall_segment(main, ray, start);
 		start += LT;
