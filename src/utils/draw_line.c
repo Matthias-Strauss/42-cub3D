@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 18:59:05 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/08 16:00:34 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:22:31 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	draw_line(t_point start, t_point end, t_main *main, int color)
 	set_other_variables(&line);
 	while (1)
 	{
-		if (line.x >= 0 && line.y >= 0 && line.x < WIDTH && line.y < HEIGHT)
+		if (line.x >= 0 && line.y >= 0 && line.x < main->mlx->width
+			&& line.y < main->mlx->height)
 			mlx_put_pixel(main->image, line.x, line.y, color);
 		if (line.x == line.x_end && line.y == line.y_end)
 			break ;
@@ -67,7 +68,8 @@ void	draw_line_minimap(t_point start, t_point end, t_main *main, int color)
 	set_other_variables(&line);
 	while (1)
 	{
-		if (line.x >= 0 && line.y >= 0 && line.x < WIDTH && line.y < HEIGHT)
+		if (line.x >= 0 && line.y >= 0 && line.x < main->mlx->width
+			&& line.y < main->mlx->height)
 			mlx_put_pixel(main->minimap, line.x, line.y, color);
 		if (line.x == line.x_end && line.y == line.y_end)
 			break ;

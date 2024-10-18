@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/18 21:00:00 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/18 21:12:13 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ void	movement(t_main *main)
 	{
 		if (wallcheck("UP", main) == false)
 		{
-			main->player->position.y += main->player->delta.y;
-			main->player->position.x += main->player->delta.x;
+			main->player->position.y += main->player->delta.y * PLAYER_SPEED;
+			main->player->position.x += main->player->delta.x * PLAYER_SPEED;
 		}
 	}
 	if (mlx_is_key_down(main->mlx, MLX_KEY_DOWN))
 	{
 		if (wallcheck("DOWN", main) == false)
 		{
-			main->player->position.y -= main->player->delta.y;
-			main->player->position.x -= main->player->delta.x;
+			main->player->position.y -= main->player->delta.y * PLAYER_SPEED;
+			main->player->position.x -= main->player->delta.x * PLAYER_SPEED;
 		}
 	}
 	if (mlx_is_key_down(main->mlx, MLX_KEY_LEFT))

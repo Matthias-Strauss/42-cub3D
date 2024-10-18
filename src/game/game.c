@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/18 20:35:05 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/18 21:02:29 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	set_player_data(t_main *main)
 {
-	main->player->position.x = main->map_data->player_position.x * TILESIZE + TILESIZE / 2;
-	main->player->position.y = main->map_data->player_position.y * TILESIZE + TILESIZE / 2;
+	main->player->position.x = main->map_data->player_position.x * TILESIZE
+		+ TILESIZE / 2;
+	main->player->position.y = main->map_data->player_position.y * TILESIZE
+		+ TILESIZE / 2;
 	main->player->angle = 0;
 	main->player->delta.x = cos(main->player->angle) * ANGLEOFFSET;
 	main->player->delta.y = sin(main->player->angle) * ANGLEOFFSET;
@@ -26,19 +28,27 @@ void	set_player_data(t_main *main)
 
 void	start_game(t_main *main)
 {
+	int32_t	width;
+	int32_t	height;
+
 	set_player_data(main);
-	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
+	mlx_set_setting(MLX_FULLSCREEN, true);
+	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (main->mlx == NULL)
 		error_exit(main, mlx_errno);
-	main->image = mlx_new_image(main->mlx, WIDTH, HEIGHT);
-	main->minimap = mlx_new_image(main->mlx, WIDTH / MINIMAP_SIZE, HEIGHT / MINIMAP_SIZE);
+	mlx_get_monitor_size(0, &width, &height);
+	mlx_set_window_size(main->mlx, width, height);
+	// mlx_focus(main->mlx);
+	main->image = mlx_new_image(main->mlx, main->mlx->width, main->mlx->height);
+	main->minimap = mlx_new_image(main->mlx, main->mlx->width / MINIMAP_SIZE,
+			main->mlx->height / MINIMAP_SIZE);
 	mlx_image_to_window(main->mlx, main->image, 0, 0);
 	mlx_image_to_window(main->mlx, main->minimap, 0, 0);
 }
 
 void	fps(void *param)
 {
-	t_main *main;
+	t_main	*main;
 
 	main = param;
 	if (main->time <= 1)

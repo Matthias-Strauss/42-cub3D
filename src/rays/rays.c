@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/18 20:10:40 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/18 21:10:14 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,18 @@ void	draw_wall_segment(t_ray ray, t_main *main, int start, int color)
 	t_point	end;
 	t_point	begin;
 
-	end.y = HEIGHT;
+	end.y = main->mlx->height;
 	begin.y = 0;
-
 	ray.fisheye_fix = main->player->angle - ray.angle;
 	if (ray.fisheye_fix < 0)
 		ray.fisheye_fix += 2 * M_PI;
 	if (ray.fisheye_fix > 2 * M_PI)
 		ray.fisheye_fix -= 2 * M_PI;
 	ray.distance = ray.distance * cos(ray.fisheye_fix);
-	ray.line_height = (TILESIZE * HEIGHT) / ray.distance;
-	if (ray.line_height >= HEIGHT)
-		ray.line_height = HEIGHT - 1;
-	ray.line_offset = (HEIGHT / 2) - (ray.line_height / 2);
+	ray.line_height = (TILESIZE * main->mlx->height) / ray.distance;
+	if (ray.line_height >= main->mlx->height - LT)
+		ray.line_height = main->mlx->height - LT;
+	ray.line_offset = (main->mlx->height / 2) - (ray.line_height / 2);
 	i = 0;
 	while (i <= LT)
 	{
@@ -56,33 +55,39 @@ void	draw_current_wall_segment(t_main *main, t_ray ray, int start)
 {
 	t_ray	ray_h;
 	t_ray	ray_v;
-	t_point	end;
 
+	// t_point	end;
 	ray_h = ray_horizontal(main, ray);
 	ray_v = ray_vertical(main, ray);
 	if (ray_h.no_hit == true && ray_v.no_hit == true)
 	{
 		// end.x = ray_h.x;
 		// end.y = ray_h.y;
-		// draw_line(main->player->position, end, main, main->map_data->floor_color - 1000);
+		// draw_line(main->player->position, end, main,
+		// main->map_data->floor_color - 1000);
 		// end.x = ray_v.x;
 		// end.y = ray_v.y;
-		// draw_line(main->player->position, end, main, main->map_data->floor_color + 1000);
+		// draw_line(main->player->position, end, main,
+		// main->map_data->floor_color + 1000);
 		return ;
 	}
 	else if (ray_h.distance < ray_v.distance)
 	{
-		draw_wall_segment(ray_h, main, start, main->map_data->ceiling_color - 50);
+		draw_wall_segment(ray_h, main, start, main->map_data->ceiling_color
+			- 50);
 		// end.x = ray_h.x;
 		// end.y = ray_h.y;
-		// draw_line(main->player->position, end, main, main->map_data->floor_color - 1000);
+		// draw_line(main->player->position, end, main,
+		// main->map_data->floor_color - 1000);
 	}
 	else
 	{
-		draw_wall_segment(ray_v, main, start, main->map_data->ceiling_color + 50);
+		draw_wall_segment(ray_v, main, start, main->map_data->ceiling_color
+			+ 50);
 		// end.x = ray_v.x;
 		// end.y = ray_v.y;
-		// draw_line(main->player->position, end, main, main->map_data->floor_color + 1000);
+		// draw_line(main->player->position, end, main,
+		// main->map_data->floor_color + 1000);
 	}
 }
 
