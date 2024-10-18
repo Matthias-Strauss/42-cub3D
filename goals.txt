@@ -1,0 +1,6 @@
+
+-movement
+-textures
+-player start orientation
+-norminette
+-error handling during game

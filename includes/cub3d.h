@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/08 17:53:34 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/18 20:37:40 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define ANGLEOFFSET 	5		//speed
 # define ANGLE_INCREMENT	0.0174533	//ray angle increment value
 # define RD 			64			//render distance
-# define FOV 			70			//field of view
+# define FOV 			66			//field of view
 # define LT 			WIDTH / FOV		//line thickness
 # define MINIMAP_SIZE	4 // 1 is whole screen
 
@@ -194,7 +194,7 @@ void	end_game(t_main *main);
 
 // game_key_hooks.c
 
-void	key_hooks(mlx_key_data_t keydata, void *main);
+void	key_hooks(void *main);
 
 // game_loop_hooks.c
 

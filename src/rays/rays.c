@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/08 17:53:17 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/18 20:10:40 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	draw_wall_segment(t_ray ray, t_main *main, int start, int color)
 		ray.fisheye_fix -= 2 * M_PI;
 	ray.distance = ray.distance * cos(ray.fisheye_fix);
 	ray.line_height = (TILESIZE * HEIGHT) / ray.distance;
-	if (ray.line_height >= HEIGHT - LT)
-		ray.line_height = HEIGHT - LT;
+	if (ray.line_height >= HEIGHT)
+		ray.line_height = HEIGHT - 1;
 	ray.line_offset = (HEIGHT / 2) - (ray.line_height / 2);
 	i = 0;
 	while (i <= LT)
@@ -47,9 +47,7 @@ void	draw_wall_segment(t_ray ray, t_main *main, int start, int color)
 		end_point.y = ray.line_offset + ray.line_height;
 		end.x = start + i;
 		begin.x = start + i;
-		draw_line(begin, start_point, main, main->map_data->ceiling_color);
 		draw_line(start_point, end_point, main, color);
-		draw_line(end_point, end, main, main->map_data->floor_color);
 		i++;
 	}
 }
@@ -99,9 +97,9 @@ void	draw_rays(t_main *main)
 		ray.angle += 2 * M_PI;
 	if (ray.angle > 2 * M_PI)
 		ray.angle -= 2 * M_PI;
-	start = (WIDTH - LT * FOV) / 2;
+	start = 0;
 	i = 0;
-	while (i < FOV)
+	while (i <= FOV)
 	{
 		draw_current_wall_segment(main, ray, start);
 		start += LT;
