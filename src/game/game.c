@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/16 14:15:35 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:42:04 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ void	start_game(t_main *main)
 	int32_t	height;
 
 	set_player_data(main);
+	mlx_set_setting(MLX_FULLSCREEN, true);
 	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (main->mlx == NULL)
 		error_exit(main, mlx_errno);
 	mlx_get_monitor_size(0, &width, &height);
 	mlx_set_window_size(main->mlx, width, height);
-	mlx_set_setting(MLX_FULLSCREEN, true);
+	// mlx_focus(main->mlx);
 	main->image = mlx_new_image(main->mlx, main->mlx->width, main->mlx->height);
 	main->minimap = mlx_new_image(main->mlx, main->mlx->width / MINIMAP_SIZE,
 			main->mlx->height / MINIMAP_SIZE);
