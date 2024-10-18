@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/18 17:23:51 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/18 18:35:31 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,17 +128,17 @@ void	draw_tile(t_main *main, int x, int y, char id)
 // 	}
 // }
 
-void	draw_player(t_main *main)
-{
-	t_point	start_point;
-	t_point	end_point;
+// void	draw_player(t_main *main)
+// {
+// 	t_point	start_point;
+// 	t_point	end_point;
 
-	start_point.x = main->player->position.x;
-	start_point.y = main->player->position.y;
-	end_point.x = start_point.x + (main->player->delta.x / 2);
-	end_point.y = start_point.y + (main->player->delta.y / 2);
-	draw_line(start_point, end_point, main, 65535);
-}
+// 	start_point.x = main->player->position.x;
+// 	start_point.y = main->player->position.y;
+// 	end_point.x = start_point.x + (main->player->delta.x / 2);
+// 	end_point.y = start_point.y + (main->player->delta.y / 2);
+// 	draw_line(start_point, end_point, main, 65535);
+// }
 
 void	draw_minimap(t_main *main)
 {
@@ -166,8 +166,9 @@ void	draw_minimap(t_main *main)
 
 void	loop_hooks(void *param)
 {
-	t_main *main;
+	t_main	*main;
 
-	main = param;
+	main = (t_main *)param;
 	draw_rays(main);
+	draw_minimap(main);
 }

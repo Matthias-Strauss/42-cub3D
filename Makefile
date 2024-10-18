@@ -29,7 +29,8 @@ SOURCE	 = 	main.c										\
             src/rays/ray_vertical.c						\
             src/utils/draw_line.c						\
             src/free/free.c								\
-            src/error/error.c
+            src/error/error.c							\
+			src/textures/textures.c
 
 OBJ_DIR = ./objs
 OBJECTS = $(SOURCE:%.c=$(OBJ_DIR)/%.o)
