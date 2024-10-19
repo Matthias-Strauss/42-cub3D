@@ -11,9 +11,9 @@
 	// printf("orientation is [%c]\n", main->map_data->player_orientation);
 	// printf("map height is [%i] map width is [%i]\n", main->map_data->map_height, main->map_data->map_width);
 	// int	i = 0;
-	// while (main->map_data->map_layout[i])
+	// while (main->map_data->map_coor[i])
 	// {
-	// 	printf("[%s]\n", main->map_data->map_layout[i]);
+	// 	printf("[%s]\n", main->map_data->map_coor[i]);
 	// 	i++;
 	// }
 // ////print data fin

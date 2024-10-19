@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:22:06 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:05:10 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 22:35:21 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ t_ray	h_cast_current_ray(t_ray ray, t_main *main)
 		my = (int)ray.y >> 6;
 		if (mx >= 0 && mx <= main->map_data->map_width && my >= 0
 			&& my < main->map_data->map_height
-			&& mx < ft_strlen(main->map_data->map_layout[my])
-			&& main->map_data->map_layout[my][mx] == '1')
+			&& mx < ft_strlen(main->map_data->map_coor[my])
+			&& main->map_data->map_coor[my][mx] == '1')
 		{
 			ray.distance = distance(main->player->position.x,
 					main->player->position.y, ray.x, ray.y);

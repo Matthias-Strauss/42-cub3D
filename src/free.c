@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:56:40 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:10:09 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 22:35:21 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	free_map_data_struct(t_main *main)
 		safe_free(main->map_data->east_texture);
 		safe_free(main->map_data->south_texture);
 		safe_free(main->map_data->west_texture);
-		free_matrix(main->map_data->map_layout);
+		free_matrix(main->map_data->map_coor);
 		safe_free(main->map_data);
 		main->map_data = NULL;
 	}

@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 14:19:17 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:08:05 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 22:35:21 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	get_player_position(t_map_data *map_data)
 	int	x;
 
 	y = 0;
-	while (map_data->map_layout[y])
+	while (map_data->map_coor[y])
 	{
 		x = 0;
-		while (map_data->map_layout[y][x])
+		while (map_data->map_coor[y][x])
 		{
-			if (map_data->map_layout[y][x] == map_data->player_orientation)
+			if (map_data->map_coor[y][x] == map_data->player_orientation)
 			{
 				map_data->player_position.y = y;
 				map_data->player_position.x = x;
@@ -44,9 +44,9 @@ void	get_map_dimensions(t_map_data *map_data)
 
 	longest = 0;
 	y = 0;
-	while (map_data->map_layout[y])
+	while (map_data->map_coor[y])
 	{
-		x = ft_strlen(map_data->map_layout[y]);
+		x = ft_strlen(map_data->map_coor[y]);
 		if (longest < x)
 			longest = x;
 		y++;

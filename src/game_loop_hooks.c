@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 19:27:27 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 22:35:21 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	draw_tile_minimap(t_main *main, int x, int y, char id)
 // 	int		y;
 // 	int		x;
 
-// 	map = main->map_data->map_layout;
+// 	map = main->map_data->map_coor;
 // 	y = 0;
 // 	while (map[y])
 // 	{
@@ -116,7 +116,7 @@ void	draw_tile(t_main *main, int x, int y, char id)
 // 	int		y;
 // 	int		x;
 
-// 	map = main->map_data->map_layout;
+// 	map = main->map_data->map_coor;
 // 	y = 0;
 // 	while (map[y])
 // 	{
@@ -151,7 +151,7 @@ void	draw_minimap(t_main *main)
 	int		y;
 	int		x;
 
-	map = main->map_data->map_layout;
+	map = main->map_data->map_coor;
 	y = 0;
 	while (map[y])
 	{
@@ -206,6 +206,7 @@ void	loop_hooks(void *param)
 	// init_background(main);
 	ft_memcpy(main->image->pixels, main->background->pixels, main->mlx->width
 		* main->mlx->height * sizeof(uint32_t));
-	draw_rays(main);
+	// draw_rays(main);
+	render_3d(main);
 	draw_minimap(main);
 }

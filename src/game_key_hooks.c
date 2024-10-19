@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:10:04 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 22:35:21 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ bool	wallcheck(char *id, t_main *main)
 	{
 		x = (int)(main->player->position.x + main->player->delta.x * 2) >> 6;
 		y = (int)(main->player->position.y + main->player->delta.y * 2) >> 6;
-		if (main->map_data->map_layout[y][x] == '1')
+		if (main->map_data->map_coor[y][x] == '1')
 			return (true);
 	}
 	if (ft_strncmp("DOWN", id, 4) == 0)
 	{
 		x = (int)(main->player->position.x - main->player->delta.x * 2) >> 6;
 		y = (int)(main->player->position.y - main->player->delta.y * 2) >> 6;
-		if (main->map_data->map_layout[y][x] == '1')
+		if (main->map_data->map_coor[y][x] == '1')
 			return (true);
 	}
 	return (false);

@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 19:36:07 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 23:37:56 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,48 @@
 
 # define WALL_COLOR_X 0x00FF00FF
 # define WALL_COLOR_Y 0x0000FFFF
+
 //// random sht by matt
 
-// typedef struct s_player
-// {
-// 	t_point			position;
-// 	t_point			direction;
-// 	t_point			plane;
-// }					t_player;
+typedef enum e_direction
+{
+	NORTH,
+	EAST,
+	SOUTH,
+	WEST
+}					t_direction;
+
+typedef struct s_point
+{
+	int				x;
+	int				y;
+}					t_point;
+typedef struct s_player
+{
+	t_point			position;
+	t_point			direction;
+	t_point			plane;
+	int				pitch;
+	int				speed;
+}					t_player;
+
+typedef struct s_ray
+{
+	double			camera_x;
+	double			perpendicular_wall_dist;
+	t_vec			ray_dir;
+	t_point			map_box;
+	t_vec			side_dist;
+	t_vec			delta_dist;
+	t_point			step;
+	int				side;
+}					t_ray;
+
+typedef struct s_vec
+{
+	double			x;
+	double			y;
+}					t_vec;
 
 /*
 typedef struct mlx_texture
@@ -56,12 +90,6 @@ typedef struct mlx_texture
 ///
 
 //////////////////////////////////////////////////////////////////////////////
-
-typedef struct s_point
-{
-	float			x;
-	float			y;
-}					t_point;
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -101,7 +129,7 @@ typedef struct s_map_data
 	char			*west_texture;
 	int				floor_color;
 	int				ceiling_color;
-	char			**map_layout;
+	char			**map_coor;
 	int				map_width;
 	int				map_height;
 	char			player_orientation;
@@ -110,12 +138,12 @@ typedef struct s_map_data
 
 //////////////////////////////////////////////////////////////////////////////
 
-typedef struct s_player
-{
-	t_point			position;
-	t_point			delta;
-	double			angle;
-}					t_player;
+// typedef struct s_player
+// {
+// 	t_point			position;
+// 	t_point			delta;
+// 	double			angle;
+// }					t_player;
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -127,21 +155,21 @@ typedef struct s_rayy
 }
 */
 
-typedef struct s_ray
-{
-	float			x;
-	float			y;
-	float			x_offset;
-	float			y_offset;
-	float			tan;
-	double			angle;
-	float			distance;
-	bool			no_hit;
-	int				dof;
-	int				line_height;
-	float			line_offset;
-	float			fisheye_fix;
-}					t_ray;
+// typedef struct s_ray
+// {
+// 	float			x;
+// 	float			y;
+// 	float			x_offset;
+// 	float			y_offset;
+// 	float			tan;
+// 	double			angle;
+// 	float			distance;
+// 	bool			no_hit;
+// 	int				dof;
+// 	int				line_height;
+// 	float			line_offset;
+// 	float			fisheye_fix;
+// }					t_ray;
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -160,7 +188,12 @@ typedef struct s_main
 	double			fps;
 }					t_main;
 
-void	init_background(t_main *main); // MATT
+// random sht by matt			!!!! !!! !!! !!! !!!
+void				init_background(t_main *main);
+void				render_3d(t_main *main);
+void				step_x(t_ray *ray);
+void				step_y(t_ray *ray);
+void				dda_algo(t_main *main, t_player *player, t_ray *ray);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -192,13 +225,13 @@ void				parse_map(t_main *main);
 
 void				set_types(t_main *main);
 
-// parse_get_map_layout.c
+// parse_get_map_coor.c
 
-void				get_map_layout(t_main *main);
+void				get_map_coor(t_main *main);
 
-// parse_check_map_layout.c
+// parse_check_map_coor.c
 
-void				check_map_layout(t_main *main);
+void				check_map_coor(t_main *main);
 
 // parse_get_missing_information.c
 

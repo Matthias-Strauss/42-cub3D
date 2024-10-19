@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:22 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:09:35 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 23:38:55 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_map_data_struct(t_main *main)
 	main->map_data->east_texture = NULL;
 	main->map_data->south_texture = NULL;
 	main->map_data->west_texture = NULL;
-	main->map_data->map_layout = NULL;
+	main->map_data->map_coor = NULL;
 	main->map_data->player_orientation = '\1';
 }
 
@@ -45,6 +45,8 @@ void	init_player_struct(t_main *main)
 		error_exit(main, ERR_UAM);
 	main->player->position.x = 0;
 	main->player->position.y = 0;
+	main->player->pitch = 100;
+	main->player->speed = 1;
 }
 
 t_main	*init_main_struct(void)

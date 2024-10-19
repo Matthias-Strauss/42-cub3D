@@ -6,7 +6,7 @@
 #    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/19 14:50:16 by mstrauss          #+#    #+#              #
-#    Updated: 2024/10/19 19:00:37 by mstrauss         ###   ########.fr        #
+#    Updated: 2024/10/19 23:17:40 by mstrauss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ SRC	 = 	main.c							\
 		parse_map.c						\
 		parse_set_types.c				\
 		parse_utils.c					\
-		parse_get_map_layout.c			\
-		parse_check_map_layout.c		\
+		parse_get_map_coor.c			\
+		parse_check_map_coor.c			\
 		parse_get_missing_information.c	\
 		parse_check_for_garbage.c		\
 		parse_convert_colors.c			\
@@ -42,7 +42,9 @@ SRC	 = 	main.c							\
 		ray_vertical.c					\
 		draw_line.c						\
 		free.c							\
-		error.c							
+		error.c							\
+		rendering.c						\
+		rendering_dda_algo.c			\
 		# textures.c
 
 SRC_DIR		= ./src
@@ -66,7 +68,6 @@ mlx:
 		git checkout 26fdbd950fd3a4d035fa55af9c02112ffcd4608c; \
 	fi
 	@cmake $(LIBMLX) -B $(LIBMLX)/build -DCMAKE_C_FLAGS="-Ofast -ffast-math -march=native -mtune=native -funroll-loops" && make -C $(LIBMLX)/build -j4
-
 
 clean:
 	@rm -rf $(OBJ_DIR)

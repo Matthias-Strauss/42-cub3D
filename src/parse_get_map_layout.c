@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_get_map_layout.c                             :+:      :+:    :+:   */
+/*   parse_get_map_coor.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -53,7 +53,7 @@ char	*add_to_map_str(char *map_string, char *to_add)
 	return (map_string);
 }
 
-void	get_map_layout(t_main *main)
+void	get_map_coor(t_main *main)
 {
 	int		i;
 	char	*map_string;
@@ -69,6 +69,6 @@ void	get_map_layout(t_main *main)
 			error_exit(main, ERR_ELM);
 		i++;
 	}
-	main->map_data->map_layout = ft_split(map_string, '\n');
+	main->map_data->map_coor = ft_split(map_string, '\n');
 	free(map_string);
 }
