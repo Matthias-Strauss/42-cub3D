@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 18:36:12 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 19:36:07 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define MINIMAP_SIZE 6            // 1 is whole screen
 # define PLAYER_SPEED 2            // player speed
 
+# define WALL_COLOR_X 0x00FF00FF
+# define WALL_COLOR_Y 0x0000FFFF
 //// random sht by matt
 
 // typedef struct s_player
@@ -171,7 +173,7 @@ t_main				*init_structs(void);
 // parser.c
 
 void				parse_arguments(int num_arg_strings, char **arg_strings,
-			t_main *main);
+						t_main *main);
 
 // parse_basic.c
 

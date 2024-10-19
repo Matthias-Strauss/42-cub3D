@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:05:49 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 19:38:38 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,16 @@ void	draw_current_wall_segment(t_main *main, t_ray ray, int start)
 		return ;
 	}
 	else if (ray_h.distance < ray_v.distance)
-	{
-		draw_wall_segment(ray_h, main, start, main->map_data->ceiling_color
-			- 50);
+	{ // CHANGE WALL COLOR OR TEXTURE HERE
+		draw_wall_segment(ray_h, main, start, WALL_COLOR_X);
 		// end.x = ray_h.x;
 		// end.y = ray_h.y;
 		// draw_line(main->player->position, end, main,
 		// main->map_data->floor_color - 1000);
 	}
 	else
-	{
-		draw_wall_segment(ray_v, main, start, main->map_data->ceiling_color
-			+ 50);
+	{ // CHANGE WALL COLOR OR TEXTURE HERE
+		draw_wall_segment(ray_v, main, start, WALL_COLOR_Y);
 		// end.x = ray_v.x;
 		// end.y = ray_v.y;
 		// draw_line(main->player->position, end, main,

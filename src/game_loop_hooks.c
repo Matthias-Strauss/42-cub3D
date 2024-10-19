@@ -6,11 +6,16 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 18:59:09 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 19:27:27 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+uint32_t	return_color(int r, int g, int b, int a)
+{
+	return (r << 16 | g << 16 | b << 8 | a);
+}
 
 void	draw_tile_minimap(t_main *main, int x, int y, char id)
 {
@@ -19,9 +24,9 @@ void	draw_tile_minimap(t_main *main, int x, int y, char id)
 	int	color;
 
 	if (id == '1')
-		color = 16777215;
+		color = return_color(75, 75, 75, 255);
 	else
-		color = 0;
+		color = return_color(139, 69, 19, 255);
 	x = x * main->mlx->width / MINIMAP_SIZE / main->map_data->map_width;
 	y = y * main->mlx->height / MINIMAP_SIZE / main->map_data->map_height;
 	ii = 0;
@@ -200,7 +205,7 @@ void	loop_hooks(void *param)
 	main = (t_main *)param;
 	// init_background(main);
 	ft_memcpy(main->image->pixels, main->background->pixels, main->mlx->width
-		* main->mlx->height * 4);
+		* main->mlx->height * sizeof(uint32_t));
 	draw_rays(main);
 	draw_minimap(main);
 }
