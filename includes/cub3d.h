@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 00:46:07 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/20 00:54:45 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,6 +235,10 @@ void				key_hooks(void *main);
 // game_wasd_keys.c
 
 void				wasd_keys(t_main *main);
+
+// game_arrow_keys.c
+
+void				arrow_keys(t_main *main);
 
 // game_loop_hooks.c
 

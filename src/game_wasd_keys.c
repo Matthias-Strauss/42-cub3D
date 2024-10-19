@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 00:44:12 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 00:44:24 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/20 00:53:17 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	w_key(t_main *main)
 {
-	int	x;
-	int	y;
-	int	distance_x;
-	int	distance_y;
+	int		x;
+	int		y;
+	float	distance_x;
+	float	distance_y;
 
 	if (mlx_is_key_down(main->mlx, MLX_KEY_W))
 	{
@@ -35,10 +35,10 @@ void	w_key(t_main *main)
 
 void	a_key(t_main *main)
 {
-	int	x;
-	int	y;
-	int	distance_x;
-	int	distance_y;
+	int		x;
+	int		y;
+	float	distance_x;
+	float	distance_y;
 
 	if (mlx_is_key_down(main->mlx, MLX_KEY_A))
 	{
@@ -56,10 +56,10 @@ void	a_key(t_main *main)
 
 void	s_key(t_main *main)
 {
-	int	x;
-	int	y;
-	int	distance_x;
-	int	distance_y;
+	int		x;
+	int		y;
+	float	distance_x;
+	float	distance_y;
 
 	if (mlx_is_key_down(main->mlx, MLX_KEY_S))
 	{
@@ -77,10 +77,10 @@ void	s_key(t_main *main)
 
 void	d_key(t_main *main)
 {
-	int	x;
-	int	y;
-	int	distance_x;
-	int	distance_y;
+	int		x;
+	int		y;
+	float	distance_x;
+	float	distance_y;
 
 	if (mlx_is_key_down(main->mlx, MLX_KEY_D))
 	{
