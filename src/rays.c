@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 19:38:38 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 20:04:48 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	draw_rays(t_main *main)
 	ray.angle = main->player->angle - (ANGLE_INCREMENT * (FOV / 2));
 	if (ray.angle < 0)
 		ray.angle += 2 * M_PI;
-	if (ray.angle > 2 * M_PI)
+	else if (ray.angle > 2 * M_PI)
 		ray.angle -= 2 * M_PI;
 	start = 0;
 	i = 0;
@@ -110,7 +110,7 @@ void	draw_rays(t_main *main)
 		ray.angle += ANGLE_INCREMENT;
 		if (ray.angle < 0)
 			ray.angle += 2 * M_PI;
-		if (ray.angle > 2 * M_PI)
+		else if (ray.angle > 2 * M_PI)
 			ray.angle -= 2 * M_PI;
 	}
 }
