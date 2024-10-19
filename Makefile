@@ -6,7 +6,7 @@
 #    By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/19 14:50:16 by mstrauss          #+#    #+#              #
-#    Updated: 2024/10/19 22:49:52 by kklockow         ###   ########.fr        #
+#    Updated: 2024/10/20 00:45:15 by kklockow         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC	 = 	main.c							\
 		parse_convert_colors.c			\
 		game.c							\
 		game_key_hooks.c				\
+		game_wasd_keys.c				\
 		game_loop_hooks.c				\
 		game_set_player_data.c			\
 		rays.c							\
