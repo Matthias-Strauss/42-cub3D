@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 23:40:05 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 23:44:37 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,16 @@ void	movement(t_main *main)
 		main->player->angle -= 0.1;
 		if (main->player->angle < 0)
 			main->player->angle += 2 * M_PI;
-		main->player->delta.x = cos(main->player->angle) * ANGLEOFFSET;
-		main->player->delta.y = sin(main->player->angle) * ANGLEOFFSET;
+		main->player->delta.x = cos(main->player->angle) * PLAYEROFFSET;
+		main->player->delta.y = sin(main->player->angle) * PLAYEROFFSET;
 	}
 	if (mlx_is_key_down(main->mlx, MLX_KEY_RIGHT))
 	{
 		main->player->angle += 0.1;
 		if (main->player->angle > 2 * M_PI)
 			main->player->angle -= 2 * M_PI;
-		main->player->delta.x = cos(main->player->angle) * ANGLEOFFSET;
-		main->player->delta.y = sin(main->player->angle) * ANGLEOFFSET;
+		main->player->delta.x = cos(main->player->angle) * PLAYEROFFSET;
+		main->player->delta.y = sin(main->player->angle) * PLAYEROFFSET;
 	}
 }
 

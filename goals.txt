@@ -1,5 +1,4 @@
 
--movement
 -textures
 -norminette
 -error handling during game

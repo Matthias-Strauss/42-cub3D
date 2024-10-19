@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 21:20:31 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 21:24:25 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 23:44:53 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	set_player_data(t_main *main)
 	main->player->position.y = main->map_data->player_position.y * TILESIZE
 		+ TILESIZE / 2;
 	set_player_orientation(main);
-	main->player->delta.x = cos(main->player->angle) * ANGLEOFFSET;
-	main->player->delta.y = sin(main->player->angle) * ANGLEOFFSET;
+	main->player->delta.x = cos(main->player->angle) * PLAYEROFFSET;
+	main->player->delta.y = sin(main->player->angle) * PLAYEROFFSET;
 	main->time = 0;
 	main->fps = 0;
 	main->tmpfps = 0;
