@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 21:22:11 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 23:23:51 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define WIDTH 2560                // 2400
 # define HEIGHT 1440               // 1200
 # define TILESIZE 64               // messes up raycaster when changed
-# define ANGLEOFFSET 5             // speed
+# define ANGLEOFFSET 5
 # define ANGLE_INCREMENT 0.0174533 // ray angle increment value
 # define RD 64                     // render distance
 # define FOV 64                    // field of view

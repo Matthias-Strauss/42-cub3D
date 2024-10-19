@@ -6,7 +6,7 @@
 #    By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/19 14:50:16 by mstrauss          #+#    #+#              #
-#    Updated: 2024/10/19 21:21:23 by kklockow         ###   ########.fr        #
+#    Updated: 2024/10/19 22:49:52 by kklockow         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,6 @@ SRC	 = 	main.c							\
 		draw_line.c						\
 		free.c							\
 		error.c
-		# textures.c
 
 SRC_DIR		= ./src
 OBJ_DIR		= ./objs
