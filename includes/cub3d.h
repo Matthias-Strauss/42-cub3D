@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 19:36:07 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 20:18:14 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define ANGLEOFFSET 5             // speed
 # define ANGLE_INCREMENT 0.0174533 // ray angle increment value
 # define RD 64                     // render distance
-# define FOV 66                    // field of view
+# define FOV 64                    // field of view
 # define LT WIDTH / FOV            // line thickness
 # define MINIMAP_SIZE 6            // 1 is whole screen
 # define PLAYER_SPEED 2            // player speed
