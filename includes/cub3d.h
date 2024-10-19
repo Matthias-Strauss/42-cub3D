@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 00:18:19 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/20 00:57:03 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,11 @@ typedef struct s_ray
 	t_vec			delta_dist;
 	t_point			step;
 	int				side;
-	int				wall_hit_x;
+	double			wall_hit_x;
+	int				texture_x;
+	int				line_height;
+	int				line_start;
+	int				line_end;
 }					t_ray;
 
 typedef struct s_vec

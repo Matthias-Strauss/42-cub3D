@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:21:34 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/20 00:30:12 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/20 01:00:00 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,16 @@ double	get_side_dist(t_player player, t_ray *ray)
 
 void	get_wall_height(t_ray *ray, t_main *main)
 {
-	int	line_height;
-	int	line_start;
-	int	line_end;
 	int	pitch;
 
 	pitch = main->player->pitch;
-	line_height = (int)(main->mlx->height / ray->perpendicular_wall_dist);
-	line_start = (-line_height + main->mlx->height) / 2 + pitch;
-	if (line_start < 0)
-		line_start = 0;
-	line_end = (line_height + main->mlx->height) / 2 + pitch;
-	if (line_end >= main->mlx->height)
-		line_end = main->mlx->height - 1;
+	ray->line_height = (int)(main->mlx->height / ray->perpendicular_wall_dist);
+	ray->line_start = (-ray->line_height + main->mlx->height) / 2 + pitch;
+	if (ray->line_start < 0)
+		ray->line_start = 0;
+	ray->line_end = (ray->line_height + main->mlx->height) / 2 + pitch;
+	if (ray->line_end >= main->mlx->height)
+		ray->line_end = main->mlx->height - 1;
 }
 
 void	get_wall_hit_x_pos(t_ray *ray, t_player *player)
@@ -83,6 +80,32 @@ void	get_wall_hit_x_pos(t_ray *ray, t_player *player)
 		ray->wall_hit_x = player->position.x + ray->perpendicular_wall_dist
 			* ray->ray_dir.x;
 	ray->wall_hit_x -= floor(ray->wall_hit_x);
+}
+
+// unsure about correctness, check later when compilable
+void	get_texture_x(t_ray *ray)
+{
+	ray->texture_x = (int)(ray->wall_hit_x * (double)TEXTURE_SIZE);
+	if ((ray->side == EAST || ray->side == WEST) && ray->ray_dir.x > 0)
+		ray->texture_x = TEXTURE_SIZE - ray->texture_x - 1;
+	if ((ray->side == NORTH || ray->side == SOUTH) && ray->ray_dir.y < 0)
+		ray->texture_x = TEXTURE_SIZE - ray->texture_x - 1;
+}
+
+void	draw_vert_stripe(t_ray *ray, t_main *main, int x)
+{
+	int		i;
+	double	step;
+	double	tex_start_pos;
+
+	i = ray->line_start - 1;
+	step = TEXTURE_SIZE / ray->line_height; // cast TEXTURE_SIZE to double?
+	tex_start_pos = (ray->line_start - main->player->pitch - (main->mlx->height
+				+ line_height)) * step;
+	while (++i < ray->line_end)
+	{
+		
+	}
 }
 
 void	render_3d(t_main *main)
@@ -101,5 +124,7 @@ void	render_3d(t_main *main)
 		get_perp_wall_dist(&player, &ray);
 		get_wall_height(&ray, main);
 		get_wall_hit_x_pos(&ray, &player);
+		get_texture_x(&ray, main);
+		draw_vert_stripe(&ray, main, x);
 	}
 }
