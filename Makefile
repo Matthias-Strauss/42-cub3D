@@ -1,74 +1,82 @@
-CC = cc
-NAME = cub3D
-CFLAGS = -g -Wall -Werror -Wextra -I./includes -Ofast -ffast-math -march=native -mtune=native -funroll-loops
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/19 14:50:16 by mstrauss          #+#    #+#              #
+#    Updated: 2024/10/19 19:00:37 by mstrauss         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME 			= cub3D
+
+CC				= cc
+CFLAGS			= -g -fsanitize=address -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops
 #-fsanitize=address -Wall -Werror -Wextra
 
-LIBMLX = MLX42
-USER = $(shell whoami)
-LEAKSANITIZER = -L"/$(PWD)/LeakSanitizer" -llsan
-MLXFLAGS = $(LIBMLX)/build/libmlx42.a -Iinclude -lglfw -framework Cocoa -framework OpenGL -framework IOKit #-ldl -lglfw -pthread -lm
+INC				= -Iincludes/
+LIBMLX			= MLX42
 
-SOURCE	 = 	main.c										\
-            src/init/init.c								\
-            src/parser/parser.c							\
-            src/parser/parse_basic.c					\
-            src/parser/parse_copy_map.c					\
-            src/parser/parse_map.c						\
-            src/parser/parse_set_types.c				\
-            src/parser/parse_utils.c					\
-            src/parser/parse_get_map_layout.c			\
-            src/parser/parse_check_map_layout.c			\
-            src/parser/parse_get_missing_information.c	\
-            src/parser/parse_check_for_garbage.c		\
-            src/parser/parse_convert_colors.c			\
-            src/game/game.c								\
-            src/game/game_key_hooks.c					\
-            src/game/game_loop_hooks.c					\
-            src/rays/rays.c								\
-            src/rays/ray_horizontal.c					\
-            src/rays/ray_vertical.c						\
-            src/utils/draw_line.c						\
-            src/free/free.c								\
-            src/error/error.c							\
-			src/textures/textures.c
+MLXFLAGS		= $(LIBMLX)/build/libmlx42.a -Iinclude -lglfw -framework Cocoa -framework OpenGL -framework IOKit #-ldl -lglfw -pthread -lm
 
-OBJ_DIR = ./objs
-OBJECTS = $(SOURCE:%.c=$(OBJ_DIR)/%.o)
+SRC	 = 	main.c							\
+		init.c							\
+		parser.c						\
+		parse_basic.c					\
+		parse_copy_map.c				\
+		parse_map.c						\
+		parse_set_types.c				\
+		parse_utils.c					\
+		parse_get_map_layout.c			\
+		parse_check_map_layout.c		\
+		parse_get_missing_information.c	\
+		parse_check_for_garbage.c		\
+		parse_convert_colors.c			\
+		game.c							\
+		game_key_hooks.c				\
+		game_loop_hooks.c				\
+		rays.c							\
+		ray_horizontal.c				\
+		ray_vertical.c					\
+		draw_line.c						\
+		free.c							\
+		error.c							
+		# textures.c
 
-all : libmlx $(NAME)
+SRC_DIR		= ./src
+OBJ_DIR		= ./objs
+OBJS		= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-$(NAME) : $(OBJECTS)
+all: mlx $(NAME)
+
+$(NAME): $(OBJS)
 	@cd libft && make
-	@$(CC) $(OBJECTS) $(CFLAGS) $(MLXFLAGS) libft/libft.a -o $(NAME)
+	@$(CC) $(OBJS) $(CFLAGS) $(INC) $(MLXFLAGS) libft/libft.a -o $(NAME)
 
-objs/%.o : %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-libmlx:
+mlx:
 	@if [ ! -d $(LIBMLX) ]; then \
 		git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX) && \
 		cd $(LIBMLX) && \
 		git checkout 26fdbd950fd3a4d035fa55af9c02112ffcd4608c; \
 	fi
 	@cmake $(LIBMLX) -B $(LIBMLX)/build -DCMAKE_C_FLAGS="-Ofast -ffast-math -march=native -mtune=native -funroll-loops" && make -C $(LIBMLX)/build -j4
-	@if [ ! -d $(LIBMLX) ]; then \
-		git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX) && \
-		cd $(LIBMLX) && \
-		git checkout 26fdbd950fd3a4d035fa55af9c02112ffcd4608c; \
-	fi
-	@cmake $(LIBMLX) -B $(LIBMLX)/build -DCMAKE_C_FLAGS="-Ofast -ffast-math -march=native -mtune=native -funroll-loops" && make -C $(LIBMLX)/build -j4
+
 
 clean:
-	@rm -rf objs
+	@rm -rf $(OBJ_DIR)
 	@cd libft && make clean
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -rf $(LIBMLX)
-	@rm -rf LeakSanitizer
+	# @rm -rf $(LIBMLX)
 	@cd libft && make fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re libmlx
+.PHONY: all clean fclean re mlx

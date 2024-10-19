@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:34:53 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 18:01:08 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 15:10:16 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 char	*ft_strerror(int error_code)
 {
@@ -61,5 +61,5 @@ void	error_exit(t_main *main, int error_code)
 {
 	print_error_message(error_code);
 	free_structs(main);
-	exit (error_code);
+	exit(error_code);
 }

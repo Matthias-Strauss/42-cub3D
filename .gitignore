@@ -2,4 +2,6 @@
 *.supp
 *.txt
 cub3d.pdf
-.vscode
+.vscode/
+MLX42/
+objs/

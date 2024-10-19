@@ -6,11 +6,11 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/18 21:17:56 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 18:59:09 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 void	draw_tile_minimap(t_main *main, int x, int y, char id)
 {
@@ -164,31 +164,32 @@ void	draw_minimap(t_main *main)
 	draw_player_minimap(main);
 }
 
-void	draw_background(t_main *main)
+void	convert_pixel(uint8_t *pixel, uint32_t color)
 {
-	uint32_t	x;
-	unsigned int	y;
+	*(pixel++) = (uint8_t)(color >> 24);
+	*(pixel++) = (uint8_t)(color >> 16);
+	*(pixel++) = (uint8_t)(color >> 8);
+	*(pixel++) = (uint8_t)(color & 0xFF);
+}
 
-	y = 0;
-	while(y < main->image->height / 2)
+void	init_background(t_main *main)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < main->mlx->height / 2)
 	{
-		x = 0;
-		while(x < main->image->width)
-		{
-			mlx_put_pixel(main->image, x, y, main->map_data->ceiling_color);
-			x++;
-		}
-		y++;
+		j = -1;
+		while (++j < main->mlx->width)
+			mlx_put_pixel(main->background, j, i,
+				main->map_data->ceiling_color);
 	}
-	while(y < main->image->height)
+	while (++i < main->mlx->height)
 	{
-		x = 0;
-		while(x < main->image->width)
-		{
-			mlx_put_pixel(main->image, x, y, main->map_data->floor_color);
-			x++;
-		}
-		y++;
+		j = -1;
+		while (++j < main->mlx->width)
+			mlx_put_pixel(main->background, j, i, main->map_data->floor_color);
 	}
 }
 
@@ -197,6 +198,9 @@ void	loop_hooks(void *param)
 	t_main	*main;
 
 	main = (t_main *)param;
+	// init_background(main);
+	ft_memcpy(main->image->pixels, main->background->pixels, main->mlx->width
+		* main->mlx->height * 4);
 	draw_rays(main);
 	draw_minimap(main);
 }

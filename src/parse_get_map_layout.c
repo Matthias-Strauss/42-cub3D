@@ -6,11 +6,11 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:35:46 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/10 13:24:55 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 15:07:56 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 bool	first_line_check_on(char *current)
 {
@@ -44,7 +44,7 @@ char	*add_to_map_str(char *map_string, char *to_add)
 
 	if (to_add[skip_whitespaces(to_add, 0)] == '\n')
 	{
-		free (map_string);
+		free(map_string);
 		return (NULL);
 	}
 	map_string_old = map_string;

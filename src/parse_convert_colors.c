@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_convert_colors.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:53:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 17:42:18 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 18:42:00 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 bool	convert_check_characters(char *str)
 {
@@ -72,7 +72,7 @@ int	convert_string_to_color(t_main *main, char *str)
 		error_during_conversion(main, seperated);
 	}
 	free_matrix(seperated);
-	return (r << 24 | g << 16 | b << 8 | 100);
+	return (r << 24 | g << 16 | b << 8 | 255);
 }
 
 void	convert_colors(t_main *main)

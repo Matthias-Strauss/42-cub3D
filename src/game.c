@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/18 21:02:29 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 15:59:13 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 void	set_player_data(t_main *main)
 {
@@ -38,12 +38,17 @@ void	start_game(t_main *main)
 		error_exit(main, mlx_errno);
 	mlx_get_monitor_size(0, &width, &height);
 	mlx_set_window_size(main->mlx, width, height);
-	// mlx_focus(main->mlx);
 	main->image = mlx_new_image(main->mlx, main->mlx->width, main->mlx->height);
+	main->background = mlx_new_image(main->mlx, main->mlx->width,
+			main->mlx->height);
+	init_background(main);
 	main->minimap = mlx_new_image(main->mlx, main->mlx->width / MINIMAP_SIZE,
 			main->mlx->height / MINIMAP_SIZE);
+	mlx_image_to_window(main->mlx, main->background, 0, 0);
 	mlx_image_to_window(main->mlx, main->image, 0, 0);
-	mlx_image_to_window(main->mlx, main->minimap, 0, 0);
+	mlx_image_to_window(main->mlx, main->minimap, main->mlx->width * 0.01,
+		main->mlx->height * 0.01);
+	mlx_focus(main->mlx);
 }
 
 void	fps(void *param)
@@ -76,6 +81,7 @@ void	during_game(t_main *main)
 void	end_game(t_main *main)
 {
 	mlx_delete_image(main->mlx, main->image);
+	mlx_delete_image(main->mlx, main->background);
 	mlx_delete_image(main->mlx, main->minimap);
 	mlx_terminate(main->mlx);
 }

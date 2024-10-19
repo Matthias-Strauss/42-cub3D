@@ -6,11 +6,11 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 18:59:05 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/16 14:22:31 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 15:21:36 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 void	set_x_and_y_values(t_point start, t_point end, t_line *line)
 {

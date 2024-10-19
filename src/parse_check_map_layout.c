@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parse_check_map_layout.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 13:21:33 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 17:38:30 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 15:08:23 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 void	character_check(char *to_check, t_main *main)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (to_check[i] && to_check[i] != '\n')

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 16:36:14 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/12 18:00:07 by mstrauss         ###   ########.fr       */
+/*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
+/*   Updated: 2024/10/19 15:07:48 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "cub3d.h"
 
-int	main(int ac, char **av)
+void	parse_map(t_main *main)
 {
-	t_main	*main;
-
-	main = init_structs();
-	parse_arguments(ac, av, main);
-	start_game(main);
-	during_game(main);
-	end_game(main);
-	free_structs(main);
-	return (0);
+	set_types(main);
+	convert_colors(main);
+	check_for_garbage(main);
+	get_map_layout(main);
+	check_map_layout(main);
+	get_player_position(main->map_data);
+	get_map_dimensions(main->map_data);
 }

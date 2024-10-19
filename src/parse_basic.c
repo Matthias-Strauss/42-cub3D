@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse_basic.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:41:46 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 17:18:30 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 15:08:34 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 void	parse_num_arg_strings(int num_arg_strings, t_main *main)
 {
 	if (num_arg_strings != 2)
-		error_exit (main, ERR_WAA);
+		error_exit(main, ERR_WAA);
 }
 
 void	parse_map_file_format(char *arg_map_path, t_main *main)

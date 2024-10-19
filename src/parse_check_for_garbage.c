@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_check_for_garbage.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 12:57:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 17:42:08 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 15:08:28 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 bool	is_type(char *current)
 {

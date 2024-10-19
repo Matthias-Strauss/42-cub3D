@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_set_types.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 13:55:20 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/06 12:49:25 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 15:06:20 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 bool	check_types(t_main *main)
 {

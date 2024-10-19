@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/18 21:15:15 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 18:36:12 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@
 # define RD 64                     // render distance
 # define FOV 66                    // field of view
 # define LT WIDTH / FOV            // line thickness
-# define MINIMAP_SIZE 4            // 1 is whole screen
+# define MINIMAP_SIZE 6            // 1 is whole screen
 # define PLAYER_SPEED 2            // player speed
 
 //// random sht by matt
+
 // typedef struct s_player
 // {
 // 	t_point			position;
@@ -149,12 +150,15 @@ typedef struct s_main
 	t_player		*player;
 	mlx_t			*mlx;
 	mlx_image_t		*image;
+	mlx_image_t		*background;
 	mlx_image_t		*minimap;
 	mlx_texture_t	*textures[5];
 	double			time;
 	double			tmpfps;
 	double			fps;
 }					t_main;
+
+void	init_background(t_main *main); // MATT
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -167,7 +171,7 @@ t_main				*init_structs(void);
 // parser.c
 
 void				parse_arguments(int num_arg_strings, char **arg_strings,
-						t_main *main);
+			t_main *main);
 
 // parse_basic.c
 
@@ -224,7 +228,7 @@ void				end_game(t_main *main);
 
 // game_key_hooks.c
 
-void	key_hooks(void *main);
+void				key_hooks(void *main);
 
 // game_loop_hooks.c
 

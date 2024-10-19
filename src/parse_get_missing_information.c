@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_get_missing_information.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 14:19:17 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/02 11:39:39 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 15:08:05 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 void	get_player_position(t_map_data *map_data)
 {
