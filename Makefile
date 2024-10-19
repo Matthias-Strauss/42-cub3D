@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
+#    By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/19 14:50:16 by mstrauss          #+#    #+#              #
-#    Updated: 2024/10/19 19:00:37 by mstrauss         ###   ########.fr        #
+#    Updated: 2024/10/19 21:21:23 by kklockow         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,12 +37,13 @@ SRC	 = 	main.c							\
 		game.c							\
 		game_key_hooks.c				\
 		game_loop_hooks.c				\
+		game_set_player_data.c			\
 		rays.c							\
 		ray_horizontal.c				\
 		ray_vertical.c					\
 		draw_line.c						\
 		free.c							\
-		error.c							
+		error.c
 		# textures.c
 
 SRC_DIR		= ./src

@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:59:13 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:19:58 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	set_player_data(t_main *main)
-{
-	main->player->position.x = main->map_data->player_position.x * TILESIZE
-		+ TILESIZE / 2;
-	main->player->position.y = main->map_data->player_position.y * TILESIZE
-		+ TILESIZE / 2;
-	main->player->angle = 0;
-	main->player->delta.x = cos(main->player->angle) * ANGLEOFFSET;
-	main->player->delta.y = sin(main->player->angle) * ANGLEOFFSET;
-	main->time = 0;
-	main->fps = 0;
-	main->tmpfps = 0;
-}
 
 void	start_game(t_main *main)
 {

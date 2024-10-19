@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 20:18:14 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:22:11 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,6 +235,10 @@ void				key_hooks(void *main);
 // game_loop_hooks.c
 
 void				loop_hooks(void *param);
+
+// game_set_player_data.c
+
+void				set_player_data(t_main *main);
 
 //////////////////////////////////////////////////////////////////////////////
 
