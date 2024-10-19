@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 21:20:31 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 21:20:44 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:24:25 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	set_player_orientation(t_main *main)
 {
 	if (main->map_data->player_orientation == 'E')
 		main->player->angle = 0;
-	if (main->map_data->player_orientation == 'S')
+	else if (main->map_data->player_orientation == 'S')
 		main->player->angle = M_PI / 2;
-	if (main->map_data->player_orientation == 'W')
+	else if (main->map_data->player_orientation == 'W')
 		main->player->angle = M_PI;
-	if (main->map_data->player_orientation == 'N')
+	else if (main->map_data->player_orientation == 'N')
 		main->player->angle = M_PI * 3 / 2;
 }
 
