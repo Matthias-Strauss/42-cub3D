@@ -6,33 +6,11 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:56:40 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 03:00:39 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/20 04:27:03 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	safe_free(void *to_free)
-{
-	if (to_free != NULL) // @kai: what does this do? :P
-		free(to_free);
-}
-
-void	free_matrix(char **to_free)
-{
-	int	i;
-
-	i = 0;
-	if (to_free != NULL)
-	{
-		while (to_free[i] != NULL)
-		{
-			safe_free(to_free[i]);
-			i++;
-		}
-		safe_free(to_free);
-	}
-}
 
 void	free_map_data_struct(t_main *main)
 {

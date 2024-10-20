@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 02:50:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 03:41:30 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/20 04:35:48 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	draw_tile_minimap(t_main *main, int x, int y, char id)
 	if (id == '1')
 		color = return_color(75, 75, 75, 255);
 	else
-		color = return_color(0, 0, 0, 0);
+		color = return_color(139, 69, 19, 255);
 	x = x * main->mlx->width / MINIMAP_SIZE / main->map_data->map_width;
 	y = y * main->mlx->height / MINIMAP_SIZE / main->map_data->map_height;
 	ii = 0;

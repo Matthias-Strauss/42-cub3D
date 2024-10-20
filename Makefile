@@ -6,7 +6,7 @@
 #    By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/19 14:50:16 by mstrauss          #+#    #+#              #
-#    Updated: 2024/10/20 02:53:11 by kklockow         ###   ########.fr        #
+#    Updated: 2024/10/20 04:28:20 by kklockow         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC	 = 	main.c							\
 		ray_vertical.c					\
 		draw_line.c						\
 		free.c							\
+		free_utils.c					\
 		error.c
 
 SRC_DIR		= ./src

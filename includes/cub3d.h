@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 03:44:40 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/20 04:29:15 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,10 +279,13 @@ t_ray				ray_vertical(t_main *main, t_ray ray);
 
 // free.c
 
-void				free_matrix(char **to_free);
 void				free_structs(t_main *main);
 void				free_parser_struct(t_main *main);
+
+// free_utils.c
+
 void				safe_free(void *to_free);
+void				free_matrix(char **to_free);
 
 //////////////////////////////////////////////////////////////////////////////
 
