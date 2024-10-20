@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 02:50:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 04:35:48 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/20 04:53:57 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,25 @@ void	draw_tile_minimap(t_main *main, int x, int y, char id)
 
 void	draw_player_minimap(t_main *main)
 {
-	int		i;
-	int		ii;
+	int		x_i;
+	int		y_i;
 	t_point	player;
-	t_point	direc;
 
 	player.x = (main->player->position.x) / TILESIZE
 		* main->mlx->width / MINIMAP_SIZE / main->map_data->map_width;
 	player.y = (main->player->position.y) / TILESIZE
 		* main->mlx->height / MINIMAP_SIZE / main->map_data->map_height;
-	ii = -4;
-	while (ii < 5)
+	y_i = -3;
+	while (y_i < 4)
 	{
-		i = -4;
-		while (i < 5)
+		x_i = -3;
+		while (x_i < 4)
 		{
-			mlx_put_pixel(main->minimap, player.x + i, player.y + ii, 255);
-			i++;
+			mlx_put_pixel(main->minimap, player.x + x_i, player.y + y_i, 255);
+			x_i++;
 		}
-		ii++;
+		y_i++;
 	}
-	direc.x = player.x + (main->player->delta.x / TILESIZE
-			* main->mlx->width / MINIMAP_SIZE / main->map_data->map_width) * 5;
-	direc.y = player.y + (main->player->delta.y / TILESIZE * main->mlx->height
-			/ MINIMAP_SIZE / main->map_data->map_height) * 5;
-	draw_line_minimap(player, direc, main, return_color(255, 0, 0, 255));
 }
 
 void	draw_minimap(t_main *main)
