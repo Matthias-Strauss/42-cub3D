@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:50:10 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 20:04:48 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/19 20:27:21 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ void	draw_wall_segment(t_ray ray, t_main *main, int start, int color)
 	int		i;
 	t_point	start_point;
 	t_point	end_point;
-	t_point	end;
-	t_point	begin;
 
-	end.y = main->mlx->height;
-	begin.y = 0;
 	ray.fisheye_fix = main->player->angle - ray.angle;
 	if (ray.fisheye_fix < 0)
 		ray.fisheye_fix += 2 * M_PI;
@@ -44,8 +40,6 @@ void	draw_wall_segment(t_ray ray, t_main *main, int start, int color)
 		start_point.y = ray.line_offset;
 		end_point.x = start + i;
 		end_point.y = ray.line_offset + ray.line_height;
-		end.x = start + i;
-		begin.x = start + i;
 		draw_line(start_point, end_point, main, color);
 		i++;
 	}

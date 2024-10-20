@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 16:36:14 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 23:59:06 by kklockow         ###   ########.fr       */
+/*   Created: 2024/10/20 04:26:42 by kklockow          #+#    #+#             */
+/*   Updated: 2024/10/20 04:27:18 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	safe_free(void *to_free)
 {
-	t_main	*main;
+	if (to_free != NULL)
+		free(to_free);
+}
 
-	main = init_structs();
-	parse_arguments(ac, av, main);
-	start_game(main);
-	during_game(main);
-	end_game(main);
-	free_structs(main);
-	return (0);
+void	free_matrix(char **to_free)
+{
+	int	i;
+
+	i = 0;
+	if (to_free != NULL)
+	{
+		while (to_free[i] != NULL)
+		{
+			safe_free(to_free[i]);
+			i++;
+		}
+		safe_free(to_free);
+	}
 }

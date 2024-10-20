@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 19:51:48 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/20 20:26:38 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@
 # define WIDTH 2560                // 2400
 # define HEIGHT 1440               // 1200
 # define TILESIZE 64               // messes up raycaster when changed
-# define ANGLEOFFSET 5             // speed
+# define PLAYEROFFSET 5
 # define ANGLE_INCREMENT 0.0174533 // ray angle increment value
 # define RD 64                     // render distance
-# define FOV 66                    // field of view
+# define FOV 64                    // field of view
 # define LT WIDTH / FOV            // line thickness
 # define MINIMAP_SIZE 6            // 1 is whole screen
-# define PLAYER_SPEED 2            // player speed
+# define PLAYER_SPEED 1 / 2            // player speed
 
 # define WALL_COLOR_X 0x00FF00FF
 # define WALL_COLOR_Y 0x0000FFFF
@@ -272,9 +272,25 @@ void				end_game(t_main *main);
 
 void				key_hooks(void *main);
 
+// game_wasd_keys.c
+
+void				wasd_keys(t_main *main);
+
+// game_arrow_keys.c
+
+void				arrow_keys(t_main *main);
+
 // game_loop_hooks.c
 
 void				loop_hooks(void *param);
+
+// game_minimap.c
+
+void				draw_minimap(t_main *main);
+
+// game_set_player_data.c
+
+void				set_player_data(t_main *main);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -295,10 +311,13 @@ t_ray				ray_vertical(t_main *main, t_ray ray);
 
 // free.c
 
-void				free_matrix(char **to_free);
 void				free_structs(t_main *main);
 void				free_parser_struct(t_main *main);
+
+// free_utils.c
+
 void				safe_free(void *to_free);
+void				free_matrix(char **to_free);
 
 //////////////////////////////////////////////////////////////////////////////
 

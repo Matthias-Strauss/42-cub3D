@@ -6,7 +6,7 @@
 #    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/19 14:50:16 by mstrauss          #+#    #+#              #
-#    Updated: 2024/10/20 19:56:19 by mstrauss         ###   ########.fr        #
+#    Updated: 2024/10/20 20:25:37 by mstrauss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,16 +34,20 @@ SRC	 = 	main.c							\
 		parse_convert_colors.c			\
 		game.c							\
 		game_key_hooks.c				\
+		game_wasd_keys.c				\
+		game_arrow_keys.c				\
 		game_loop_hooks.c				\
+		game_minimap.c					\
+		game_set_player_data.c			\
 		rays.c							\
 		ray_horizontal.c				\
 		ray_vertical.c					\
 		draw_line.c						\
 		free.c							\
-		error.c							\
+		free_utils.c					\
+		error.c\
 		rendering.c						\
 		rendering_dda_algo.c			\
-		# textures.c
 
 # parse_get_map_coor.c			\
 # 		parse_check_map_coor.c			\
