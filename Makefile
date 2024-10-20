@@ -6,7 +6,7 @@
 #    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/19 14:50:16 by mstrauss          #+#    #+#              #
-#    Updated: 2024/10/19 23:17:40 by mstrauss         ###   ########.fr        #
+#    Updated: 2024/10/20 19:56:19 by mstrauss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,6 @@ SRC	 = 	main.c							\
 		parse_map.c						\
 		parse_set_types.c				\
 		parse_utils.c					\
-		parse_get_map_coor.c			\
-		parse_check_map_coor.c			\
 		parse_get_missing_information.c	\
 		parse_check_for_garbage.c		\
 		parse_convert_colors.c			\
@@ -46,6 +44,9 @@ SRC	 = 	main.c							\
 		rendering.c						\
 		rendering_dda_algo.c			\
 		# textures.c
+
+# parse_get_map_coor.c			\
+# 		parse_check_map_coor.c			\
 
 SRC_DIR		= ./src
 OBJ_DIR		= ./objs

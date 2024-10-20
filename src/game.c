@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:59:13 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/20 20:19:56 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,30 @@ void	set_player_data(t_main *main)
 		+ TILESIZE / 2;
 	main->player->position.y = main->map_data->player_position.y * TILESIZE
 		+ TILESIZE / 2;
-	main->player->angle = 0;
-	main->player->delta.x = cos(main->player->angle) * ANGLEOFFSET;
-	main->player->delta.y = sin(main->player->angle) * ANGLEOFFSET;
+	// main->player->position.x = main->map_data->player_position.x * TILESIZE
+	// 	+ TILESIZE / 2;
+	// main->player->position.y = main->map_data->player_position.y * TILESIZE
+	// 	+ TILESIZE / 2;
+	if (main->map_data->player_orientation == 'N')
+	{
+		main->player->direction.x = 1;
+		main->player->direction.y = 0;
+	}
+	else if (main->map_data->player_orientation == 'S')
+	{
+		main->player->direction.x = -1;
+		main->player->direction.y = 0;
+	}
+	else if (main->map_data->player_orientation == 'E')
+	{
+		main->player->direction.x = 0;
+		main->player->direction.y = 1;
+	}
+	else if (main->map_data->player_orientation == 'W')
+	{
+		main->player->direction.x = 0;
+		main->player->direction.y = -1;
+	}
 	main->time = 0;
 	main->fps = 0;
 	main->tmpfps = 0;
