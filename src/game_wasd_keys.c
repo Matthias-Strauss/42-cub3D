@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 00:44:12 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 04:13:36 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/20 05:01:27 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	d_key(t_main *main, t_point_int current, float dist_x, float dist_y)
 void	wasd_keys(t_main *main)
 {
 	t_point_int	current_player_position;
-	float	distance_x;
-	float	distance_y;
+	float		distance_x;
+	float		distance_y;
 
 	current_player_position.x = (int)(main->player->position.x) >> 6;
 	current_player_position.y = (int)(main->player->position.y) >> 6;
