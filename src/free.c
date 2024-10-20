@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:56:40 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:10:09 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/20 03:00:39 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	free_player_struct(t_main *main)
 	if (main != NULL && main->player != NULL)
 	{
 		safe_free(main->player);
-		main->parser = NULL;
+		main->player = NULL;
 	}
 }
 

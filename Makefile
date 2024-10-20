@@ -6,7 +6,7 @@
 #    By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/19 14:50:16 by mstrauss          #+#    #+#              #
-#    Updated: 2024/10/20 00:55:03 by kklockow         ###   ########.fr        #
+#    Updated: 2024/10/20 02:53:11 by kklockow         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC	 = 	main.c							\
 		game_wasd_keys.c				\
 		game_arrow_keys.c				\
 		game_loop_hooks.c				\
+		game_minimap.c					\
 		game_set_player_data.c			\
 		rays.c							\
 		ray_horizontal.c				\

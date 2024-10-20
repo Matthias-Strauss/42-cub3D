@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 00:54:45 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/20 02:52:43 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define FOV 64                    // field of view
 # define LT WIDTH / FOV            // line thickness
 # define MINIMAP_SIZE 6            // 1 is whole screen
-# define PLAYER_SPEED 2            // player speed
+# define PLAYER_SPEED 1 / 2            // player speed
 
 # define WALL_COLOR_X 0x00FF00FF
 # define WALL_COLOR_Y 0x0000FFFF
@@ -243,6 +243,10 @@ void				arrow_keys(t_main *main);
 // game_loop_hooks.c
 
 void				loop_hooks(void *param);
+
+// game_minimap.c
+
+void				draw_minimap(t_main *main);
 
 // game_set_player_data.c
 
