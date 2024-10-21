@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 20:30:53 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:24:27 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	set_player_data(t_main *main)
 	main->tmpfps = 0;
 }
 
-void	start_game(t_main *main)
+void	init_data(t_main *main)
 {
 	int32_t	width;
 	int32_t	height;
 
 	set_player_data(main);
-	mlx_set_setting(MLX_FULLSCREEN, true);
+	// mlx_set_setting(MLX_FULLSCREEN, true);
 	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (main->mlx == NULL)
 		error_exit(main, mlx_errno);
@@ -89,14 +89,6 @@ void	fps(void *param)
 		main->time = 0;
 		main->tmpfps = 0;
 	}
-}
-
-void	during_game(t_main *main)
-{
-	mlx_loop_hook(main->mlx, fps, main);
-	mlx_loop_hook(main->mlx, key_hooks, main);
-	mlx_loop_hook(main->mlx, loop_hooks, main);
-	mlx_loop(main->mlx);
 }
 
 void	end_game(t_main *main)

@@ -49,21 +49,21 @@ SRCS =	ft_atoi.c\
 		ft_lstlast.c\
 		ft_lstdelone.c\
 		ft_lstclear.c\
-		ft_lstiter.c ft_lstmap.c\
+		ft_lstiter.c\
+		ft_lstmap.c\
 		get_next_line_bonus.c\
 		get_next_line_utils_bonus.c
 
-OBJECTS 	= $(SRCS:%.c=%.o)
-BONUS_OBJS 	= $(BONUS:%.c=%.o)
+OBJECTS		= $(SRCS:%.c=%.o)
+BONUS_OBJS	= $(BONUS:%.c=%.o)
 INC			= -Iincludes/
-CC 			= cc
-CFLAGS 		= -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops #-lm
+CC			= cc
+CFLAGS		= -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar -rcs $(NAME) $(OBJECTS)
-# 	mv ../build/libft.a ./libft.a
 
 $(BUILD_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

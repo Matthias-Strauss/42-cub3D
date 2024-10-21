@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 23:16:39 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/19 23:17:17 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:13:42 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	step_y(t_ray *ray)
 		ray->side = SOUTH;
 }
 
-void	dda_algo(t_main *main, t_player *player, t_ray *ray)
+void	dda_algo(t_main *main, t_ray *ray)
 {
 	bool	hit;
 
@@ -47,7 +47,7 @@ void	dda_algo(t_main *main, t_player *player, t_ray *ray)
 		{
 			step_y(ray);
 		}
-		if (main->map_data->map_coor[ray->map_box.x][ray->map_box.y] == '1')
+		if (main->map_data->map_coor[ray->map_box.y][ray->map_box.x] == '1')
 			hit = true;
 	}
 }

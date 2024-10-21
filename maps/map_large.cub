@@ -1,8 +1,8 @@
- NO ./path_to_the_north_texture asdfsssa
- SO ./path_to_the_south_texture
- WE ./path_to_the_west_texture
+ NO ./textures/wall_north.png asdfsssa
+ SO ./textures/wall_south.png
+ WE ./textures/wall_west.png
 
- EA ./path_to_the_east_texture
+ EA ./textures/wall_east.png
 
  F 255,0,110
  C 58,134,255

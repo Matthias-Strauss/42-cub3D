@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 20:26:38 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:24:27 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define WIDTH 2560                // 2400
-# define HEIGHT 1440               // 1200
-# define TILESIZE 64               // messes up raycaster when changed
+# define WIDTH 2560  // 2400
+# define HEIGHT 1440 // 1200
+# define TILESIZE 64 // messes up raycaster when changed
 # define PLAYEROFFSET 5
 # define ANGLE_INCREMENT 0.0174533 // ray angle increment value
 # define RD 64                     // render distance
 # define FOV 64                    // field of view
 # define LT WIDTH / FOV            // line thickness
 # define MINIMAP_SIZE 6            // 1 is whole screen
-# define PLAYER_SPEED 1 / 2            // player speed
+# define PLAYER_SPEED 1            // player speed
+# define ROTATION_SPEED 0.1        // player rotation speed
 
 # define WALL_COLOR_X 0x00FF00FF
 # define WALL_COLOR_Y 0x0000FFFF
@@ -200,7 +201,9 @@ void				init_background(t_main *main);
 void				render_3d(t_main *main);
 void				step_x(t_ray *ray);
 void				step_y(t_ray *ray);
-void				dda_algo(t_main *main, t_player *player, t_ray *ray);
+void				dda_algo(t_main *main, t_ray *ray);
+void				create_2d_map_squared(t_main *main);
+void				fps(void *param);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -264,7 +267,7 @@ int					reverse_skip_whitespaces(char *str, int i);
 
 // game.c
 
-void				start_game(t_main *main);
+void				init_data(t_main *main);
 void				during_game(t_main *main);
 void				end_game(t_main *main);
 

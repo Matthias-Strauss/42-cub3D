@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:36:14 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 23:59:06 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:24:27 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	main(int ac, char **av)
 
 	main = init_structs();
 	parse_arguments(ac, av, main);
-	start_game(main);
-	during_game(main);
+	init_data(main);
+	mlx_loop_hook(main->mlx, fps, main);
+	mlx_loop_hook(main->mlx, key_hooks, main);
+	mlx_loop_hook(main->mlx, loop_hooks, main);
+	mlx_loop(main->mlx);
 	end_game(main);
 	free_structs(main);
 	return (0);
