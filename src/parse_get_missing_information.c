@@ -6,13 +6,13 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 14:19:17 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 22:35:21 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:14:07 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	get_player_position(t_map_data *map_data)
+void	get_player_pos(t_map_data *map_data)
 {
 	int	y;
 	int	x;
@@ -25,8 +25,8 @@ void	get_player_position(t_map_data *map_data)
 		{
 			if (map_data->map_coor[y][x] == map_data->player_orientation)
 			{
-				map_data->player_position.y = y;
-				map_data->player_position.x = x;
+				map_data->player_pos.y = y;
+				map_data->player_pos.x = x;
 				return ;
 			}
 			x++;

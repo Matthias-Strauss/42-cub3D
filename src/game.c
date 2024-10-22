@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/21 15:24:27 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:14:07 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,32 @@
 
 void	set_player_data(t_main *main)
 {
-	main->player->position.x = main->map_data->player_position.x * TILESIZE
-		+ TILESIZE / 2;
-	main->player->position.y = main->map_data->player_position.y * TILESIZE
-		+ TILESIZE / 2;
-	// main->player->position.x = main->map_data->player_position.x * TILESIZE
-	// 	+ TILESIZE / 2;
-	// main->player->position.y = main->map_data->player_position.y * TILESIZE
-	// 	+ TILESIZE / 2;
+	main->player->pos.x = main->map_data->player_pos.x + 1.0 / 2.0;
+	main->player->pos.y = main->map_data->player_pos.y + 1.0 / 2.0;
 	if (main->map_data->player_orientation == 'N')
 	{
-		main->player->direction.x = 1;
-		main->player->direction.y = 0;
+		main->player->dir.x = 0;
+		main->player->dir.y = -1;
 	}
 	else if (main->map_data->player_orientation == 'S')
 	{
-		main->player->direction.x = -1;
-		main->player->direction.y = 0;
+		main->player->dir.x = 0;
+		main->player->dir.y = 1;
 	}
 	else if (main->map_data->player_orientation == 'E')
 	{
-		main->player->direction.x = 0;
-		main->player->direction.y = 1;
+		main->player->dir.x = 1;
+		main->player->dir.y = 0;
 	}
 	else if (main->map_data->player_orientation == 'W')
 	{
-		main->player->direction.x = 0;
-		main->player->direction.y = -1;
+		main->player->dir.x = -1;
+		main->player->dir.y = 0;
 	}
+	main->player->plane.x = -main->player->dir.y * 0.66;
+	main->player->plane.y = main->player->dir.x * 0.66;
+	main->player->pitch = 100;
+	main->player->speed = PLAYER_SPEED;
 	main->time = 0;
 	main->fps = 0;
 	main->tmpfps = 0;

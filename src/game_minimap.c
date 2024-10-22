@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 02:50:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 20:34:21 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:14:07 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	draw_player_minimap(t_main *main)
 	int		y_i;
 	t_point	player;
 
-	player.x = (main->player->position.x) / TILESIZE * main->mlx->width
+	player.x = (main->player->pos.x) / TILESIZE * main->mlx->width
 		/ MINIMAP_SIZE / main->map_data->map_width;
-	player.y = (main->player->position.y) / TILESIZE * main->mlx->height
+	player.y = (main->player->pos.y) / TILESIZE * main->mlx->height
 		/ MINIMAP_SIZE / main->map_data->map_height;
 	y_i = -3;
 	while (y_i < 4)

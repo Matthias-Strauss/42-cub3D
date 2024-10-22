@@ -7,7 +7,7 @@
 	// printf("SO: [%s]\n", main->map_data->south_texture);
 	// printf("C: [%s] as int [%i]\n", main->parser->ceiling_color, main->map_data->ceiling_color);
 	// printf("F: [%s] as int [%i]\n", main->parser->floor_color, main->map_data->floor_color);
-	// printf("y is [%i] and x is [%i]\n", main->map_data->player_position.y, main->map_data->player_position.x);
+	// printf("y is [%i] and x is [%i]\n", main->map_data->player_pos.y, main->map_data->player_pos.x);
 	// printf("orientation is [%c]\n", main->map_data->player_orientation);
 	// printf("map height is [%i] map width is [%i]\n", main->map_data->map_height, main->map_data->map_width);
 	// int	i = 0;

@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 20:28:55 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:14:07 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@
 // 	t_point	start_point;
 // 	t_point	end_point;
 
-// 	start_point.x = (main->player->position.x) / TILESIZE
+// 	start_point.x = (main->player->pos.x) / TILESIZE
 // 		* main->mlx->width / MINIMAP_SIZE / main->map_data->map_width;
-// 	start_point.y = (main->player->position.y) / TILESIZE
+// 	start_point.y = (main->player->pos.y) / TILESIZE
 // 		* main->mlx->height / MINIMAP_SIZE / main->map_data->map_height;
 // 	end_point.x = start_point.x + (main->player->delta.x / TILESIZE
 // 			* main->mlx->width / MINIMAP_SIZE / main->map_data->map_width) * 5;
@@ -108,8 +108,8 @@
 // 	t_point	start_point;
 // 	t_point	end_point;
 
-// 	start_point.x = main->player->position.x;
-// 	start_point.y = main->player->position.y;
+// 	start_point.x = main->player->pos.x;
+// 	start_point.y = main->player->pos.y;
 // 	end_point.x = start_point.x + (main->player->delta.x / 2);
 // 	end_point.y = start_point.y + (main->player->delta.y / 2);
 // 	draw_line(start_point, end_point, main, 65535);
@@ -150,6 +150,8 @@ void	loop_hooks(void *param)
 
 	main = (t_main *)param;
 	// init_background(main);
+	ft_bzero(main->image->pixels, main->mlx->width * main->mlx->height
+		* sizeof(uint32_t));
 	ft_memcpy(main->image->pixels, main->background->pixels, main->mlx->width
 		* main->mlx->height * sizeof(uint32_t));
 	// draw_rays(main);

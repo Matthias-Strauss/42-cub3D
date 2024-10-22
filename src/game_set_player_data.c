@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 21:20:31 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 21:47:45 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:14:07 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 
 // void	set_player_data(t_main *main)
 // {
-// 	main->player->position.x = main->map_data->player_position.x * TILESIZE
+// 	main->player->pos.x = main->map_data->player_pos.x * TILESIZE
 // 		+ TILESIZE / 2;
-// 	main->player->position.y = main->map_data->player_position.y * TILESIZE
+// 	main->player->pos.y = main->map_data->player_pos.y * TILESIZE
 // 		+ TILESIZE / 2;
 // 	set_player_orientation(main);
 // 	main->player->delta.x = cos(main->player->angle) * PLAYEROFFSET;

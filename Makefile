@@ -3,7 +3,7 @@ NAME = cub3D
 
 # Compiler and Flags
 CC = cc
-CFLAGS = -g -fsanitize=address -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops
+CFLAGS = -g -fsanitize=address -Wall -Werror -Wextra #-Ofast -ffast-math -march=native -mtune=native -funroll-loops
 INC = -Iincludes/
 
 # Directories
@@ -37,7 +37,8 @@ SRC = main.c \
 	  game_arrow_keys.c\
 	  game_wasd_keys.c\
 	  free_utils.c\
-	  game_minimap.c
+	  game_minimap.c\
+	  texture_utils.c
 
 
 # Object Files

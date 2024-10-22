@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/21 15:24:27 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:14:07 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include "error_codes.h"
 # include <fcntl.h>
+# include <float.h>
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -25,28 +26,28 @@
 # define WIDTH 2560  // 2400
 # define HEIGHT 1440 // 1200
 # define TILESIZE 64 // messes up raycaster when changed
-# define PLAYEROFFSET 5
-# define ANGLE_INCREMENT 0.0174533 // ray angle increment value
-# define RD 64                     // render distance
-# define FOV 64                    // field of view
-# define LT WIDTH / FOV            // line thickness
-# define MINIMAP_SIZE 6            // 1 is whole screen
-# define PLAYER_SPEED 1            // player speed
-# define ROTATION_SPEED 0.1        // player rotation speed
+// # define PLAYEROFFSET 5
+// # define ANGLE_INCREMENT 0.0174533 // ray angle increment value
+// # define RD 64              // render distance
+// # define LT WIDTH / FOV     // line thickness
+# define MINIMAP_SIZE 6     // 1 is whole screen
+# define PLAYER_SPEED 1     // player speed
+# define ROTATION_SPEED 0.1 // player rotation speed
 
 # define WALL_COLOR_X 0x00FF00FF
 # define WALL_COLOR_Y 0x0000FFFF
 # define TEXTURE_SIZE 512
+# define FOV 0.66 // field of view
 
 //// random sht by matt
 
-typedef enum e_direction
+typedef enum e_dir
 {
 	NORTH,
 	EAST,
 	SOUTH,
 	WEST
-}					t_direction;
+}					t_dir;
 
 typedef struct s_point
 {
@@ -62,22 +63,23 @@ typedef struct s_vec
 
 typedef struct s_player
 {
-	t_point			position;
-	t_point			direction;
-	t_point			plane;
+	t_vec			pos;
+	t_vec			dir;
+	t_vec			plane;
 	int				pitch;
 	int				speed;
 }					t_player;
 
 typedef struct s_ray
 {
-	double			camera_x;
+	double			cam_x;
 	double			perpendicular_wall_dist;
-	t_vec			ray_dir;
-	t_point			map_box;
+	t_vec			dir;
+	t_point			map_tile;
 	t_vec			side_dist;
 	t_vec			delta_dist;
 	t_point			step;
+	bool			hit;
 	int				side;
 	double			wall_hit_x;
 	int				texture_x;
@@ -141,14 +143,14 @@ typedef struct s_map_data
 	int				map_width;
 	int				map_height;
 	char			player_orientation;
-	t_point			player_position;
+	t_point			player_pos;
 }					t_map_data;
 
 //////////////////////////////////////////////////////////////////////////////
 
 // typedef struct s_player
 // {
-// 	t_point			position;
+// 	t_point			pos;
 // 	t_point			delta;
 // 	double			angle;
 // }					t_player;
@@ -204,6 +206,7 @@ void				step_y(t_ray *ray);
 void				dda_algo(t_main *main, t_ray *ray);
 void				create_2d_map_squared(t_main *main);
 void				fps(void *param);
+void				load_textures(t_main *main);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -245,7 +248,7 @@ void				check_map_coor(t_main *main);
 
 // parse_get_missing_information.c
 
-void				get_player_position(t_map_data *map_data);
+void				get_player_pos(t_map_data *map_data);
 void				get_map_dimensions(t_map_data *map_data);
 
 // parse_check_for_garbage.c
