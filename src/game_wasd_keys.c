@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 00:44:12 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 21:04:49 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/22 21:10:05 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	w_key(t_main *main, t_vec *pos, t_vec dist, t_point r)
 			pos->y += dist.y;
 			pos->x += dist.x;
 		}
-		r.x = 1;
 	}
 }
 
