@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 00:44:12 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 20:46:48 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/22 21:04:49 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ void	w_key(t_main *main, t_vec *pos, t_vec dist, t_point r)
 	{
 		new.y = (int)(pos->y + dist.y);
 		new.x = (int)(pos->x + dist.x);
-		printf("%i, %i\n", new.x, new.y);
-		if (new.x < 0 || new.y < 0)
-			write(1, "HI\n", 3);
 		if (main->map_data->map_coor[new.y][new.x] != '1'
 			&& (main->map_data->map_coor[r.y][new.x] != '1'
 				|| main->map_data->map_coor[new.y][r.x] != '1'))
