@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 00:44:12 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 19:48:32 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/22 20:46:48 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ void	w_key(t_main *main, t_vec *pos, t_vec dist, t_point r)
 
 	if (mlx_is_key_down(main->mlx, MLX_KEY_W))
 	{
-		new.x = (int)(pos->x + dist.y);
-		new.y = (int)(pos->y - dist.x);
+		new.y = (int)(pos->y + dist.y);
+		new.x = (int)(pos->x + dist.x);
+		printf("%i, %i\n", new.x, new.y);
+		if (new.x < 0 || new.y < 0)
+			write(1, "HI\n", 3);
 		if (main->map_data->map_coor[new.y][new.x] != '1'
 			&& (main->map_data->map_coor[r.y][new.x] != '1'
 				|| main->map_data->map_coor[new.y][r.x] != '1'))
@@ -27,6 +30,7 @@ void	w_key(t_main *main, t_vec *pos, t_vec dist, t_point r)
 			pos->y += dist.y;
 			pos->x += dist.x;
 		}
+		r.x = 1;
 	}
 }
 
@@ -72,8 +76,8 @@ void	d_key(t_main *main, t_vec *pos, t_vec dist, t_point r)
 
 	if (mlx_is_key_down(main->mlx, MLX_KEY_D))
 	{
-		new.x = (int)(pos->x - dist.y);
 		new.y = (int)(pos->y + dist.x);
+		new.x = (int)(pos->x - dist.y);
 		if (main->map_data->map_coor[new.y][new.x] != '1'
 			&& (main->map_data->map_coor[r.y][new.x] != '1'
 				|| main->map_data->map_coor[new.y][r.x] != '1'))
