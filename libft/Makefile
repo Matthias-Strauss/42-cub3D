@@ -58,7 +58,7 @@ OBJECTS		= $(SRCS:%.c=%.o)
 BONUS_OBJS	= $(BONUS:%.c=%.o)
 INC			= -Iincludes/
 CC			= cc
-CFLAGS		= -g -fsanitize=address -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops
+CFLAGS		= -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops
 
 all: $(NAME)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 13:14:07 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 21:39:02 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 // # define RD 64              // render distance
 // # define LT WIDTH / FOV     // line thickness
 # define MINIMAP_SIZE 6     // 1 is whole screen
-# define PLAYER_SPEED 1     // player speed
+# define PLAYER_SPEED 0.1     // player speed
 # define ROTATION_SPEED 0.1 // player rotation speed
 
 # define WALL_COLOR_X 0x00FF00FF
@@ -67,7 +67,9 @@ typedef struct s_player
 	t_vec			dir;
 	t_vec			plane;
 	int				pitch;
-	int				speed;
+	double			speed;
+	double			cos_rot;
+	double			sin_rot;
 }					t_player;
 
 typedef struct s_ray

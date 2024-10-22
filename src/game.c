@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 13:14:07 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 21:39:36 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	set_player_data(t_main *main)
 	main->time = 0;
 	main->fps = 0;
 	main->tmpfps = 0;
+	main->player->cos_rot = cos(ROTATION_SPEED);
+	main->player->sin_rot = sin(ROTATION_SPEED);
 }
 
 void	init_data(t_main *main)
