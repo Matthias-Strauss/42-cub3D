@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:21:34 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/22 13:14:12 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:35:49 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_new_ray(t_player *player, t_ray *ray, int x, int width)
 {
 	ray->hit = false;
 	ray->side = 0;
-	ray->cam_x = (double)(2 * x) / (double)(width - 1);
+	ray->cam_x = (double)(2 * x) / (double)width - 1;
 	ray->dir.x = player->dir.x + (player->plane.x * ray->cam_x);
 	ray->dir.y = player->dir.y + (player->plane.y * ray->cam_x);
 	ray->map_tile.x = (int)player->pos.x;
@@ -92,8 +92,6 @@ void	get_wall_hit_x_pos(t_ray *ray, t_player *player)
 	ray->wall_hit_x -= floor(ray->wall_hit_x);
 }
 
-// unsure about correctness, check later when compilable
-//
 void	get_texture_x(t_ray *ray)
 {
 	ray->texture_x = (int)(ray->wall_hit_x * (double)TEXTURE_SIZE);
@@ -105,25 +103,23 @@ void	get_texture_x(t_ray *ray)
 
 void	draw_vert_stripe(t_ray *ray, t_main *main, int x)
 {
-	int			i;
-	int			texture_y;
-	double		step;
-	double		texture_pos;
-	uint32_t	color;
+	int		y;
+	int		texture_y;
+	double	step;
+	double	texture_pos;
 
-	i = ray->line_start - 1;
+	y = ray->line_start - 1;
 	step = (TEXTURE_SIZE * 1.0) / ray->line_height;
-	// cast TEXTURE_SIZE to double?
 	texture_pos = (ray->line_start - main->player->pitch - (main->mlx->height
-				+ ray->line_height) / 2) * step;
-	while (++i < ray->line_end)
+				- ray->line_height) / 2) * step;
+	while (++y < ray->line_end)
 	{
 		texture_y = (int)texture_pos & (TEXTURE_SIZE - 1);
 		// bitwise is faster than modulus
 		texture_pos += step;
-		color = main->textures[ray->side]->pixels[TEXTURE_SIZE * texture_y
-			+ ray->texture_x];
-		mlx_put_pixel(main->image, x, i, color);
+		ft_memcpy(&main->image->pixels[(y * main->image->width + x) * 4],
+			&main->textures[ray->side]->pixels[(TEXTURE_SIZE * texture_y
+				+ ray->texture_x) * 4], sizeof(uint8_t) * 4);
 	}
 }
 
@@ -133,7 +129,6 @@ void	render_3d(t_main *main)
 	t_ray		ray;
 	int			x;
 
-	// init_new_structs();
 	player = main->player;
 	x = -1;
 	while (++x < main->mlx->width)

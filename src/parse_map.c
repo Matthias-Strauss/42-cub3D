@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 13:14:07 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:31:14 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ void	create_2d_map_squared(t_main *main)
 	{
 		map[i] = ft_calloc(main->map_data->map_width + 1, sizeof(char));
 		tmp_len = ft_strlen(old_map[i]);
-		ft_memcpy(map[i], old_map[i], tmp_len);
+		ft_memcpy(map[i], old_map[i], tmp_len * sizeof(char));
 		while (tmp_len < main->map_data->map_width)
 		{
 			map[i][tmp_len] = '1';
 			tmp_len++;
 		}
+		map[i][tmp_len] = '\0';
 	}
 	free_matrix(old_map);
 	main->map_data->map_coor = map;
