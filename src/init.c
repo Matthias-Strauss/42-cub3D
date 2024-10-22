@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:22 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/21 15:25:04 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 22:04:25 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	init_parser_struct(t_main *main)
 {
-	main->parser = calloc(sizeof(t_parser), 1);
+	main->parser = ft_calloc(sizeof(t_parser), 1);
 	if (main->parser == NULL)
 		error_exit(main, ERR_UAM);
 }
 
 void	init_map_data_struct(t_main *main)
 {
-	main->map_data = calloc(sizeof(t_map_data), 1);
+	main->map_data = ft_calloc(sizeof(t_map_data), 1);
 	if (main->map_data == NULL)
 		error_exit(main, ERR_UAM);
 	main->map_data->player_orientation = '\1';
@@ -29,7 +29,7 @@ void	init_map_data_struct(t_main *main)
 
 void	init_player_struct(t_main *main)
 {
-	main->player = calloc(sizeof(t_player), 1);
+	main->player = ft_calloc(sizeof(t_player), 1);
 	if (main->player == NULL)
 		error_exit(main, ERR_UAM);
 	main->player->pitch = 100;
@@ -40,7 +40,7 @@ t_main	*init_main_struct(void)
 {
 	t_main	*main;
 
-	main = calloc(sizeof(t_main), 1);
+	main = ft_calloc(sizeof(t_main), 1);
 	if (main == NULL)
 		error_exit(main, ERR_UAM);
 	return (main);
