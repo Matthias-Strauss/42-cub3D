@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_get_missing_information.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 14:19:17 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 13:14:07 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/22 21:46:02 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	get_player_pos(t_map_data *map_data)
 			{
 				map_data->player_pos.y = y;
 				map_data->player_pos.x = x;
+				map_data->map_coor[y][x] = '0';
 				return ;
 			}
 			x++;
