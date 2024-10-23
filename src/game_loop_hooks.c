@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop_hooks.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 13:14:07 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:22:36 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,12 +149,10 @@ void	loop_hooks(void *param)
 	t_main	*main;
 
 	main = (t_main *)param;
-	// init_background(main);
 	ft_bzero(main->image->pixels, main->mlx->width * main->mlx->height
 		* sizeof(uint32_t));
 	ft_memcpy(main->image->pixels, main->background->pixels, main->mlx->width
 		* main->mlx->height * sizeof(uint32_t));
-	// draw_rays(main);
 	render_3d(main);
 	draw_minimap(main);
 }

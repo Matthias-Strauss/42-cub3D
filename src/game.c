@@ -6,16 +6,14 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 21:39:36 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:21:13 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	set_player_data(t_main *main)
+void	set_orientation(t_main *main)
 {
-	main->player->pos.x = main->map_data->player_pos.x + 1.0 / 2.0;
-	main->player->pos.y = main->map_data->player_pos.y + 1.0 / 2.0;
 	if (main->map_data->player_orientation == 'N')
 	{
 		main->player->dir.x = 0;
@@ -36,6 +34,13 @@ void	set_player_data(t_main *main)
 		main->player->dir.x = -1;
 		main->player->dir.y = 0;
 	}
+}
+
+void	set_player_data(t_main *main)
+{
+	main->player->pos.x = main->map_data->player_pos.x + 1.0 / 2.0;
+	main->player->pos.y = main->map_data->player_pos.y + 1.0 / 2.0;
+	set_orientation(main);
 	main->player->plane.x = -main->player->dir.y * 0.66;
 	main->player->plane.y = main->player->dir.x * 0.66;
 	main->player->pitch = 100;
