@@ -3,19 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:36:14 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/21 15:24:27 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:01:05 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	leaks(void)
+{
+	system("leaks cub3D");
+}
+
 int	main(int ac, char **av)
 {
 	t_main	*main;
 
+	atexit(leaks);
 	main = init_structs();
 	parse_arguments(ac, av, main);
 	init_data(main);

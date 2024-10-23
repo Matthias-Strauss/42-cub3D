@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:28:23 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/22 22:11:06 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:15:04 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 
 void	load_textures(t_main *main)
 {
+	main->textures[0] = NULL;
+	main->textures[1] = NULL;
+	main->textures[2] = NULL;
+	main->textures[3] = NULL;
 	main->textures[0] = mlx_load_png(main->map_data->north_texture);
 	if (main->textures[0] == NULL)
 		error_exit(main, mlx_errno);
@@ -31,7 +35,5 @@ void	load_textures(t_main *main)
 	main->textures[3] = mlx_load_png(main->map_data->west_texture);
 	if (main->textures[3] == NULL)
 		error_exit(main, mlx_errno);
-	// main->textures[3] = mlx_load_png("./textures/floor.png");
-	// main->textures[4] = mlx_load_png("./textures/ceiling.png");
 	main->textures[4] = NULL;
 }
