@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:21:34 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/24 16:56:05 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:33:10 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	draw_vert_stripe(t_ray *ray, t_main *main, int x)
 	}
 }
 
-void	draw_floor_and_ceiling(t_main *main)
+void	draw_floor(t_main *main)
 {
 	int		y;
 	int		x;
@@ -136,18 +136,15 @@ void	draw_floor_and_ceiling(t_main *main)
 	t_point	map_tile;
 	t_point	texture;
 
-	y = main->mlx->height / 2 - 1;
+	y = main->mlx->height / 2 - 1 + main->player->pitch;
 	while (++y < main->mlx->height)
 	{
 		ray_left.dir.x = main->player->dir.x - main->player->plane.x;
 		ray_left.dir.y = main->player->dir.y - main->player->plane.y;
 		ray_right.dir.x = main->player->dir.x + main->player->plane.x;
 		ray_right.dir.y = main->player->dir.y + main->player->plane.y;
-		pos.y = y - main->mlx->height / 2 + main->player->pitch;
+		pos.y = y - main->mlx->height / 2 - main->player->pitch;
 		pos.z = main->mlx->height / 2;
-		// if (pos.y == 0)
-		// 	dist = pos.z / DBL_MAX;
-		// else
 		dist = pos.z / pos.y;
 		step.x = dist * (ray_right.dir.x - ray_left.dir.x) / main->mlx->width;
 		step.y = dist * (ray_right.dir.y - ray_left.dir.y) / main->mlx->width;
@@ -158,16 +155,57 @@ void	draw_floor_and_ceiling(t_main *main)
 		{
 			map_tile.x = (int)floor.x;
 			map_tile.y = (int)floor.y;
-			texture.x = (int)(main->textures[CEILING]->width * (floor.x
-						- map_tile.x)) & (main->textures[CEILING]->width - 1);
-			texture.y = (int)(main->textures[CEILING]->height * (floor.y
-						- map_tile.y)) & (main->textures[CEILING]->height - 1);
+			texture.x = (int)(main->textures[FLOOR]->width * (floor.x
+						- map_tile.x)) & (main->textures[FLOOR]->width - 1);
+			texture.y = (int)(main->textures[FLOOR]->height * (floor.y
+						- map_tile.y)) & (main->textures[FLOOR]->height - 1);
 			floor.x += step.x;
 			floor.y += step.y;
-			// CHANGE BACK TO LIBFT
 			ft_memcpy(&main->image->pixels[(y * main->image->width + x) * 4],
 				&main->textures[FLOOR]->pixels[(main->textures[FLOOR]->width
 					* texture.y + texture.x) * 4], sizeof(uint8_t) * 4);
+		}
+	}
+}
+
+void	draw_ceiling(t_main *main)
+{
+	int		y;
+	int		x;
+	t_ray	ray_left;
+	t_ray	ray_right;
+	t_yz	pos;
+	t_vec	step;
+	double	dist;
+	t_vec	ceiling;
+	t_point	map_tile;
+	t_point	texture;
+
+	y = main->mlx->height / 2 - 1 - main->player->pitch;
+	while (++y < main->mlx->height)
+	{
+		ray_left.dir.x = main->player->dir.x - main->player->plane.x;
+		ray_left.dir.y = main->player->dir.y - main->player->plane.y;
+		ray_right.dir.x = main->player->dir.x + main->player->plane.x;
+		ray_right.dir.y = main->player->dir.y + main->player->plane.y;
+		pos.y = y - main->mlx->height / 2 + main->player->pitch;
+		pos.z = main->mlx->height / 2;
+		dist = pos.z / pos.y;
+		step.x = dist * (ray_right.dir.x - ray_left.dir.x) / main->mlx->width;
+		step.y = dist * (ray_right.dir.y - ray_left.dir.y) / main->mlx->width;
+		ceiling.x = main->player->pos.x + dist * ray_left.dir.x;
+		ceiling.y = main->player->pos.y + dist * ray_left.dir.y;
+		x = -1;
+		while (++x < main->mlx->width)
+		{
+			map_tile.x = (int)ceiling.x;
+			map_tile.y = (int)ceiling.y;
+			texture.x = (int)(main->textures[CEILING]->width * (ceiling.x
+						- map_tile.x)) & (main->textures[CEILING]->width - 1);
+			texture.y = (int)(main->textures[CEILING]->height * (ceiling.y
+						- map_tile.y)) & (main->textures[CEILING]->height - 1);
+			ceiling.x += step.x;
+			ceiling.y += step.y;
 			ft_memcpy(&main->image->pixels[((main->mlx->height - y - 1)
 					* main->image->width + x) * 4],
 				&main->textures[CEILING]->pixels[(main->textures[CEILING]->width

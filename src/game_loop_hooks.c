@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/24 16:35:52 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:31:45 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@
 // 		* main->mlx->height * sizeof(uint32_t));
 // }
 
-
-
 void	loop_hooks(void *param)
 {
 	t_main	*main;
@@ -49,7 +47,8 @@ void	loop_hooks(void *param)
 	ft_bzero(main->image->pixels, main->mlx->width * main->mlx->height
 		* sizeof(uint32_t));
 	// draw_background(main);
-	draw_floor_and_ceiling(main);
+	draw_floor(main);
+	draw_ceiling(main);
 	render_3d(main);
 	draw_minimap(main);
 }

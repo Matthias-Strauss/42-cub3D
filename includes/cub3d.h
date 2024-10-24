@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/24 15:27:41 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:32:02 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ typedef struct s_point
 
 typedef struct s_yz
 {
-	double				y;
-	double				z;
+	double			y;
+	double			z;
 }					t_yz;
 
 typedef struct s_vec
@@ -97,7 +97,6 @@ typedef struct s_ray
 	int				line_start;
 	int				line_end;
 }					t_ray;
-
 
 /*
 typedef struct mlx_texture
@@ -218,7 +217,8 @@ void				dda_algo(t_main *main, t_ray *ray);
 void				create_2d_map_squared(t_main *main);
 void				fps(void *param);
 void				load_textures(t_main *main);
-void				draw_floor_and_ceiling(t_main *main);
+void				draw_floor(t_main *main);
+void				draw_ceiling(t_main *main);
 
 //////////////////////////////////////////////////////////////////////////////
 
