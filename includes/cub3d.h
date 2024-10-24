@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 21:39:02 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:27:41 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@
 // # define RD 64              // render distance
 // # define LT WIDTH / FOV     // line thickness
 # define MINIMAP_SIZE 6     // 1 is whole screen
-# define PLAYER_SPEED 0.1     // player speed
+# define PLAYER_SPEED 0.1   // player speed
 # define ROTATION_SPEED 0.1 // player rotation speed
 
-# define WALL_COLOR_X 0x00FF00FF
-# define WALL_COLOR_Y 0x0000FFFF
+// # define WALL_COLOR_X 0x00FF00FF
+// # define WALL_COLOR_Y 0x0000FFFF
 # define TEXTURE_SIZE 512
-# define FOV 0.66 // field of view
+# define FOV 0.9 // field of view
 
 //// random sht by matt
 
@@ -46,7 +46,9 @@ typedef enum e_dir
 	NORTH,
 	EAST,
 	SOUTH,
-	WEST
+	WEST,
+	CEILING,
+	FLOOR,
 }					t_dir;
 
 typedef struct s_point
@@ -54,6 +56,12 @@ typedef struct s_point
 	int				x;
 	int				y;
 }					t_point;
+
+typedef struct s_yz
+{
+	double				y;
+	double				z;
+}					t_yz;
 
 typedef struct s_vec
 {
@@ -89,6 +97,7 @@ typedef struct s_ray
 	int				line_start;
 	int				line_end;
 }					t_ray;
+
 
 /*
 typedef struct mlx_texture
@@ -194,7 +203,7 @@ typedef struct s_main
 	mlx_image_t		*image;
 	mlx_image_t		*background;
 	mlx_image_t		*minimap;
-	mlx_texture_t	*textures[5];
+	mlx_texture_t	*textures[7];
 	double			time;
 	double			tmpfps;
 	double			fps;
@@ -209,6 +218,7 @@ void				dda_algo(t_main *main, t_ray *ray);
 void				create_2d_map_squared(t_main *main);
 void				fps(void *param);
 void				load_textures(t_main *main);
+void				draw_floor_and_ceiling(t_main *main);
 
 //////////////////////////////////////////////////////////////////////////////
 

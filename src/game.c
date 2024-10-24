@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 21:39:36 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:29:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	set_player_data(t_main *main)
 		main->player->dir.x = -1;
 		main->player->dir.y = 0;
 	}
-	main->player->plane.x = -main->player->dir.y * 0.66;
-	main->player->plane.y = main->player->dir.x * 0.66;
+	main->player->plane.x = -main->player->dir.y * FOV;
+	main->player->plane.y = main->player->dir.x * FOV;
 	main->player->pitch = 100;
 	main->player->speed = PLAYER_SPEED;
 	main->time = 0;
@@ -53,19 +53,20 @@ void	init_data(t_main *main)
 	int32_t	height;
 
 	set_player_data(main);
-	// mlx_set_setting(MLX_FULLSCREEN, true);
+	mlx_set_setting(MLX_FULLSCREEN, true);
 	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (main->mlx == NULL)
 		error_exit(main, mlx_errno);
 	mlx_get_monitor_size(0, &width, &height);
 	mlx_set_window_size(main->mlx, width, height);
 	main->image = mlx_new_image(main->mlx, main->mlx->width, main->mlx->height);
-	main->background = mlx_new_image(main->mlx, main->mlx->width,
-			main->mlx->height);
-	init_background(main);
+	// main->background = mlx_new_image(main->mlx, main->mlx->width,
+	// 		main->mlx->height);
+	// init_background(main);
 	main->minimap = mlx_new_image(main->mlx, main->mlx->width / MINIMAP_SIZE,
 			main->mlx->height / MINIMAP_SIZE);
-	mlx_image_to_window(main->mlx, main->background, 0, 0);
+	// mlx_set_cursor_mode(main->mlx, MLX);
+	// mlx_image_to_window(main->mlx, main->background, 0, 0);
 	mlx_image_to_window(main->mlx, main->image, 0, 0);
 	mlx_image_to_window(main->mlx, main->minimap, main->mlx->width * 0.01,
 		main->mlx->height * 0.01);
