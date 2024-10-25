@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:56:40 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/20 20:26:52 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:01:35 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,23 @@ void	free_player_struct(t_main *main)
 	}
 }
 
+void	free_textures(t_main *main)
+{
+	int	i;
+
+	i = 0;
+	while (main->textures[i])
+	{
+		mlx_delete_texture(main->textures[i]);
+		i++;
+	}
+}
+
 void	free_structs(t_main *main)
 {
 	free_parser_struct(main);
 	free_map_data_struct(main);
 	free_player_struct(main);
+	free_textures(main);
 	safe_free(main);
 }
