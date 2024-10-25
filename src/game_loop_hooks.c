@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 16:15:59 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:22:55 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ void	loop_hooks(void *param)
 		draw_background_colored(main);
 	if (main->texture_toggle_walls == true)
 		render_3d_textured(main);
-	// else
-	// 	render_3d_coloured(main);
+	else
+		render_3d_colored(main);
 	draw_minimap(main);
 	wasd_keys(((t_main *)main));
 	arrow_keys((t_main *)main);
 	mouse_movement((t_main *)main);
 	change_player_height((t_main *)main);
+	main->frame++;
 	// crouch((t_main *)main);
 }

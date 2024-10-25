@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 16:50:43 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 17:45:11 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	toggle_sky(mlx_key_data_t keydata, t_main *main)
 void	toggle_wall_texture(mlx_key_data_t keydata, t_main *main)
 {
 	if (keydata.key == MLX_KEY_T && keydata.action == MLX_PRESS)
-		main->texture_toggle_floor = !main->texture_toggle_floor;
+		main->texture_toggle_walls = !main->texture_toggle_walls;
 }
 
 void	key_hooks(mlx_key_data_t keydata, void *main)

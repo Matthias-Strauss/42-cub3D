@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 16:57:10 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:21:07 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,8 @@ typedef struct s_main
 	mlx_image_t		*background;
 	mlx_image_t		*minimap;
 	mlx_texture_t	*textures[7];
+	uint8_t			colors[1016];
+	uint_fast64_t	frame;
 	float			time;
 	float			tmpfps;
 	float			fps;
@@ -235,7 +237,8 @@ void				mouse_movement(t_main *main);
 void				change_player_height(t_main *main);
 void				toggle_wall_texture(mlx_key_data_t keydata, t_main *main);
 void				toggle_sky(mlx_key_data_t keydata, t_main *main);
-
+void				pre_calc_colors(t_main *main);
+void				render_3d_colored(t_main *main);
 //////////////////////////////////////////////////////////////////////////////
 
 // init.c

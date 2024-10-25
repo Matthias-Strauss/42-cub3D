@@ -13,35 +13,38 @@ LIBFT_DIR = libft
 MLX_DIR = MLX42
 
 # Source Files
-SRC = main.c \
-	  init.c \
-	  parser.c \
-	  parse_basic.c \
-	  parse_copy_map.c \
-	  parse_map.c \
-	  parse_set_types.c \
-	  parse_utils.c \
-	  parse_get_map_layout.c \
-	  parse_check_map_layout.c \
-	  parse_get_missing_information.c \
-	  parse_check_for_garbage.c \
-	  parse_convert_colors.c \
-	  game.c \
-	  game_key_hooks.c \
-	  game_loop_hooks.c \
-	  draw_line.c \
-	  free.c \
-	  error.c \
-	  rendering.c\
-	  rendering_dda_algo.c\
-	  game_arrow_keys.c\
-	  game_wasd_keys.c\
-	  free_utils.c\
-	  game_minimap.c\
-	  game_mouse.c\
-	  game_change_player_size.c\
-	  render_background.c\
-	  texture_utils.c
+SRC = main.c							\
+	  init.c							\
+	  parser.c							\
+	  parse_basic.c						\
+	  parse_copy_map.c					\
+	  parse_map.c						\
+	  parse_set_types.c					\
+	  parse_utils.c						\
+	  parse_get_map_layout.c			\
+	  parse_check_map_layout.c			\
+	  parse_get_missing_information.c	\
+	  parse_check_for_garbage.c			\
+	  parse_convert_colors.c			\
+	  game.c							\
+	  game_key_hooks.c					\
+	  game_loop_hooks.c					\
+	  draw_line.c						\
+	  free.c							\
+	  error.c							\
+	  render_3d_textured.c				\
+	  render_3d_colored.c				\
+	  rendering_dda_algo.c				\
+	  game_arrow_keys.c					\
+	  game_wasd_keys.c					\
+	  free_utils.c						\
+	  game_minimap.c					\
+	  game_mouse.c						\
+	  game_change_player_size.c			\
+	  render_env_color.c				\
+	  render_env_textured.c				\
+	  texture_utils.c					\
+	  colors.c
 
 
 # Object Files

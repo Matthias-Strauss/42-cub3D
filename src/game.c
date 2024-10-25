@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 17:00:43 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:22:05 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	set_player_data(t_main *main)
 
 void	set_toggles(t_main *main)
 {
-	main->texture_toggle_walls = true;
-	main->texture_toggle_floor = true;
+	main->texture_toggle_walls = false;
+	main->texture_toggle_floor = false;
 }
 
 void	init_data(t_main *main)
@@ -66,6 +66,8 @@ void	init_data(t_main *main)
 
 	set_player_data(main);
 	set_toggles(main);
+	pre_calc_colors(main);
+	main->frame = 0;
 	mlx_set_setting(MLX_FULLSCREEN, true);
 	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (main->mlx == NULL)
