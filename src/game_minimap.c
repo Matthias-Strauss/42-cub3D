@@ -6,13 +6,13 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 02:50:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 20:38:46 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/25 21:00:27 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-uint32_t	ret_color(int_fast32_t r, int_fast32_t g, int_fast32_t b, int_fast32_t a)
+uint32_t	retc(int_fast32_t r, int_fast32_t g, int_fast32_t b, int_fast32_t a)
 {
 	return (r << 24 | g << 16 | b << 8 | a);
 }
@@ -24,9 +24,9 @@ void	draw_tile_minimap(t_main *main, int_fast32_t y, int_fast32_t x, char id)
 	int_fast32_t	color;
 
 	if (id == '1')
-		color = ret_color(75, 75, 75, 255);
+		color = retc(75, 75, 75, 255);
 	else
-		color = ret_color(139, 69, 19, 255);
+		color = retc(139, 69, 19, 255);
 	x = x * main->mlx->width / MINIMAP_SIZE / main->map_data->map_width;
 	y = y * main->mlx->height / MINIMAP_SIZE / main->map_data->map_height;
 	ii = 0;
@@ -46,7 +46,7 @@ void	draw_player_minimap(t_main *main)
 {
 	int_fast32_t		x_i;
 	int_fast32_t		y_i;
-	t_point	player;
+	t_point				player;
 
 	player.x = (main->player->pos.x) * main->mlx->width
 		/ MINIMAP_SIZE / main->map_data->map_width;
@@ -67,7 +67,7 @@ void	draw_player_minimap(t_main *main)
 
 void	draw_minimap(t_main *main)
 {
-	char	**map;
+	char				**map;
 	int_fast32_t		y;
 	int_fast32_t		x;
 

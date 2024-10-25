@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_wasd_keys.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 00:44:12 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 13:22:44 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:57:59 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ void	d_key(t_main *main, t_vec *pos, t_vec dist, t_point r)
 
 void	wasd_keys(t_main *main)
 {
-	t_vec dist;
-	t_point pos_rounded;
+	t_vec	dist;
+	t_point	pos_rounded;
 
 	pos_rounded.x = (int_fast32_t)main->player->pos.x;
 	pos_rounded.y = (int_fast32_t)main->player->pos.y;
