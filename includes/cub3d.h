@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/24 21:04:50 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:03:56 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define WIDTH 2560  // 2400
 # define HEIGHT 1440 // 1200
-# define TILESIZE 64 // messes up raycaster when changed
+// # define TILESIZE 64 // messes up raycaster when changed
 // # define PLAYEROFFSET 5
 // # define ANGLE_INCREMENT 0.0174533 // ray angle increment value
 // # define RD 64              // render distance
@@ -34,7 +34,7 @@
 # define MINIMAP_SIZE 6     // 1 is whole screen
 # define PLAYER_SPEED 0.1   // player speed
 # define ROTATION_SPEED 0.1 // player rotation speed
-
+# define MAX_PITCH 500      // max pitch
 // # define WALL_COLOR_X 0x00FF00FF
 // # define WALL_COLOR_Y 0x0000FFFF
 # define TEXTURE_SIZE 512

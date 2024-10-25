@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:21:34 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/25 12:58:19 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:43:55 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,33 +98,37 @@ void	get_wall_hit_x_pos(t_ray *ray, t_player *player)
 	ray->wall_hit_x -= floor(ray->wall_hit_x);
 }
 
-void	get_texture_x(t_ray *ray)
+void	get_texture_x(t_main *main, t_ray *ray)
 {
-	ray->texture_x = (int_fast32_t)(ray->wall_hit_x * (float)TEXTURE_SIZE);
+	ray->texture_x = (int_fast32_t)(ray->wall_hit_x
+			* (float)main->textures[ray->side]->width);
 	if ((ray->side == EAST || ray->side == WEST) && ray->dir.x > 0)
-		ray->texture_x = TEXTURE_SIZE - ray->texture_x - 1;
+		ray->texture_x = main->textures[ray->side]->width - ray->texture_x - 1;
 	if ((ray->side == NORTH || ray->side == SOUTH) && ray->dir.y < 0)
-		ray->texture_x = TEXTURE_SIZE - ray->texture_x - 1;
+		ray->texture_x = main->textures[ray->side]->width - ray->texture_x - 1;
 }
 
 void	draw_vert_stripe(t_ray *ray, t_main *main, int_fast32_t x)
 {
 	int_fast32_t	y;
 	int_fast32_t	texture_y;
+	int_fast32_t	texture_size;
 	float			step;
 	float			texture_pos;
 
 	y = ray->line_start - 1;
-	step = (TEXTURE_SIZE * 1.0) / ray->line_height;
+	texture_size = main->textures[ray->side]->width;
+	step = (texture_size * 1.0) / ray->line_height;
 	texture_pos = (ray->line_start + main->player->height - main->player->pitch
 			- (main->mlx->height - ray->line_height) / 2) * step;
 	while (++y < ray->line_end)
 	{
-		texture_y = (int_fast32_t)texture_pos; /* & (TEXTURE_SIZE - 1);*/
+		texture_y = (int_fast32_t)texture_pos & (texture_size - 1);
 		texture_pos += step;
-		ft_memcpy(&main->image->pixels[(y * main->image->width + x) * 4],
-			&main->textures[ray->side]->pixels[(TEXTURE_SIZE * texture_y
-				+ ray->texture_x) * 4], sizeof(uint8_t) * 4);
+		ft_memcpy(&main->image->pixels[(y * main->image->width + x)
+			* sizeof(uint8_t) * 4],
+			&main->textures[ray->side]->pixels[(texture_size * texture_y
+				+ ray->texture_x) * sizeof(uint8_t) * 4], sizeof(uint8_t) * 4);
 	}
 }
 
@@ -240,7 +244,7 @@ void	render_3d(t_main *main)
 		get_perp_wall_dist(&ray);
 		get_wall_height(&ray, main);
 		get_wall_hit_x_pos(&ray, player);
-		get_texture_x(&ray);
+		get_texture_x(main, &ray);
 		draw_vert_stripe(&ray, main, x);
 	}
 }

@@ -3,7 +3,7 @@ NAME = cub3D
 
 # Compiler and Flags
 CC = cc
-CFLAGS = -g -fsanitize=address -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops
+CFLAGS = -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops
 INC = -Iincludes/
 
 # Directories

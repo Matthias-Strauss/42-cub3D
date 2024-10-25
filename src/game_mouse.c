@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 21:41:41 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/24 19:35:11 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:56:09 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,9 @@ void	mouse_movement(t_main *main)
 	}
 	pitch_speed = 0.5;
 	player->pitch -= delta_y * pitch_speed;
+	if (player->pitch > MAX_PITCH)
+		player->pitch = MAX_PITCH;
+	else if (player->pitch < -MAX_PITCH)
+		player->pitch = -MAX_PITCH;
 	mlx_set_mouse_pos(main->mlx, main->mlx->width / 2, main->mlx->height / 2);
 }

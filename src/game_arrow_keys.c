@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 00:53:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/24 18:48:58 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:52:52 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ void	arrow_up(t_main *main)
 {
 	if (mlx_is_key_down(main->mlx, MLX_KEY_UP))
 	{
-		if (main->player->pitch < 800)
+		if (main->player->pitch < MAX_PITCH)
 			main->player->pitch += 20;
+		else
+			main->player->pitch = MAX_PITCH;
 	}
 }
 
@@ -69,8 +71,10 @@ void	arrow_down(t_main *main)
 {
 	if (mlx_is_key_down(main->mlx, MLX_KEY_DOWN))
 	{
-		if (main->player->pitch > -800)
+		if (main->player->pitch > -MAX_PITCH)
 			main->player->pitch -= 20;
+		else
+			main->player->pitch = -MAX_PITCH;
 	}
 }
 
