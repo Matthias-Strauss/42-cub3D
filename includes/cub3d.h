@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 15:03:56 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:05:19 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,7 @@ typedef struct s_main
 	float			time;
 	float			tmpfps;
 	float			fps;
+	bool			minimap_toggle;
 }					t_main;
 
 // random sht by matt			!!!! !!! !!! !!! !!!
@@ -305,7 +306,7 @@ void				end_game(t_main *main);
 
 // game_key_hooks.c
 
-void				key_hooks(void *main);
+void				key_hooks(mlx_key_data_t keydata, void *main);
 
 // game_wasd_keys.c
 
