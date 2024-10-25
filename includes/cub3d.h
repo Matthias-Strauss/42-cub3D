@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 15:03:56 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:07:44 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,19 +220,23 @@ typedef struct s_main
 	float			time;
 	float			tmpfps;
 	float			fps;
+	bool			texture_toggle_walls;
+	bool			texture_toggle_floor;
+	bool			minimap_toggle;
 }					t_main;
 
 // random sht by matt			!!!! !!! !!! !!! !!!
 void				init_background(t_main *main);
-void				render_3d(t_main *main);
+void				draw_background_colored(t_main *main);
+void				render_3d_textured(t_main *main);
 void				step_x(t_ray *ray);
 void				step_y(t_ray *ray);
 void				dda_algo(t_main *main, t_ray *ray);
 void				create_2d_map_squared(t_main *main);
 void				fps(void *param);
 void				load_textures(t_main *main);
-void				draw_floor(t_main *main);
-void				draw_ceiling(t_main *main);
+void				draw_floor_textured(t_main *main);
+void				draw_ceiling_textured(t_main *main);
 void				mouse_movement(t_main *main);
 void				change_player_height(t_main *main);
 

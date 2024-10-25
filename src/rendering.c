@@ -6,13 +6,13 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:21:34 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/25 14:43:55 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:54:07 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	get_perp_wall_dist(t_ray *ray)
+inline void	get_perp_wall_dist(t_ray *ray)
 {
 	if (ray->side == EAST || ray->side == WEST)
 		ray->perpendicular_wall_dist = ray->side_dist.x - ray->delta_dist.x;
@@ -20,7 +20,7 @@ void	get_perp_wall_dist(t_ray *ray)
 		ray->perpendicular_wall_dist = ray->side_dist.y - ray->delta_dist.y;
 }
 
-void	init_new_ray(t_player *player, t_ray *ray, int_fast32_t x,
+inline void	init_new_ray(t_player *player, t_ray *ray, int_fast32_t x,
 		int_fast32_t width)
 {
 	ray->hit = false;
@@ -40,7 +40,7 @@ void	init_new_ray(t_player *player, t_ray *ray, int_fast32_t x,
 		ray->delta_dist.y = fabs(1 / ray->dir.y);
 }
 
-void	get_side_dist(t_player *player, t_ray *ray)
+inline void	get_side_dist(t_player *player, t_ray *ray)
 {
 	if (ray->dir.x < 0)
 	{
@@ -68,7 +68,7 @@ void	get_side_dist(t_player *player, t_ray *ray)
 	}
 }
 
-void	get_wall_height(t_ray *ray, t_main *main)
+inline void	get_wall_height(t_ray *ray, t_main *main)
 {
 	int_fast32_t	pitch;
 	float			player_height;
@@ -87,7 +87,7 @@ void	get_wall_height(t_ray *ray, t_main *main)
 		ray->line_end = main->mlx->height - 1;
 }
 
-void	get_wall_hit_x_pos(t_ray *ray, t_player *player)
+inline void	get_wall_hit_x_pos(t_ray *ray, t_player *player)
 {
 	if (ray->side == EAST || ray->side == WEST)
 		ray->wall_hit_x = player->pos.y + ray->perpendicular_wall_dist
@@ -98,7 +98,7 @@ void	get_wall_hit_x_pos(t_ray *ray, t_player *player)
 	ray->wall_hit_x -= floor(ray->wall_hit_x);
 }
 
-void	get_texture_x(t_main *main, t_ray *ray)
+inline void	get_texture_x(t_main *main, t_ray *ray)
 {
 	ray->texture_x = (int_fast32_t)(ray->wall_hit_x
 			* (float)main->textures[ray->side]->width);
@@ -108,7 +108,7 @@ void	get_texture_x(t_main *main, t_ray *ray)
 		ray->texture_x = main->textures[ray->side]->width - ray->texture_x - 1;
 }
 
-void	draw_vert_stripe(t_ray *ray, t_main *main, int_fast32_t x)
+inline void	draw_vert_stripe(t_ray *ray, t_main *main, int_fast32_t x)
 {
 	int_fast32_t	y;
 	int_fast32_t	texture_y;
@@ -151,7 +151,7 @@ static inline void	init_ray_floor(t_main *main, t_z_ray *ray)
 	ray->pixel.x = -1;
 }
 
-void	draw_floor(t_main *main)
+inline void	draw_floor_textured(t_main *main)
 {
 	t_z_ray	ray;
 
@@ -199,7 +199,7 @@ static inline void	init_ray_ceiling(t_main *main, t_z_ray *ray)
 	ray->pixel.x = -1;
 }
 
-void	draw_ceiling(t_main *main)
+inline void	draw_ceiling_textured(t_main *main)
 {
 	t_z_ray	ray;
 
@@ -228,7 +228,7 @@ void	draw_ceiling(t_main *main)
 	}
 }
 
-void	render_3d(t_main *main)
+void	render_3d_textured(t_main *main)
 {
 	t_player		*player;
 	t_ray			ray;

@@ -40,6 +40,7 @@ SRC = main.c \
 	  game_minimap.c\
 	  game_mouse.c\
 	  game_change_player_size.c\
+	  render_background.c\
 	  texture_utils.c
 
 
