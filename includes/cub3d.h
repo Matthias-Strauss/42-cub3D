@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 16:07:44 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:15:49 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,6 @@ typedef struct s_main
 	float			fps;
 	bool			texture_toggle_walls;
 	bool			texture_toggle_floor;
-	bool			minimap_toggle;
 }					t_main;
 
 // random sht by matt			!!!! !!! !!! !!! !!!
@@ -309,7 +308,7 @@ void				end_game(t_main *main);
 
 // game_key_hooks.c
 
-void				key_hooks(void *main);
+void				key_hooks(mlx_key_data_t keydata, void *main);
 
 // game_wasd_keys.c
 

@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 16:09:12 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:15:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,9 @@ void	loop_hooks(void *param)
 	// else
 	// 	render_3d_coloured(main);
 	draw_minimap(main);
+	wasd_keys(((t_main *)main));
+	arrow_keys((t_main *)main);
+	mouse_movement((t_main *)main);
+	change_player_height((t_main *)main);
+	// crouch((t_main *)main);
 }
