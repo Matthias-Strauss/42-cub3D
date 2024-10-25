@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_arrow_keys.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 00:53:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 14:52:52 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:44:09 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 void	left_key(t_main *main)
 {
-	t_player	*player;
+	t_player	*p;
 	float		tmp_dir_y;
 	float		tmp_plane_y;
 
-	player = main->player;
+	p = main->player;
 	if (mlx_is_key_down(main->mlx, MLX_KEY_LEFT))
 	{
-		tmp_dir_y = player->dir.y;
-		player->dir.y = player->dir.y * player->cos_rot - player->dir.x
-			* player->sin_rot;
-		player->dir.x = tmp_dir_y * player->sin_rot + player->dir.x
-			* player->cos_rot;
-		tmp_plane_y = player->plane.y;
-		player->plane.y = player->plane.y * player->cos_rot - player->plane.x
-			* player->sin_rot;
-		player->plane.x = tmp_plane_y * player->sin_rot + player->plane.x
-			* player->cos_rot;
+		tmp_dir_y = p->dir.y;
+		p->dir.y = p->dir.y * p->cos_rot - p->dir.x
+			* p->sin_rot;
+		p->dir.x = tmp_dir_y * p->sin_rot + p->dir.x
+			* p->cos_rot;
+		tmp_plane_y = p->plane.y;
+		p->plane.y = p->plane.y * p->cos_rot - p->plane.x
+			* p->sin_rot;
+		p->plane.x = tmp_plane_y * p->sin_rot + p->plane.x
+			* p->cos_rot;
 	}
 }
 

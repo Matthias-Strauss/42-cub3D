@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 20:21:07 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:44:40 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,7 @@ typedef struct s_main
 	float			fps;
 	bool			texture_toggle_walls;
 	bool			texture_toggle_floor;
+	bool			mouse_toggle;
 }					t_main;
 
 // random sht by matt			!!!! !!! !!! !!! !!!
