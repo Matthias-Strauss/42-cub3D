@@ -66,8 +66,7 @@ mlx:
 		cd $(MLX_DIR) && \
 		git checkout 26fdbd950fd3a4d035fa55af9c02112ffcd4608c; \
 	fi
-	cmake $(MLX_DIR) -B $(MLX_DIR)/build -DCMAKE_C_FLAGS="-Ofast -ffast-math -march=native -mtune=native -funroll-loops" && make -C $(MLX_DIR)/build -j4 -DCMAKE_C_FLAGS="-Ofast -ffast-math -march=native -mtune=native -funroll-loops"
-
+	cmake $(MLX_DIR) -B $(MLX_DIR)/build -DCMAKE_C_FLAGS="-Ofast -ffast-math -march=native -mtune=native -funroll-loops" && make -C $(MLX_DIR)/build -j4
 clean:
 	rm -rf $(OBJ_DIR)
 	@$(MAKE) -C $(LIBFT_DIR) clean

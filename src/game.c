@@ -6,13 +6,13 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 13:23:59 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:10:39 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	set_orientation(t_main *main)
+void	set_player_orientation(t_main *main)
 {
 	if (main->map_data->player_orientation == 'N')
 	{
@@ -34,13 +34,21 @@ void	set_orientation(t_main *main)
 		main->player->dir.x = -1;
 		main->player->dir.y = 0;
 	}
+}
+
+void	set_player_data(t_main *main)
+{
+	set_player_orientation(main);
 	main->player->plane.x = -main->player->dir.y * FOV;
 	main->player->plane.y = main->player->dir.x * FOV;
+	main->player->pos.x = main->map_data->player_pos.x + 1.0 / 2.0;
+	main->player->pos.y = main->map_data->player_pos.y + 1.0 / 2.0;
 	main->player->pitch = 100;
 	main->player->speed = PLAYER_SPEED;
 	main->time = 0;
 	main->fps = 0;
 	main->tmpfps = 0;
+	main->player->height = 0;
 	main->player->cos_rot = cos(ROTATION_SPEED);
 	main->player->sin_rot = sin(ROTATION_SPEED);
 }

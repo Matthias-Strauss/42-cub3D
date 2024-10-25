@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:36:14 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 13:24:54 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:55:49 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int_fast32_t	main(int_fast32_t ac, char **av)
 {
 	t_main	*main;
 
-	atexit(leaks);
+	// atexit(leaks);
 	main = init_structs();
 	parse_arguments(ac, av, main);
 	init_data(main);
