@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_key_hooks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 16:06:25 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:50:43 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,22 @@ void	minimap(mlx_key_data_t keydata, t_main *main)
 		main->minimap->enabled = !main->minimap->enabled;
 }
 
+void	toggle_sky(mlx_key_data_t keydata, t_main *main)
+{
+	if (keydata.key == MLX_KEY_N && keydata.action == MLX_PRESS)
+		main->texture_toggle_floor = !main->texture_toggle_floor;
+}
+
+void	toggle_wall_texture(mlx_key_data_t keydata, t_main *main)
+{
+	if (keydata.key == MLX_KEY_T && keydata.action == MLX_PRESS)
+		main->texture_toggle_floor = !main->texture_toggle_floor;
+}
+
 void	key_hooks(mlx_key_data_t keydata, void *main)
 {
 	esc_key(keydata, (t_main *)main);
 	minimap(keydata, (t_main *)main);
+	toggle_sky(keydata, (t_main *)main);
+	toggle_wall_texture(keydata, (t_main *)main);
 }

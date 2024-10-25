@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:54:38 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/25 16:14:21 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 17:18:35 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,25 @@ void	init_background(t_main *main)
 	{
 		x = 0;
 		while (x < background->width)
-			mlx_put_pixel(background, x, y, main->map_data->ceiling_color);
-		x++;
+			mlx_put_pixel(background, x++, y, main->map_data->ceiling_color);
 		y++;
 	}
 	while (y < background->height)
 	{
 		x = 0;
 		while (x < background->width)
-			mlx_put_pixel(background, x, y, main->map_data->floor_color);
-		x++;
+			mlx_put_pixel(background, x++, y, main->map_data->floor_color);
 		y++;
 	}
+	main->background = background;
 }
 
 void	draw_background_colored(t_main *main)
 {
-	ft_memcpy(main->image->pixels, main->background->pixels
-		+ ((main->image->height + main->player->pitch) / 2 * main->image->width
-			* sizeof(uint32_t)), main->image->width * main->image->height
-		* sizeof(uint32_t));
+	ft_memcpy(main->image->pixels, &main->background->pixels[main->image->height
+		/ 2 * main->image->width * 4 - (main->image->width * main->player->pitch
+			* 4)], main->image->width * main->image->height * sizeof(uint8_t)
+		* 4);
 }
+
+//  + main->player->pitch
