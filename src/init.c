@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:59:22 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 22:04:25 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:52:20 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	init_player_struct(t_main *main)
 	main->player = ft_calloc(sizeof(t_player), 1);
 	if (main->player == NULL)
 		error_exit(main, ERR_UAM);
-	main->player->pitch = 100;
+	main->player->pitch = 0;
 	main->player->speed = 1;
+	main->player->height = -64;
 }
 
 t_main	*init_main_struct(void)

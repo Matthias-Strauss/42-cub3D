@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 20:05:13 by mstrauss          #+#    #+#             */
-/*   Updated: 2023/11/17 00:12:06 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 /// @param s	string to be searched.
 /// @param c	character to search for.
 /// @return		pointer to the located character, NULL if non found
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int_fast32_t c)
 {
-	int	i;
+	int_fast32_t	i;
 
 	i = -1;
 	c = (char)c;

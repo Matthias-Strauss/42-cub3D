@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:18:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 19:45:26 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:48:03 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen_gl(const char *c)
 	return (i);
 }
 
-int	ft_strchr_gl(const char *s, char c)
+int_fast32_t	ft_strchr_gl(const char *s, char c)
 {
 	unsigned int	i;
 
@@ -69,9 +69,9 @@ void	*ft_calloc_gl(size_t count, size_t size)
 
 char	*ft_strjoin_gl(char *s1, char *s2)
 {
-	int		i;
-	int		j;
-	char	*dst;
+	int_fast32_t	i;
+	int_fast32_t	j;
+	char			*dst;
 
 	i = 0;
 	j = 0;

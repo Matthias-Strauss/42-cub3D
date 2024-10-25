@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 12:57:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:08:28 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	is_type(char *current)
 {
-	int	i;
+	int_fast32_t	i;
 
 	i = skip_whitespaces(current, 0);
 	if (ft_strncmp(current + i, "NO", 2) == 0)
@@ -34,7 +34,7 @@ bool	is_type(char *current)
 
 bool	is_empty(char *current)
 {
-	int	i;
+	int_fast32_t	i;
 
 	i = skip_whitespaces(current, 0);
 	if (ft_strncmp(current + i, "\n", 1) == 0)
@@ -44,7 +44,7 @@ bool	is_empty(char *current)
 
 void	check_for_garbage(t_main *main)
 {
-	int		i;
+	int_fast32_t		i;
 	char	*current;
 
 	i = 0;

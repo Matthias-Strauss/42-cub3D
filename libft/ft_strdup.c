@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:08:24 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/12 14:44:10 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 ///				if fail; return NULL and set errno to ENOMEM.
 char	*ft_strdup(const char *s1)
 {
-	int		len;
-	int		i;
+	int_fast32_t		len;
+	int_fast32_t		i;
 	char	*ptr;
 
 	len = ft_strlen(s1) + 1;

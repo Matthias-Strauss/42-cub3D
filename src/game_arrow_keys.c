@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 00:53:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/23 17:01:47 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:48:58 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	left_key(t_main *main)
 {
 	t_player	*player;
-	double		tmp_dir_y;
-	double		tmp_plane_y;
+	float		tmp_dir_y;
+	float		tmp_plane_y;
 
 	player = main->player;
 	if (mlx_is_key_down(main->mlx, MLX_KEY_LEFT))
@@ -37,8 +37,8 @@ void	left_key(t_main *main)
 void	right_key(t_main *main)
 {
 	t_player	*player;
-	double		tmp_dir_x;
-	double		tmp_plane_x;
+	float		tmp_dir_x;
+	float		tmp_plane_x;
 
 	player = main->player;
 	if (mlx_is_key_down(main->mlx, MLX_KEY_RIGHT))

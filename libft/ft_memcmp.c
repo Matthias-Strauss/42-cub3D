@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 20:33:24 by mstrauss          #+#    #+#             */
-/*   Updated: 2023/10/10 20:02:21 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /// @param s2	String 2
 /// @param n	String length
 /// @return		difference between the first two differing bytes
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int_fast32_t	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned long	i;
 	unsigned char	*ss1;

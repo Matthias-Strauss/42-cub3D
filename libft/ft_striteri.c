@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:20:35 by mstrauss          #+#    #+#             */
-/*   Updated: 2023/11/16 23:36:58 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 ///				address to ’f’ to be modified if necessary.
 /// @param s 	String on which to iterate.
 /// @param f 	Function to apply to each character.
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_striteri(char *s, void (*f)(unsigned int_fast32_t, char *))
 {
-	int	i;
+	int_fast32_t	i;
 
 	i = -1;
 	while (s[++i])

@@ -14,7 +14,7 @@
 
 bool	first_line_check_on(char *current)
 {
-	int	i;
+	int_fast32_t	i;
 
 	i = skip_whitespaces(current, 0);
 	if (current[i] != '\n' && current[i] != '\0')
@@ -22,9 +22,9 @@ bool	first_line_check_on(char *current)
 	return (false);
 }
 
-int	find_first_line(t_main *main)
+int_fast32_t	find_first_line(t_main *main)
 {
-	int		i;
+	int_fast32_t		i;
 	char	*current;
 
 	i = main->parser->last_type_index + 1;
@@ -55,7 +55,7 @@ char	*add_to_map_str(char *map_string, char *to_add)
 
 void	get_map_coor(t_main *main)
 {
-	int		i;
+	int_fast32_t		i;
 	char	*map_string;
 
 	i = find_first_line(main);

@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:53:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 18:42:00 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	convert_check_characters(char *str)
 {
-	int	i;
+	int_fast32_t	i;
 
 	i = 0;
 	while (str[i])
@@ -26,9 +26,9 @@ bool	convert_check_characters(char *str)
 	return (false);
 }
 
-int	get_only_number(char *str)
+int_fast32_t	get_only_number(char *str)
 {
-	int	number;
+	int_fast32_t	number;
 
 	if (str == NULL)
 		return (-1);
@@ -48,12 +48,12 @@ void	error_during_conversion(t_main *main, char **to_free)
 	error_exit(main, ERR_CNC);
 }
 
-int	convert_string_to_color(t_main *main, char *str)
+int_fast32_t	convert_string_to_color(t_main *main, char *str)
 {
-	int		r;
-	int		g;
-	int		b;
-	char	**seperated;
+	int_fast32_t	r;
+	int_fast32_t	g;
+	int_fast32_t	b;
+	char			**seperated;
 
 	seperated = ft_split(str, ',');
 	r = get_only_number(seperated[0]);
@@ -77,7 +77,7 @@ int	convert_string_to_color(t_main *main, char *str)
 
 void	convert_colors(t_main *main)
 {
-	int	temp;
+	int_fast32_t	temp;
 
 	temp = convert_string_to_color(main, main->parser->ceiling_color);
 	main->map_data->ceiling_color = temp;

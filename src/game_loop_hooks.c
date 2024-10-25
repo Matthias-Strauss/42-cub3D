@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/24 17:31:45 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 // void	init_background(t_main *main)
 // {
-// 	int	i;
-// 	int	j;
+// 	int_fast32_t	i;
+// 	int_fast32_t	j;
 
 // 	i = -1;
 // 	while (++i < main->mlx->height / 2)

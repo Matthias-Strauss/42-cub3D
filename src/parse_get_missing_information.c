@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_get_missing_information.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 14:19:17 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 21:46:02 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	get_player_pos(t_map_data *map_data)
 {
-	int	y;
-	int	x;
+	int_fast32_t	y;
+	int_fast32_t	x;
 
 	y = 0;
 	while (map_data->map_coor[y])
@@ -39,9 +39,9 @@ void	get_player_pos(t_map_data *map_data)
 
 void	get_map_dimensions(t_map_data *map_data)
 {
-	int	y;
-	int	x;
-	int	longest;
+	int_fast32_t	y;
+	int_fast32_t	x;
+	int_fast32_t	longest;
 
 	longest = 0;
 	y = 0;

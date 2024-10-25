@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 13:55:20 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:06:20 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ bool	is_already_set(t_main *main, char *id)
 
 char	*set_type_path(char *id, char *current, t_main *main)
 {
-	int	id_len;
-	int	skipped;
+	int_fast32_t	id_len;
+	int_fast32_t	skipped;
 
 	id_len = ft_strlen(id);
 	skipped = skip_whitespaces(current, 0);
@@ -87,8 +87,8 @@ char	*set_type_path(char *id, char *current, t_main *main)
 
 void	set_types(t_main *main)
 {
-	int		i;
-	char	*current;
+	int_fast32_t	i;
+	char			*current;
 
 	i = 0;
 	while (main->parser->map_copy_heap[i])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 18:44:38 by mstrauss          #+#    #+#             */
-/*   Updated: 2023/10/22 14:45:52 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /// @brief 		Counts the number of nodes in a list.
 /// @param lst 	Beginning of the list.
 /// @return 	Length of the list.
-int	ft_lstsize(t_list *lst)
+int_fast32_t	ft_lstsize(t_list *lst)
 {
 	t_list	*ptr;
-	int		i;
+	int_fast32_t		i;
 
 	ptr = lst;
 	i = 0;

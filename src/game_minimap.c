@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   game_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 02:50:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 15:37:55 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-uint32_t	return_color(int r, int g, int b, int a)
+uint32_t	return_color(int_fast32_t r, int_fast32_t g, int_fast32_t b, int_fast32_t a)
 {
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-void	draw_tile_minimap(t_main *main, int y, int x, char id)
+void	draw_tile_minimap(t_main *main, int_fast32_t y, int_fast32_t x, char id)
 {
-	int	i;
-	int	ii;
-	int	color;
+	int_fast32_t	i;
+	int_fast32_t	ii;
+	int_fast32_t	color;
 
 	if (id == '1')
 		color = return_color(75, 75, 75, 255);
@@ -44,8 +44,8 @@ void	draw_tile_minimap(t_main *main, int y, int x, char id)
 
 void	draw_player_minimap(t_main *main)
 {
-	int		x_i;
-	int		y_i;
+	int_fast32_t		x_i;
+	int_fast32_t		y_i;
 	t_point	player;
 
 	player.x = (main->player->pos.x) * main->mlx->width
@@ -68,8 +68,8 @@ void	draw_player_minimap(t_main *main)
 void	draw_minimap(t_main *main)
 {
 	char	**map;
-	int		y;
-	int		x;
+	int_fast32_t		y;
+	int_fast32_t		x;
 
 	map = main->map_data->map_coor;
 	y = 0;

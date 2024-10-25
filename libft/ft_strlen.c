@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:09:58 by mstrauss          #+#    #+#             */
-/*   Updated: 2023/11/16 23:50:45 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:44:46 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 /// @brief Determines char string length
 /// @param s String to measure
 /// @return Length of string including Nul-terminator
-int	ft_strlen(const char *s)
+int_fast32_t	ft_strlen(const char *s)
 {
-	int	i;
+	int_fast32_t	i;
 
 	i = -1;
 	while (s[++i] != '\0')

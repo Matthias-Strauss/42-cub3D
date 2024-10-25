@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 20:22:28 by mstrauss          #+#    #+#             */
-/*   Updated: 2023/11/16 22:39:43 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /// @param n amount of bytes to search
 /// @return a pointer to the byte located,
 ///			or NULL if no such byte exists within n bytes
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int_fast32_t c, size_t n)
 {
 	unsigned char	d;
 	unsigned char	*ss;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 20:12:38 by mstrauss          #+#    #+#             */
-/*   Updated: 2023/11/17 00:01:45 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 /// @return integer greater than, equal to, or less than 0,
 /// 		according as the string s1 is greater than, equal to, or less than
 /// 		the string s2.
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int_fast32_t	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 

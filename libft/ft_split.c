@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:32:13 by mstrauss          #+#    #+#             */
-/*   Updated: 2023/11/16 22:56:35 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:48:58 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_countdelim(char const *s, char c)
+static int_fast32_t	ft_countdelim(char const *s, char c)
 {
-	char	*ptr;
-	int		count;
-	int		i;
-	int		chkvl;
+	char			*ptr;
+	int_fast32_t	count;
+	int_fast32_t	i;
+	int_fast32_t	chkvl;
 
 	ptr = (char *)s;
 	count = 0;
@@ -37,18 +37,18 @@ static int	ft_countdelim(char const *s, char c)
 	return (count);
 }
 
-/// @brief Frees a double pointer array and its content
+/// @brief Frees a float pointer array and its content
 /// @param arr The array to be freed
 /// @param amount The amount of entries to be freed
 /// @return
-static void	ft_clean(char **arr, int amount)
+static void	ft_clean(char **arr, int_fast32_t amount)
 {
 	while (amount >= 0)
 		free(arr[amount--]);
 	free(arr);
 }
 
-char	**ft_split_malloc_helper(int wrdcnt)
+char	**ft_split_malloc_helper(int_fast32_t wrdcnt)
 {
 	char	**arr;
 
@@ -69,10 +69,10 @@ char	**ft_split_malloc_helper(int wrdcnt)
 ///				NULL if the allocation fails.
 char	**ft_split(char const *s, char c)
 {
-	char	**arr;
-	int		i;
-	int		j;
-	int		wrdcnt;
+	char			**arr;
+	int_fast32_t	i;
+	int_fast32_t	j;
+	int_fast32_t	wrdcnt;
 
 	i = 0;
 	j = 0;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:15:28 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/03/11 17:21:40 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned long	ft_posnum(int n)
+static unsigned long	ft_posnum(int_fast32_t n)
 {
 	if (n < 0)
 		return ((unsigned long)n * -1);
@@ -30,7 +30,7 @@ static void	ft_helper(unsigned long n, unsigned long fd)
 /// @brief 		Outputs the integer ’n’ to the given file descriptor.
 /// @param n 	Integer to output.
 /// @param fd 	File descriptor on which to write.
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int_fast32_t n, int_fast32_t fd)
 {
 	unsigned long	n_unsg;
 

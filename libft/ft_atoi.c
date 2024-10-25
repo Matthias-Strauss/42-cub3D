@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:00:31 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/03/15 18:05:58 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:42:17 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief Checks if a character is an ASCII whitespace character
 /// @param c character to check
 /// @return 1 if c is a whitespace, 0 if c isn't a whitespace
-static int	ft_isspace(int c)
+static int_fast32_t	ft_isspace(int_fast32_t c)
 {
 	if (c == '\t' || c == '\n' || c == '\r' || c == '\v' || c == '\f'
 		|| c == ' ')
@@ -25,12 +25,12 @@ static int	ft_isspace(int c)
 
 /// @brief 		Converts a number from string to int, ignores leading whitespace
 /// @param str 	String to convert.
-/// @return 	Number as an int.
-int	ft_atoi(const char *str)
+/// @return 	Number as an int_fast32_t.
+int_fast32_t	ft_atoi(const char *str)
 {
-	size_t	i;
-	int		sign;
-	int		sum;
+	size_t			i;
+	int_fast32_t	sign;
+	int_fast32_t	sum;
 
 	i = 0;
 	sign = 1;

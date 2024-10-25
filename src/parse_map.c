@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:07 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 20:50:51 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	parse_map(t_main *main)
 
 void	create_2d_map_squared(t_main *main)
 {
-	int		i;
-	int		tmp_len;
-	char	**map;
-	char	**old_map;
+	int_fast32_t	i;
+	int_fast32_t	tmp_len;
+	char			**map;
+	char			**old_map;
 
 	i = -1;
 	old_map = main->map_data->map_coor;
@@ -51,10 +51,10 @@ void	create_2d_map_squared(t_main *main)
 	main->map_data->map_coor = map;
 }
 
-// int	get_longest_line(t_main *main)
+// int_fast32_t	get_longest_line(t_main *main)
 // {
-// 	int		max_line_len;
-// 	int		len_buffer;
+// 	int_fast32_t		max_line_len;
+// 	int_fast32_t		len_buffer;
 // 	char	*line_buffer;
 
 // 	max_line_len = 0;

@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/24 17:32:02 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 21:04:50 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <float.h>
 # include <math.h>
+# include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -40,7 +41,6 @@
 # define FOV 0.9 // field of view
 
 //// random sht by matt
-
 typedef enum e_dir
 {
 	NORTH,
@@ -53,20 +53,20 @@ typedef enum e_dir
 
 typedef struct s_point
 {
-	int				x;
-	int				y;
+	int_fast32_t	x;
+	int_fast32_t	y;
 }					t_point;
 
 typedef struct s_yz
 {
-	double			y;
-	double			z;
+	float			y;
+	float			z;
 }					t_yz;
 
 typedef struct s_vec
 {
-	double			x;
-	double			y;
+	float			x;
+	float			y;
 }					t_vec;
 
 typedef struct s_player
@@ -74,29 +74,43 @@ typedef struct s_player
 	t_vec			pos;
 	t_vec			dir;
 	t_vec			plane;
-	int				pitch;
-	double			speed;
-	double			cos_rot;
-	double			sin_rot;
+	float			height;
+	float			speed;
+	float			cos_rot;
+	float			sin_rot;
+	int_fast32_t	pitch;
 }					t_player;
 
 typedef struct s_ray
 {
-	double			cam_x;
-	double			perpendicular_wall_dist;
 	t_vec			dir;
-	t_point			map_tile;
 	t_vec			side_dist;
 	t_vec			delta_dist;
+	float			cam_x;
+	float			perpendicular_wall_dist;
+	float			wall_hit_x;
+	t_point			map_tile;
 	t_point			step;
+	int_fast32_t	texture_x;
+	int_fast32_t	line_height;
+	int_fast32_t	line_start;
+	int_fast32_t	line_end;
+	int_fast32_t	side;
 	bool			hit;
-	int				side;
-	double			wall_hit_x;
-	int				texture_x;
-	int				line_height;
-	int				line_start;
-	int				line_end;
 }					t_ray;
+
+typedef struct s_z_ray
+{
+	t_vec			l_ray_dir_x;
+	t_vec			r_ray_dir_x;
+	t_vec			step;
+	t_vec			ceiling;
+	t_yz			pos;
+	float			dist;
+	t_point			pixel;
+	t_point			map_tile;
+	t_point			texture;
+}					t_z_ray;
 
 /*
 typedef struct mlx_texture
@@ -115,16 +129,16 @@ typedef struct mlx_texture
 
 typedef struct s_line
 {
-	int				x_diff;
-	int				y_diff;
-	int				x_step;
-	int				y_step;
-	int				error;
-	int				error2;
-	int				x;
-	int				y;
-	int				x_end;
-	int				y_end;
+	int_fast32_t	x_diff;
+	int_fast32_t	y_diff;
+	int_fast32_t	x_step;
+	int_fast32_t	y_step;
+	int_fast32_t	error;
+	int_fast32_t	error2;
+	int_fast32_t	x;
+	int_fast32_t	y;
+	int_fast32_t	x_end;
+	int_fast32_t	y_end;
 }					t_line;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -133,8 +147,8 @@ typedef struct s_parser
 {
 	char			*map_path_stack;
 	char			**map_copy_heap;
-	int				map_fd;
-	int				last_type_index;
+	int_fast32_t	map_fd;
+	int_fast32_t	last_type_index;
 	char			*floor_color;
 	char			*ceiling_color;
 }					t_parser;
@@ -147,11 +161,11 @@ typedef struct s_map_data
 	char			*east_texture;
 	char			*south_texture;
 	char			*west_texture;
-	int				floor_color;
-	int				ceiling_color;
+	int_fast32_t	floor_color;
+	int_fast32_t	ceiling_color;
 	char			**map_coor;
-	int				map_width;
-	int				map_height;
+	int_fast32_t	map_width;
+	int_fast32_t	map_height;
 	char			player_orientation;
 	t_point			player_pos;
 }					t_map_data;
@@ -162,7 +176,7 @@ typedef struct s_map_data
 // {
 // 	t_point			pos;
 // 	t_point			delta;
-// 	double			angle;
+// 	float			angle;
 // }					t_player;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -182,11 +196,11 @@ typedef struct s_rayy
 // 	float			x_offset;
 // 	float			y_offset;
 // 	float			tan;
-// 	double			angle;
+// 	float			angle;
 // 	float			distance;
 // 	bool			no_hit;
-// 	int				dof;
-// 	int				line_height;
+// 	int_fast32_t				dof;
+// 	int_fast32_t				line_height;
 // 	float			line_offset;
 // 	float			fisheye_fix;
 // }					t_ray;
@@ -203,9 +217,9 @@ typedef struct s_main
 	mlx_image_t		*background;
 	mlx_image_t		*minimap;
 	mlx_texture_t	*textures[7];
-	double			time;
-	double			tmpfps;
-	double			fps;
+	float			time;
+	float			tmpfps;
+	float			fps;
 }					t_main;
 
 // random sht by matt			!!!! !!! !!! !!! !!!
@@ -219,6 +233,8 @@ void				fps(void *param);
 void				load_textures(t_main *main);
 void				draw_floor(t_main *main);
 void				draw_ceiling(t_main *main);
+void				mouse_movement(t_main *main);
+void				change_player_height(t_main *main);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -230,12 +246,13 @@ t_main				*init_structs(void);
 
 // parser.c
 
-void				parse_arguments(int num_arg_strings, char **arg_strings,
-						t_main *main);
+void				parse_arguments(int_fast32_t num_arg_strings,
+						char **arg_strings, t_main *main);
 
 // parse_basic.c
 
-void				parse_num_arg_strings(int num_arg_strings, t_main *main);
+void				parse_num_arg_strings(int_fast32_t num_arg_strings,
+						t_main *main);
 void				parse_map_file_format(char *arg_map_path, t_main *main);
 
 // parse_copy_map.c
@@ -275,8 +292,8 @@ void				convert_colors(t_main *main);
 
 char				*ft_strjoin_free(char *s1, char *s2);
 char				*copy_path(char *to_copy, t_main *main);
-int					skip_whitespaces(char *str, int i);
-int					reverse_skip_whitespaces(char *str, int i);
+int_fast32_t		skip_whitespaces(char *str, int_fast32_t i);
+int_fast32_t		reverse_skip_whitespaces(char *str, int_fast32_t i);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -341,16 +358,16 @@ void				free_matrix(char **to_free);
 
 // error.c
 
-void				error_exit(t_main *main, int error_code);
+void				error_exit(t_main *main, int_fast32_t error_code);
 
 //////////////////////////////////////////////////////////////////////////////
 
 // draw_line.c
 
 void				draw_line(t_point start, t_point end, t_main *main,
-						int color);
+						int_fast32_t color);
 void				draw_line_minimap(t_point start, t_point end, t_main *main,
-						int color);
+						int_fast32_t color);
 
 //////////////////////////////////////////////////////////////////////////////
 

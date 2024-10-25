@@ -6,13 +6,13 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:34:53 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:10:16 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	*ft_strerror(int error_code)
+char	*ft_strerror(int_fast32_t error_code)
 {
 	char	*error_messages[17];
 
@@ -36,7 +36,7 @@ char	*ft_strerror(int error_code)
 	return (error_messages[error_code]);
 }
 
-void	print_ft_error_message(int error_code)
+void	print_ft_error_message(int_fast32_t error_code)
 {
 	ft_putstr_fd(ft_strerror(error_code), STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
@@ -48,16 +48,16 @@ void	print_mlx_error_message(void)
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
-void	print_error_message(int error_code)
+void	print_error_message(int_fast32_t error_code)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);
-	if (error_code == (int)mlx_errno)
+	if (error_code == (int_fast32_t)mlx_errno)
 		print_mlx_error_message();
 	else
 		print_ft_error_message(error_code);
 }
 
-void	error_exit(t_main *main, int error_code)
+void	error_exit(t_main *main, int_fast32_t error_code)
 {
 	print_error_message(error_code);
 	free_structs(main);

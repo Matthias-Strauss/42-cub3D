@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:21:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/09/04 20:03:11 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*read_text(int fd, char *text)
+char	*read_text(int_fast32_t fd, char *text)
 {
-	int		count_byte;
+	int_fast32_t		count_byte;
 	char	*buffer;
 
 	count_byte = 1;
@@ -40,7 +40,7 @@ char	*read_text(int fd, char *text)
 
 char	*get_the_line(char *str)
 {
-	int		i;
+	int_fast32_t		i;
 	char	*line;
 
 	i = 0;
@@ -67,8 +67,8 @@ char	*get_the_line(char *str)
 char	*update_text(char *text)
 {
 	char	*updated;
-	int		i;
-	int		j;
+	int_fast32_t		i;
+	int_fast32_t		j;
 
 	i = 0;
 	while (text[i] != '\n' && text[i] != '\0')
@@ -90,7 +90,7 @@ char	*update_text(char *text)
 	return (updated);
 }
 
-char	*get_next_line(int fd, bool finished)
+char	*get_next_line(int_fast32_t fd, bool finished)
 {
 	static char		*text[4096];
 	char			*line;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 18:59:05 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 20:39:35 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	set_x_and_y_values(t_point start, t_point end, t_line *line)
 {
-	line->x = (int)start.x;
-	line->y = (int)start.y;
-	line->x_end = (int)end.x;
-	line->y_end = (int)end.y;
+	line->x = (int_fast32_t)start.x;
+	line->y = (int_fast32_t)start.y;
+	line->x_end = (int_fast32_t)end.x;
+	line->y_end = (int_fast32_t)end.y;
 }
 
 void	set_other_variables(t_line *line)
@@ -33,7 +33,7 @@ void	set_other_variables(t_line *line)
 	line->error = line->x_diff - line->y_diff;
 }
 
-void	draw_line(t_point start, t_point end, t_main *main, int color)
+void	draw_line(t_point start, t_point end, t_main *main, int_fast32_t color)
 {
 	t_line	line;
 
@@ -60,7 +60,7 @@ void	draw_line(t_point start, t_point end, t_main *main, int color)
 	}
 }
 
-void	draw_line_minimap(t_point start, t_point end, t_main *main, int color)
+void	draw_line_minimap(t_point start, t_point end, t_main *main, int_fast32_t color)
 {
 	t_line	line;
 

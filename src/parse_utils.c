@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:48:08 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/19 15:06:13 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	return (joined);
 }
 
-int	get_path_len(char *to_copy, t_main *main)
+int_fast32_t	get_path_len(char *to_copy, t_main *main)
 {
-	int	start;
-	int	end;
-	int	len;
+	int_fast32_t	start;
+	int_fast32_t	end;
+	int_fast32_t	len;
 
 	start = skip_whitespaces(to_copy, 0);
 	if (to_copy[start] == '\n')
@@ -40,9 +40,9 @@ int	get_path_len(char *to_copy, t_main *main)
 
 char	*copy_path(char *to_copy, t_main *main)
 {
-	char	*in_copy;
-	int		start;
-	int		len;
+	char			*in_copy;
+	int_fast32_t	start;
+	int_fast32_t	len;
 
 	start = skip_whitespaces(to_copy, 0);
 	len = get_path_len(to_copy, main);
@@ -52,14 +52,14 @@ char	*copy_path(char *to_copy, t_main *main)
 	return (in_copy);
 }
 
-int	skip_whitespaces(char *str, int i)
+int_fast32_t	skip_whitespaces(char *str, int_fast32_t i)
 {
 	while (str[i] == ' ')
 		i++;
 	return (i);
 }
 
-int	reverse_skip_whitespaces(char *str, int i)
+int_fast32_t	reverse_skip_whitespaces(char *str, int_fast32_t i)
 {
 	if (str[i] == '\n' && i > 0)
 		i--;

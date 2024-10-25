@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:03 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/21 13:38:59 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	parse_open_map(t_main *main)
 void	parse_check_file_len(t_main *main)
 {
 	char	*line_buffer;
-	int		count;
+	int_fast32_t		count;
 
 	count = 0;
 	line_buffer = get_next_line(main->parser->map_fd, false);

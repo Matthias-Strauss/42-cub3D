@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_wasd_keys.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 00:44:12 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/22 21:14:12 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	w_key(t_main *main, t_vec *pos, t_vec dist, t_point r)
 
 	if (mlx_is_key_down(main->mlx, MLX_KEY_W))
 	{
-		new.y = (int)(pos->y + dist.y);
-		new.x = (int)(pos->x + dist.x);
+		new.y = (int_fast32_t)(pos->y + dist.y);
+		new.x = (int_fast32_t)(pos->x + dist.x);
 		if (main->map_data->map_coor[new.y][new.x] != '1'
 			&& (main->map_data->map_coor[r.y][new.x] != '1'
 				|| main->map_data->map_coor[new.y][r.x] != '1'))
@@ -36,8 +36,8 @@ void	a_key(t_main *main, t_vec *pos, t_vec dist, t_point r)
 
 	if (mlx_is_key_down(main->mlx, MLX_KEY_A))
 	{
-		new.x = (int)(pos->x + dist.y);
-		new.y = (int)(pos->y - dist.x);
+		new.x = (int_fast32_t)(pos->x + dist.y);
+		new.y = (int_fast32_t)(pos->y - dist.x);
 		if (main->map_data->map_coor[new.y][new.x] != '1'
 			&& (main->map_data->map_coor[r.y][new.x] != '1'
 				|| main->map_data->map_coor[new.y][r.x] != '1'))
@@ -54,8 +54,8 @@ void	s_key(t_main *main, t_vec *pos, t_vec dist, t_point r)
 
 	if (mlx_is_key_down(main->mlx, MLX_KEY_S))
 	{
-		new.x = (int)(pos->x - dist.x);
-		new.y = (int)(pos->y - dist.y);
+		new.x = (int_fast32_t)(pos->x - dist.x);
+		new.y = (int_fast32_t)(pos->y - dist.y);
 		if (main->map_data->map_coor[new.y][new.x] != '1'
 			&& (main->map_data->map_coor[r.y][new.x] != '1'
 				|| main->map_data->map_coor[new.y][r.x] != '1'))
@@ -72,8 +72,8 @@ void	d_key(t_main *main, t_vec *pos, t_vec dist, t_point r)
 
 	if (mlx_is_key_down(main->mlx, MLX_KEY_D))
 	{
-		new.y = (int)(pos->y + dist.x);
-		new.x = (int)(pos->x - dist.y);
+		new.y = (int_fast32_t)(pos->y + dist.x);
+		new.x = (int_fast32_t)(pos->x - dist.y);
 		if (main->map_data->map_coor[new.y][new.x] != '1'
 			&& (main->map_data->map_coor[r.y][new.x] != '1'
 				|| main->map_data->map_coor[new.y][r.x] != '1'))
@@ -86,11 +86,11 @@ void	d_key(t_main *main, t_vec *pos, t_vec dist, t_point r)
 
 void	wasd_keys(t_main *main)
 {
-	t_vec	dist;
-	t_point	pos_rounded;
+	t_vec dist;
+	t_point pos_rounded;
 
-	pos_rounded.x = (int)main->player->pos.x;
-	pos_rounded.y = (int)main->player->pos.y;
+	pos_rounded.x = (int_fast32_t)main->player->pos.x;
+	pos_rounded.y = (int_fast32_t)main->player->pos.y;
 	dist.y = main->player->dir.y * main->player->speed;
 	dist.x = main->player->dir.x * main->player->speed;
 	w_key(main, &main->player->pos, dist, pos_rounded);

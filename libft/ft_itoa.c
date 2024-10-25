@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:21:19 by mstrauss          #+#    #+#             */
-/*   Updated: 2023/11/16 22:29:32 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_countdigit(int n)
+static int_fast32_t	ft_countdigit(int_fast32_t n)
 {
-	int	char_count;
+	int_fast32_t	char_count;
 
 	char_count = 0;
 	while (n != 0)
@@ -25,7 +25,7 @@ static int	ft_countdigit(int n)
 	return (char_count);
 }
 
-static unsigned long	ft_posnum(int n)
+static unsigned long	ft_posnum(int_fast32_t n)
 {
 	if (n < 0)
 		return ((unsigned long)n * -1);
@@ -52,7 +52,7 @@ static char	*ft_itoa_conv(char *s, unsigned long n_unsg,
 ///				Negative numbers must be handled.
 /// @param n	String representing the integer.
 /// @return		NULL if the allocation fails.
-char	*ft_itoa(int n)
+char	*ft_itoa(int_fast32_t n)
 {
 	unsigned long	char_count;
 	unsigned long	neg;

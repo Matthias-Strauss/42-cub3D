@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:00:31 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/04/10 20:29:38 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief Checks if a character is an ASCII whitespace character
 /// @param c character to check
 /// @return 1 if c is a whitespace, 0 if c isn't a whitespace
-static int	ft_isspace(int c)
+static int_fast32_t	ft_isspace(int_fast32_t c)
 {
 	if (c == '\t' || c == '\n' || c == '\r' || c == '\v' || c == '\f'
 		|| c == ' ')
@@ -23,13 +23,13 @@ static int	ft_isspace(int c)
 	return (0);
 }
 
-/// @brief 		Converts a number from string to int, ignores leading whitespace
+/// @brief 		Converts a number from string to int_fast32_t, ignores leading whitespace
 /// @param str 	String to convert.
-/// @return 	Number as an int.
+/// @return 	Number as an int_fast32_t.
 float	ft_atof(const char *str)
 {
 	size_t	i;
-	int		sign;
+	int_fast32_t		sign;
 	float	sum;
 	float	factor;
 

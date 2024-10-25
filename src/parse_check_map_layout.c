@@ -14,7 +14,7 @@
 
 void	character_check(char *to_check, t_main *main)
 {
-	int	i;
+	int_fast32_t	i;
 
 	i = 0;
 	while (to_check[i] && to_check[i] != '\n')
@@ -41,7 +41,7 @@ void	character_check(char *to_check, t_main *main)
 	}
 }
 
-bool	check_surrounding(char **map_coor, int y, int x)
+bool	check_surrounding(char **map_coor, int_fast32_t y, int_fast32_t x)
 {
 	if (map_coor[y][x + 1] == ' ' || map_coor[y][x + 1] == '\0')
 		return (false);
@@ -54,10 +54,10 @@ bool	check_surrounding(char **map_coor, int y, int x)
 	return (true);
 }
 
-void	border_check(char **map_coor, int y, t_main *main)
+void	border_check(char **map_coor, int_fast32_t y, t_main *main)
 {
-	int		x;
-	char	player_orientation;
+	int_fast32_t	x;
+	char			player_orientation;
 
 	x = 0;
 	player_orientation = main->map_data->player_orientation;
@@ -69,9 +69,9 @@ void	border_check(char **map_coor, int y, t_main *main)
 				error_exit(main, ERR_NCW);
 			if (map_coor[y + 1] == NULL)
 				error_exit(main, ERR_NCW);
-			if ((int)ft_strlen(map_coor[y - 1]) < x)
+			if ((int_fast32_t)ft_strlen(map_coor[y - 1]) < x)
 				error_exit(main, ERR_NCW);
-			if ((int)ft_strlen(map_coor[y + 1]) < x)
+			if ((int_fast32_t)ft_strlen(map_coor[y + 1]) < x)
 				error_exit(main, ERR_NCW);
 			if (check_surrounding(map_coor, y, x) == false)
 				error_exit(main, ERR_NCW);
@@ -82,7 +82,7 @@ void	border_check(char **map_coor, int y, t_main *main)
 
 void	check_map_coor(t_main *main)
 {
-	int	i;
+	int_fast32_t	i;
 
 	i = 0;
 	while (main->map_data->map_coor[i])
