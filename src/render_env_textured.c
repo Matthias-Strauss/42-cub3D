@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:55:17 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/27 16:35:33 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 21:15:07 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ static inline void	init_ray_floor(t_main *main, t_z_ray *ray)
 
 inline void	draw_floor_textured(t_main *main)
 {
-	t_z_ray	ray;
+	t_z_ray		ray;
+	uint32_t	*px_src;
+	uint32_t	*px_dst;
 
 	ray.pixel.y = main->mlx->height / 2 - 1 + main->player->pitch
 		+ main->player->height;
@@ -52,10 +54,11 @@ inline void	draw_floor_textured(t_main *main)
 					- 1);
 			ray.ceiling.x += ray.step.x;
 			ray.ceiling.y += ray.step.y;
-			copy_pixel(&main->image->pixels[(ray.pixel.y * main->image->width
-					+ ray.pixel.x) * 4],
-				&main->textures[FLOOR]->pixels[(main->textures[FLOOR]->width
-					* ray.texture.y + ray.texture.x) * 4], sizeof(uint8_t) * 4);
+			px_dst = (uint32_t *)&main->image->pixels[(ray.pixel.y
+					* main->image->width + ray.pixel.x) * sizeof(uint8_t) * 4];
+			px_src = (uint32_t *)&main->textures[FLOOR]->pixels[(main->textures[FLOOR]->width
+					* ray.texture.y + ray.texture.x) * sizeof(uint8_t) * 4];
+			*px_dst = *px_src;
 		}
 	}
 }
