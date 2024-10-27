@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:55:17 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/27 21:15:07 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 22:04:58 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,9 @@ static inline void	init_ray_ceiling(t_main *main, t_z_ray *ray)
 
 inline void	draw_ceiling_textured(t_main *main)
 {
-	t_z_ray	ray;
+	t_z_ray		ray;
+	uint32_t	*px_src;
+	uint32_t	*px_dst;
 
 	ray.pixel.y = main->mlx->height / 2 - 1 - main->player->pitch
 		+ main->player->height;
@@ -103,10 +105,12 @@ inline void	draw_ceiling_textured(t_main *main)
 					- 1);
 			ray.ceiling.x += ray.step.x;
 			ray.ceiling.y += ray.step.y;
-			copy_pixel(&main->image->pixels[((main->mlx->height - ray.pixel.y
-						- 1) * main->image->width + ray.pixel.x) * 4],
-				&main->textures[CEILING]->pixels[(main->textures[CEILING]->width
-					* ray.texture.y + ray.texture.x) * 4], sizeof(uint8_t) * 4);
+			px_dst = (uint32_t *)&main->image->pixels[((main->mlx->height
+						- ray.pixel.y - 1) * main->image->width + ray.pixel.x)
+				* sizeof(uint8_t) * 4];
+			px_src = (uint32_t *)&main->textures[CEILING]->pixels[(main->textures[CEILING]->width
+					* ray.texture.y + ray.texture.x) * sizeof(uint8_t) * 4];
+			*px_dst = *px_src;
 		}
 	}
 }

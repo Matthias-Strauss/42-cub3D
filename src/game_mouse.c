@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 21:41:41 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/27 21:44:00 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 21:48:35 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	mouse_movement(t_main *main)
 	int_fast32_t	y;
 	int_fast32_t	delta_x;
 	int_fast32_t	delta_y;
-	float			rotation_speed;
 	t_player		*player;
 	float			old_plane_x;
 	float			old_dir_x;
