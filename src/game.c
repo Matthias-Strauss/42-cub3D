@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 22:48:25 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 23:05:30 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	init_data(t_main *main)
 	set_toggles(main);
 	pre_calc_colors(main);
 	main->frame = 0;
-	// mlx_set_setting(MLX_FULLSCREEN, true);
-	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
+	mlx_set_setting(MLX_FULLSCREEN, true);
+	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 	if (main->mlx == NULL)
 		error_exit(main, mlx_errno);
 	// mlx_set_window_limit(main->mlx, 1600, 900, 5120, 2880);

@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 22:53:01 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 22:59:36 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define WIDTH 5120            // 2400
-# define HEIGHT 2880           // 1200
+# define WIDTH 2560            // 2400
+# define HEIGHT 1440           // 1200
 # define MINIMAP_SIZE 6        // 1 is whole screen
 # define PLAYER_SPEED 0.1      // player speed
 # define ROTATION_SPEED 0.05   // player rotation speed arrow keys
