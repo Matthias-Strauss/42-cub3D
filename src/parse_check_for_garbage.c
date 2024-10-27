@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_check_for_garbage.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 12:57:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:57:04 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool	is_empty(char *current)
 void	check_for_garbage(t_main *main)
 {
 	int_fast32_t		i;
-	char	*current;
+	char				*current;
 
 	i = 0;
 	while (i < main->parser->last_type_index)

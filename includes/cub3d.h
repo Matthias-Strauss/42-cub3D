@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 15:28:53 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 15:36:35 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ typedef struct s_main
 	float			fps;
 	bool			texture_toggle_walls;
 	bool			texture_toggle_floor;
+	bool			mouse_toggle;
 }					t_main;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -286,6 +287,33 @@ void				draw_minimap(t_main *main);
 
 void				set_player_data(t_main *main);
 
+// game_bonus_toggles.c
+
+void				toggle_mouse(mlx_key_data_t keydata, t_main *main);
+void				toggle_wall_texture(mlx_key_data_t keydata, t_main *main);
+void				toggle_sky(mlx_key_data_t keydata, t_main *main);
+void				toggle_minimap(mlx_key_data_t keydata, t_main *main);
+
+// game_fps.c
+
+void				fps(void *param);
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+// ray.c
+
+void				draw_rays(t_main *main);
+float				distance(float ax, float ay, float bx, float by);
+
+// ray_horizontal.c
+
+t_ray				ray_horizontal(t_main *main, t_ray ray);
+
+// ray_vertical.c
+
+t_ray				ray_vertical(t_main *main, t_ray ray);
+
 //////////////////////////////////////////////////////////////////////////////
 
 // free.c
@@ -303,5 +331,7 @@ void				free_matrix(char **to_free);
 // error.c
 
 void				error_exit(t_main *main, int_fast32_t error_code);
+
+//////////////////////////////////////////////////////////////////////////////
 
 #endif

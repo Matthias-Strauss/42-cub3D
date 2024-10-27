@@ -25,7 +25,7 @@ bool	first_line_check_on(char *current)
 int_fast32_t	find_first_line(t_main *main)
 {
 	int_fast32_t		i;
-	char	*current;
+	char				*current;
 
 	i = main->parser->last_type_index + 1;
 	while (main->parser->map_copy_heap[i])
@@ -56,7 +56,7 @@ char	*add_to_map_str(char *map_string, char *to_add)
 void	get_map_coor(t_main *main)
 {
 	int_fast32_t		i;
-	char	*map_string;
+	char				*map_string;
 
 	i = find_first_line(main);
 	if (i == 0)

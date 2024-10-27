@@ -1,7 +1,0 @@
-
--textures
--norminette
--error handling during game
-
-
-ADD LOGIC TO REDO INIT_BACKGROUND() WHEN RESOLUTION CHANGES

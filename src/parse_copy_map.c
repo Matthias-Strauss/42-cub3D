@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_copy_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:42:03 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:57:18 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	parse_open_map(t_main *main)
 
 void	parse_check_file_len(t_main *main)
 {
-	char	*line_buffer;
+	char				*line_buffer;
 	int_fast32_t		count;
 
 	count = 0;

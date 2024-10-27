@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_key_hooks.c                                   :+:      :+:    :+:   */
+/*   game_fps.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 14:08:16 by kklockow         ###   ########.fr       */
+/*   Created: 2024/10/27 14:33:02 by kklockow          #+#    #+#             */
+/*   Updated: 2024/10/27 14:33:12 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	esc_key(mlx_key_data_t keydata, t_main *main)
+void	fps(void *param)
 {
-	if (keydata.key == MLX_KEY_ESCAPE)
-		mlx_close_window(main->mlx);
-}
+	t_main	*main;
 
-void	key_hooks(mlx_key_data_t keydata, void *main)
-{
-	esc_key(keydata, (t_main *)main);
-	toggle_minimap(keydata, (t_main *)main);
-	toggle_sky(keydata, (t_main *)main);
-	toggle_wall_texture(keydata, (t_main *)main);
-	toggle_mouse(keydata, (t_main *)main);
+	main = param;
+	if (main->time <= 1)
+	{
+		main->time += main->mlx->delta_time;
+		main->tmpfps++;
+	}
+	else
+	{
+		main->fps = main->tmpfps;
+		printf("FPS: [%f]\n", main->fps);
+		main->time = 0;
+		main->tmpfps = 0;
+	}
 }
