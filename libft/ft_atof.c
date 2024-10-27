@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:00:31 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 14:29:10 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,24 @@
 /// @brief Checks if a character is an ASCII whitespace character
 /// @param c character to check
 /// @return 1 if c is a whitespace, 0 if c isn't a whitespace
-static int_fast32_t	ft_isspace(int_fast32_t c)
+static int32_t	ft_isspace(int32_t c)
 {
-	if (c == '\t' || c == '\n' || c == '\r' || c == '\v' || c == '\f'
-		|| c == ' ')
+	if (c == '\t' || c == '\n' || c == '\r' || c == '\v' || c == '\f' || \
+		c == ' ')
 		return (1);
 	return (0);
 }
 
-/// @brief 		Converts a number from string to int_fast32_t, ignores leading whitespace
+/// @brief 		Converts a number from string to int_fast32_t, ignores leading
+///				whitespace
 /// @param str 	String to convert.
 /// @return 	Number as an int_fast32_t.
 float	ft_atof(const char *str)
 {
-	size_t	i;
-	int_fast32_t		sign;
-	float	sum;
-	float	factor;
+	size_t			i;
+	int_fast32_t	sign;
+	float			sum;
+	float			factor;
 
 	i = 0;
 	sign = 1;

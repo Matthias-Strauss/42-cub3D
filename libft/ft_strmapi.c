@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:42:35 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 14:53:08 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 char	*ft_strmapi(char const *s, char (*f)(unsigned int_fast32_t, char))
 {
 	int_fast32_t		i;
-	char	*s2;
+	char				*s2;
 
 	i = -1;
 	s2 = malloc(ft_strlen(s) + 1);

@@ -4,7 +4,7 @@ NAME = cub3D
 # Compiler and Flags
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops
-INC = -Iincludes/
+INC = -I./includes/
 
 # Directories
 SRC_DIR = src

@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:08:24 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 14:52:48 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(const char *s1)
 {
 	int_fast32_t		len;
 	int_fast32_t		i;
-	char	*ptr;
+	char				*ptr;
 
 	len = ft_strlen(s1) + 1;
 	i = -1;

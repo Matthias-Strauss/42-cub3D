@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:21:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 14:53:50 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*read_text(int_fast32_t fd, char *text)
 {
 	int_fast32_t		count_byte;
-	char	*buffer;
+	char				*buffer;
 
 	count_byte = 1;
 	buffer = ft_calloc_gl((BUFFER_SIZE + 1), sizeof(char));
@@ -41,7 +41,7 @@ char	*read_text(int_fast32_t fd, char *text)
 char	*get_the_line(char *str)
 {
 	int_fast32_t		i;
-	char	*line;
+	char				*line;
 
 	i = 0;
 	if (!str[i])
@@ -66,9 +66,9 @@ char	*get_the_line(char *str)
 
 char	*update_text(char *text)
 {
-	char	*updated;
-	int_fast32_t		i;
-	int_fast32_t		j;
+	char			*updated;
+	int_fast32_t	i;
+	int_fast32_t	j;
 
 	i = 0;
 	while (text[i] != '\n' && text[i] != '\0')

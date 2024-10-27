@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 18:44:38 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/24 18:40:59 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 14:52:13 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 /// @return 	Length of the list.
 int_fast32_t	ft_lstsize(t_list *lst)
 {
-	t_list	*ptr;
-	int_fast32_t		i;
+	t_list			*ptr;
+	int_fast32_t	i;
 
 	ptr = lst;
 	i = 0;

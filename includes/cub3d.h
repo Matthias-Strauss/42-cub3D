@@ -6,11 +6,12 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 20:21:07 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 15:28:53 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
+
 # define CUB3D_H
 
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -19,6 +20,7 @@
 # include <fcntl.h>
 # include <float.h>
 # include <math.h>
+# include <stdbool.h>
 # include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -35,7 +37,6 @@
 # define TEXTURE_SIZE 512
 # define FOV 0.9 // field of view
 
-//// random sht by matt
 typedef enum e_dir
 {
 	NORTH,
@@ -107,17 +108,6 @@ typedef struct s_z_ray
 	t_point			texture;
 }					t_z_ray;
 
-/*
-typedef struct mlx_texture
-{
-	uint32_t		width;
-	uint32_t		height;
-	uint8_t			bytes_per_pixel;
-	uint8_t*	pixels;
-}					mlx_texture_t;
-*/
-///
-
 //////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////
@@ -165,43 +155,6 @@ typedef struct s_map_data
 	t_point			player_pos;
 }					t_map_data;
 
-//////////////////////////////////////////////////////////////////////////////
-
-// typedef struct s_player
-// {
-// 	t_point			pos;
-// 	t_point			delta;
-// 	float			angle;
-// }					t_player;
-
-//////////////////////////////////////////////////////////////////////////////
-
-/*
-typedef struct s_rayy
-{
-	float
-
-}
-*/
-
-// typedef struct s_ray
-// {
-// 	float			x;
-// 	float			y;
-// 	float			x_offset;
-// 	float			y_offset;
-// 	float			tan;
-// 	float			angle;
-// 	float			distance;
-// 	bool			no_hit;
-// 	int_fast32_t				dof;
-// 	int_fast32_t				line_height;
-// 	float			line_offset;
-// 	float			fisheye_fix;
-// }					t_ray;
-
-//////////////////////////////////////////////////////////////////////////////
-
 typedef struct s_main
 {
 	t_parser		*parser;
@@ -221,7 +174,9 @@ typedef struct s_main
 	bool			texture_toggle_floor;
 }					t_main;
 
-// random sht by matt			!!!! !!! !!! !!! !!!
+//////////////////////////////////////////////////////////////////////////////
+// Raycaster rewrite
+//////////////////////////////////////////////////////////////////////////////
 void				init_background(t_main *main);
 void				draw_background_colored(t_main *main);
 void				render_3d_textured(t_main *main);
@@ -239,6 +194,7 @@ void				toggle_wall_texture(mlx_key_data_t keydata, t_main *main);
 void				toggle_sky(mlx_key_data_t keydata, t_main *main);
 void				pre_calc_colors(t_main *main);
 void				render_3d_colored(t_main *main);
+
 //////////////////////////////////////////////////////////////////////////////
 
 // init.c
@@ -332,21 +288,6 @@ void				set_player_data(t_main *main);
 
 //////////////////////////////////////////////////////////////////////////////
 
-// ray.c
-
-void				draw_rays(t_main *main);
-float				distance(float ax, float ay, float bx, float by);
-
-// ray_horizontal.c
-
-t_ray				ray_horizontal(t_main *main, t_ray ray);
-
-// ray_vertical.c
-
-t_ray				ray_vertical(t_main *main, t_ray ray);
-
-//////////////////////////////////////////////////////////////////////////////
-
 // free.c
 
 void				free_structs(t_main *main);
@@ -362,16 +303,5 @@ void				free_matrix(char **to_free);
 // error.c
 
 void				error_exit(t_main *main, int_fast32_t error_code);
-
-//////////////////////////////////////////////////////////////////////////////
-
-// draw_line.c
-
-void				draw_line(t_point start, t_point end, t_main *main,
-						int_fast32_t color);
-void				draw_line_minimap(t_point start, t_point end, t_main *main,
-						int_fast32_t color);
-
-//////////////////////////////////////////////////////////////////////////////
 
 #endif

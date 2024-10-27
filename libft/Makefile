@@ -55,17 +55,16 @@ SRCS =	ft_atoi.c\
 		get_next_line_utils_bonus.c
 
 OBJECTS		= $(SRCS:%.c=%.o)
-BONUS_OBJS	= $(BONUS:%.c=%.o)
-INC			= -Iincludes/
+INC			= -I./
 CC			= cc
 CFLAGS		= -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar -rcs $(NAME) $(OBJECTS)
+	ar -rcs $(NAME) $(INC) $(OBJECTS)
 
-$(BUILD_DIR)/%.o: %.c
+%.o: %.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
