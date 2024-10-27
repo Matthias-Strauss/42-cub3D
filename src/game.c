@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 20:50:13 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/27 13:38:32 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	init_data(t_main *main)
 	init_background(main);
 	main->minimap = mlx_new_image(main->mlx, main->mlx->width / MINIMAP_SIZE,
 			main->mlx->height / MINIMAP_SIZE);
+	main->minimap->enabled = false;
 	// mlx_set_cursor_mode(main->mlx, MLX);
 	// mlx_image_to_window(main->mlx, main->background, 0, 0);
 	mlx_image_to_window(main->mlx, main->image, 0, 0);
