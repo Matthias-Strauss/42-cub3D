@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 17:45:57 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 21:43:20 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define WIDTH 2560          // 2400
-# define HEIGHT 1440         // 1200
-# define MINIMAP_SIZE 6      // 1 is whole screen
-# define PLAYER_SPEED 0.1    // player speed
-# define ROTATION_SPEED 0.05 // player rotation speed
-# define MAX_PITCH 500       // max pitch
+# define WIDTH 2560            // 2400
+# define HEIGHT 1440           // 1200
+# define MINIMAP_SIZE 6        // 1 is whole screen
+# define PLAYER_SPEED 0.1      // player speed
+# define ROTATION_SPEED 0.05   // player rotation speed arrow keys
+# define MOUSE_ROT_SPEED 0.003 // player rotation speed mouse
+# define MOUSE_PITCH_SPEED 0.003 // player rotation speed mouse
+# define MAX_PITCH 450         // max pitch
 // # define WALL_COLOR_X 0x00FF00FF
 // # define WALL_COLOR_Y 0x0000FFFF
 # define TEXTURE_SIZE 512

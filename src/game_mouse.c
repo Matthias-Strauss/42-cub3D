@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 21:41:41 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/25 14:56:09 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 21:44:00 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,25 @@ void	mouse_movement(t_main *main)
 	t_player		*player;
 	float			old_plane_x;
 	float			old_dir_x;
-	float			pitch_speed;
+	float			cos_val;
+	float			sin_val;
 
 	player = main->player;
 	mlx_get_mouse_pos(main->mlx, &x, &y);
 	delta_x = x - (main->mlx->width / 2);
 	delta_y = y - (main->mlx->height / 2);
-	rotation_speed = 0.003;
 	if (delta_x != 0)
 	{
+		cos_val = cosf(delta_x * MOUSE_ROT_SPEED);
+		sin_val = sinf(delta_x * MOUSE_ROT_SPEED);
 		old_dir_x = player->dir.x;
-		player->dir.x = player->dir.x * cos(delta_x * rotation_speed)
-			- player->dir.y * sin(delta_x * rotation_speed);
-		player->dir.y = old_dir_x * sin(delta_x * rotation_speed)
-			+ player->dir.y * cos(delta_x * rotation_speed);
+		player->dir.x = player->dir.x * cos_val - player->dir.y * sin_val;
+		player->dir.y = old_dir_x * sin_val + player->dir.y * cos_val;
 		old_plane_x = player->plane.x;
-		player->plane.x = player->plane.x * cos(delta_x * rotation_speed)
-			- player->plane.y * sin(delta_x * rotation_speed);
-		player->plane.y = old_plane_x * sin(delta_x * rotation_speed)
-			+ player->plane.y * cos(delta_x * rotation_speed);
+		player->plane.x = player->plane.x * cos_val - player->plane.y * sin_val;
+		player->plane.y = old_plane_x * sin_val + player->plane.y * cos_val;
 	}
-	pitch_speed = 0.5;
-	player->pitch -= delta_y * pitch_speed;
+	player->pitch -= delta_y * MOUSE_PITCH_SPEED;
 	if (player->pitch > MAX_PITCH)
 		player->pitch = MAX_PITCH;
 	else if (player->pitch < -MAX_PITCH)
