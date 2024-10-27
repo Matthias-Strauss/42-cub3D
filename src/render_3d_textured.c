@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:21:34 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/25 17:59:57 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 16:54:38 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ inline void	draw_vert_stripe(t_ray *ray, t_main *main, int_fast32_t x)
 	int_fast32_t	y;
 	int_fast32_t	texture_y;
 	int_fast32_t	texture_size;
+	uint32_t		*px_src;
+	uint32_t		*px_dst;
 	float			step;
 	float			texture_pos;
 
@@ -125,10 +127,11 @@ inline void	draw_vert_stripe(t_ray *ray, t_main *main, int_fast32_t x)
 	{
 		texture_y = (int_fast32_t)texture_pos & (texture_size - 1);
 		texture_pos += step;
-		ft_memcpy(&main->image->pixels[(y * main->image->width + x)
-			* sizeof(uint8_t) * 4],
-			&main->textures[ray->side]->pixels[(texture_size * texture_y
-				+ ray->texture_x) * sizeof(uint8_t) * 4], sizeof(uint8_t) * 4);
+		px_dst = (uint32_t *)&main->image->pixels[(y * main->image->width + x)
+			* sizeof(uint8_t) * 4];
+		px_src = (uint32_t *)&main->textures[ray->side]->pixels[(texture_size
+				* texture_y + ray->texture_x) * sizeof(uint8_t) * 4];
+		*px_dst = *px_src;
 	}
 }
 

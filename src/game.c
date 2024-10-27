@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 14:33:02 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:08:16 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	set_toggles(t_main *main)
 	main->mouse_toggle = false;
 }
 
+// mlx_set_setting(MLX_FULLSCREEN, true);
+// mlx_image_to_window(main->mlx, main->background, 0, 0);
 void	init_data(t_main *main)
 {
 	int32_t	width;
@@ -69,7 +71,6 @@ void	init_data(t_main *main)
 	set_toggles(main);
 	pre_calc_colors(main);
 	main->frame = 0;
-	mlx_set_setting(MLX_FULLSCREEN, false);
 	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 	if (main->mlx == NULL)
 		error_exit(main, mlx_errno);
@@ -80,8 +81,6 @@ void	init_data(t_main *main)
 	main->minimap = mlx_new_image(main->mlx, main->mlx->width / MINIMAP_SIZE,
 			main->mlx->height / MINIMAP_SIZE);
 	main->minimap->enabled = false;
-	// mlx_set_cursor_mode(main->mlx, MLX);
-	// mlx_image_to_window(main->mlx, main->background, 0, 0);
 	mlx_image_to_window(main->mlx, main->image, 0, 0);
 	mlx_image_to_window(main->mlx, main->minimap, main->mlx->width * 0.01,
 		main->mlx->height * 0.01);

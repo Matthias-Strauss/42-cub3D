@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/27 15:42:47 by mstrauss          #+#    #+#              #
+#    Updated: 2024/10/27 16:26:48 by mstrauss         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # NAME, all, clean, fclean, re
 # -Wall -Wextra -Werror
 # You must use the command ar to create your library. Using the libtool command is forbidden.
@@ -62,7 +74,8 @@ CFLAGS		= -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar -rcs $(NAME) $(INC) $(OBJECTS)
+	ar -rcs $(NAME) $(OBJECTS)
+
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@

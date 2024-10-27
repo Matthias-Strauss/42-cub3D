@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:55:17 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/25 17:55:30 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 16:35:33 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ inline void	draw_floor_textured(t_main *main)
 					- 1);
 			ray.ceiling.x += ray.step.x;
 			ray.ceiling.y += ray.step.y;
-			ft_memcpy(&main->image->pixels[(ray.pixel.y * main->image->width
+			copy_pixel(&main->image->pixels[(ray.pixel.y * main->image->width
 					+ ray.pixel.x) * 4],
 				&main->textures[FLOOR]->pixels[(main->textures[FLOOR]->width
 					* ray.texture.y + ray.texture.x) * 4], sizeof(uint8_t) * 4);
@@ -100,7 +100,7 @@ inline void	draw_ceiling_textured(t_main *main)
 					- 1);
 			ray.ceiling.x += ray.step.x;
 			ray.ceiling.y += ray.step.y;
-			ft_memcpy(&main->image->pixels[((main->mlx->height - ray.pixel.y
+			copy_pixel(&main->image->pixels[((main->mlx->height - ray.pixel.y
 						- 1) * main->image->width + ray.pixel.x) * 4],
 				&main->textures[CEILING]->pixels[(main->textures[CEILING]->width
 					* ray.texture.y + ray.texture.x) * 4], sizeof(uint8_t) * 4);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_background.c                                :+:      :+:    :+:   */
+/*   render_env_color.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:54:38 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/10/25 17:18:35 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:35:14 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,19 @@ void	init_background(t_main *main)
 
 void	draw_background_colored(t_main *main)
 {
-	ft_memcpy(main->image->pixels, &main->background->pixels[main->image->height
-		/ 2 * main->image->width * 4 - (main->image->width * main->player->pitch
-			* 4)], main->image->width * main->image->height * sizeof(uint8_t)
-		* 4);
-}
+	uint32_t	*px_src;
+	uint32_t	*px_dst;
+	int			i;
+	int			image_size;
 
-//  + main->player->pitch
+	i = 0;
+	image_size = main->image->width * main->image->height;
+	px_dst = (uint32_t *)main->image->pixels;
+	px_src = (uint32_t *)&main->background->pixels[((main->image->height
+				- main->player->pitch) * main->image->width) * 2];
+	while (i < image_size)
+	{
+		px_dst[i] = px_src[i];
+		i++;
+	}
+}

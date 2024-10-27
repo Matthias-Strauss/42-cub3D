@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/27 15:42:43 by mstrauss          #+#    #+#              #
+#    Updated: 2024/10/27 16:35:51 by mstrauss         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # Project Name
 NAME = cub3D
 
@@ -45,7 +57,8 @@ SRC = main.c							\
 	  render_env_color.c				\
 	  render_env_textured.c				\
 	  texture_utils.c					\
-	  colors.c
+	  colors.c							\
+	  copy_pixel.c
 
 
 # Object Files

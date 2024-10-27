@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_bonus_toggles.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 13:59:41 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 14:23:34 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:09:36 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,11 @@ void	toggle_wall_texture(mlx_key_data_t keydata, t_main *main)
 void	toggle_mouse(mlx_key_data_t keydata, t_main *main)
 {
 	if (keydata.key == MLX_KEY_V && keydata.action == MLX_PRESS)
+	{
+		if (main->mouse_toggle)
+			mlx_set_cursor_mode(main->mlx, MLX_MOUSE_NORMAL);
+		else
+			mlx_set_cursor_mode(main->mlx, MLX_MOUSE_HIDDEN);
 		main->mouse_toggle = !main->mouse_toggle;
+	}
 }
