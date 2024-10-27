@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 14:08:31 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/27 14:33:48 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -337,6 +337,10 @@ void				toggle_mouse(mlx_key_data_t keydata, t_main *main);
 void				toggle_wall_texture(mlx_key_data_t keydata, t_main *main);
 void				toggle_sky(mlx_key_data_t keydata, t_main *main);
 void				toggle_minimap(mlx_key_data_t keydata, t_main *main);
+
+// game_fps.c
+
+void				fps(void *param);
 
 
 //////////////////////////////////////////////////////////////////////////////

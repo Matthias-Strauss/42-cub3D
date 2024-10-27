@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 14:06:41 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/27 14:33:02 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,25 +86,6 @@ void	init_data(t_main *main)
 	mlx_image_to_window(main->mlx, main->minimap, main->mlx->width * 0.01,
 		main->mlx->height * 0.01);
 	mlx_focus(main->mlx);
-}
-
-void	fps(void *param)
-{
-	t_main	*main;
-
-	main = param;
-	if (main->time <= 1)
-	{
-		main->time += main->mlx->delta_time;
-		main->tmpfps++;
-	}
-	else
-	{
-		main->fps = main->tmpfps;
-		printf("FPS: [%f]\n", main->fps);
-		main->time = 0;
-		main->tmpfps = 0;
-	}
 }
 
 void	end_game(t_main *main)
