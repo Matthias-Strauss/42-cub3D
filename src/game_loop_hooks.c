@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop_hooks.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 20:47:11 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/27 22:45:40 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	loop_hooks(void *param)
 	t_main	*main;
 
 	main = (t_main *)param;
-	ft_bzero(main->image->pixels, main->mlx->width * main->mlx->height
-		* sizeof(uint32_t));
+	// ft_bzero(main->image->pixels, main->mlx->width * main->mlx->height
+	// 	* sizeof(uint32_t));
 	if (main->texture_toggle_floor == true)
 	{
 		draw_floor_textured(main);

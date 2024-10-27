@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 21:56:26 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 22:48:25 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,11 @@ void	init_data(t_main *main)
 	set_toggles(main);
 	pre_calc_colors(main);
 	main->frame = 0;
+	// mlx_set_setting(MLX_FULLSCREEN, true);
 	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (main->mlx == NULL)
 		error_exit(main, mlx_errno);
-	mlx_set_window_limit(main->mlx, 1600, 900, 5120, 2880);
+	// mlx_set_window_limit(main->mlx, 1600, 900, 5120, 2880);
 	main->image = mlx_new_image(main->mlx, main->mlx->width, main->mlx->height);
 	init_background(main);
 	main->minimap = mlx_new_image(main->mlx, main->mlx->width / MINIMAP_SIZE,
@@ -91,3 +92,13 @@ void	end_game(t_main *main)
 	mlx_delete_image(main->mlx, main->minimap);
 	mlx_terminate(main->mlx);
 }
+
+// MLX_STRETCH_IMAGE = 0,	// Should images resize with the window as it's being resized or not. Default: false
+// MLX_FULLSCREEN,			// Should the window be in Fullscreen,
+// note it will fullscreen at the given resolution. Default: false
+// MLX_MAXIMIZED,			// Start the window in a maximized state,
+// overwrites the fullscreen state if this is true. Default: false
+// MLX_DECORATED,			// Have the window be decorated with a window bar. Default: true
+// MLX_HEADLESS,			// Run in headless mode,
+// no window is created. (NOTE: Still requires some form of window manager such as xvfb)
+// MLX_SETTINGS_MAX,
