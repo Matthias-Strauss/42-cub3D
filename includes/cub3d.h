@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 17:36:51 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:45:57 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,7 @@ typedef struct s_main
 	bool			texture_toggle_walls;
 	bool			texture_toggle_floor;
 	bool			mouse_toggle;
+	bool			fullscreen_toggle;
 }					t_main;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -196,6 +197,7 @@ void				toggle_sky(mlx_key_data_t keydata, t_main *main);
 void				pre_calc_colors(t_main *main);
 void				render_3d_colored(t_main *main);
 void				*copy_pixel(void *dst, const void *src, size_t n);
+void				toggle_fullscreen(mlx_key_data_t keydata, t_main *main);
 //////////////////////////////////////////////////////////////////////////////
 
 // init.c

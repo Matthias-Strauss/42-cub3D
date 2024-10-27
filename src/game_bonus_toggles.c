@@ -6,11 +6,22 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 13:59:41 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 17:09:36 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:45:01 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	toggle_fullscreen(mlx_key_data_t keydata, t_main *main)
+{
+	if (keydata.key == MLX_KEY_ENTER && keydata.action == MLX_PRESS)
+	{
+		if (main->fullscreen_toggle == true)
+			mlx_set_setting(MLX_FULLSCREEN, false);
+		else
+			mlx_set_setting(MLX_FULLSCREEN, true);
+	}
+}
 
 void	toggle_minimap(mlx_key_data_t keydata, t_main *main)
 {

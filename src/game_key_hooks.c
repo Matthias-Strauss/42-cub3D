@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_key_hooks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:36:42 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 14:08:16 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:45:25 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	key_hooks(mlx_key_data_t keydata, void *main)
 	toggle_sky(keydata, (t_main *)main);
 	toggle_wall_texture(keydata, (t_main *)main);
 	toggle_mouse(keydata, (t_main *)main);
+	toggle_fullscreen(keydata, (t_main *)main);
 }

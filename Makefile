@@ -6,25 +6,21 @@
 #    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:42:43 by mstrauss          #+#    #+#              #
-#    Updated: 2024/10/27 16:35:51 by mstrauss         ###   ########.fr        #
+#    Updated: 2024/10/27 18:18:59 by mstrauss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Project Name
 NAME = cub3D
 
-# Compiler and Flags
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -Ofast -ffast-math -march=native -mtune=native -funroll-loops
 INC = -I./includes/
 
-# Directories
 SRC_DIR = src
 OBJ_DIR = objs
 LIBFT_DIR = libft
 MLX_DIR = MLX42
 
-# Source Files
 SRC = main.c							\
 	  init.c							\
 	  parser.c							\
@@ -61,13 +57,10 @@ SRC = main.c							\
 	  copy_pixel.c
 
 
-# Object Files
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-# MLX Flags
 MLXFLAGS = $(MLX_DIR)/build/libmlx42.a -Iinclude -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
-# Targets
 all: $(NAME)
 
 $(NAME): $(OBJS)

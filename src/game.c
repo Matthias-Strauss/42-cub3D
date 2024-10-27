@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 17:08:16 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/27 18:21:54 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,20 @@ void	set_toggles(t_main *main)
 	main->texture_toggle_walls = true;
 	main->texture_toggle_floor = false;
 	main->mouse_toggle = false;
+	main->fullscreen_toggle = false;
 }
 
 // mlx_set_setting(MLX_FULLSCREEN, true);
 // mlx_image_to_window(main->mlx, main->background, 0, 0);
 void	init_data(t_main *main)
 {
-	int32_t	width;
-	int32_t	height;
-
 	set_player_data(main);
 	set_toggles(main);
 	pre_calc_colors(main);
 	main->frame = 0;
-	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
+	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (main->mlx == NULL)
 		error_exit(main, mlx_errno);
-	mlx_get_monitor_size(0, &width, &height);
-	mlx_set_window_size(main->mlx, width, height);
 	main->image = mlx_new_image(main->mlx, main->mlx->width, main->mlx->height);
 	init_background(main);
 	main->minimap = mlx_new_image(main->mlx, main->mlx->width / MINIMAP_SIZE,
