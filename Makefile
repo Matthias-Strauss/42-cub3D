@@ -28,6 +28,7 @@ SRC = main.c							\
 	  parse_convert_colors.c			\
 	  game.c							\
 	  game_key_hooks.c					\
+	  game_bonus_toggles.c				\
 	  game_loop_hooks.c					\
 	  free.c							\
 	  error.c							\

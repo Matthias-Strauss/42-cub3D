@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 13:38:32 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/27 14:06:41 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	set_player_data(t_main *main)
 
 void	set_toggles(t_main *main)
 {
-	main->texture_toggle_walls = false;
+	main->texture_toggle_walls = true;
 	main->texture_toggle_floor = false;
 	main->mouse_toggle = false;
 }
