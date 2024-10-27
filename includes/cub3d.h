@@ -6,7 +6,7 @@
 /*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/25 20:44:40 by kklockow         ###   ########.fr       */
+/*   Updated: 2024/10/27 13:54:53 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -363,15 +363,6 @@ void				free_matrix(char **to_free);
 // error.c
 
 void				error_exit(t_main *main, int_fast32_t error_code);
-
-//////////////////////////////////////////////////////////////////////////////
-
-// draw_line.c
-
-void				draw_line(t_point start, t_point end, t_main *main,
-						int_fast32_t color);
-void				draw_line_minimap(t_point start, t_point end, t_main *main,
-						int_fast32_t color);
 
 //////////////////////////////////////////////////////////////////////////////
 

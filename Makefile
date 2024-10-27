@@ -29,7 +29,6 @@ SRC = main.c							\
 	  game.c							\
 	  game_key_hooks.c					\
 	  game_loop_hooks.c					\
-	  draw_line.c						\
 	  free.c							\
 	  error.c							\
 	  render_3d_textured.c				\
