@@ -1,10 +1,12 @@
-NO s
-EA s
-SO s
-WE s
-C 255,255,255
-F 255,255,255
+ NO ./textures/backrooms_wall.png
+ SO ./textures/backrooms_wall.png
+ WE ./textures/backrooms_wall.png
+ EA ./textures/backrooms_wall.png
 
-111
-1N1
-111
+ F 175,150,90
+ C 255,255,255
+
+1111
+1N01
+1001
+1111

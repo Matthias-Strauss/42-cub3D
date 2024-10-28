@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 14:46:37 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 23:05:30 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:41:34 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	init_data(t_main *main)
 	set_toggles(main);
 	pre_calc_colors(main);
 	main->frame = 0;
-	mlx_set_setting(MLX_FULLSCREEN, true);
+	// mlx_set_setting(MLX_FULLSCREEN, true);
 	main->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 	if (main->mlx == NULL)
 		error_exit(main, mlx_errno);
@@ -93,12 +93,15 @@ void	end_game(t_main *main)
 	mlx_terminate(main->mlx);
 }
 
-// MLX_STRETCH_IMAGE = 0,	// Should images resize with the window as it's being resized or not. Default: false
+// MLX_STRETCH_IMAGE = 0,	// Should images resize with the window
+// as it's being resized or not. Default: false
 // MLX_FULLSCREEN,			// Should the window be in Fullscreen,
 // note it will fullscreen at the given resolution. Default: false
 // MLX_MAXIMIZED,			// Start the window in a maximized state,
 // overwrites the fullscreen state if this is true. Default: false
-// MLX_DECORATED,			// Have the window be decorated with a window bar. Default: true
+// MLX_DECORATED,			// Have the window be decorated with a window bar.
+// Default: true
 // MLX_HEADLESS,			// Run in headless mode,
-// no window is created. (NOTE: Still requires some form of window manager such as xvfb)
+// no window is created. (NOTE: Still requires some form of window manager such
+// as xvfb)
 // MLX_SETTINGS_MAX,

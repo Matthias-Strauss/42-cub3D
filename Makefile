@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
+#    By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:42:43 by mstrauss          #+#    #+#              #
-#    Updated: 2024/10/27 18:18:59 by mstrauss         ###   ########.fr        #
+#    Updated: 2024/10/28 13:09:12 by kklockow         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,6 @@ SRC = main.c							\
 	  free_utils.c						\
 	  game_minimap.c					\
 	  game_mouse.c						\
-	  game_change_player_size.c			\
 	  render_env_color.c				\
 	  render_env_textured.c				\
 	  texture_utils.c					\

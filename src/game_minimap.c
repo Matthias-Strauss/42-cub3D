@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kklockow <kklockow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 02:50:49 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 22:19:57 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:56:19 by kklockow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	draw_tile_minimap(t_main *main, int_fast32_t y, int_fast32_t x, char id)
 		color = retc(75, 75, 75, 255);
 	else
 		color = retc(139, 69, 19, 255);
-	x = x * main->mlx->width / MINIMAP_SIZE / main->map_data->map_width;
-	y = y * main->mlx->height / MINIMAP_SIZE / main->map_data->map_height;
+	x = x * main->mlx->width / MINIMAP_SIZE / (main->map_data->map_width + 1);
+	y = y * main->mlx->height / MINIMAP_SIZE / (main->map_data->map_height + 1);
 	ii = 0;
 	while (ii <= main->mlx->height / MINIMAP_SIZE / main->map_data->map_height)
 	{
@@ -49,9 +49,9 @@ void	draw_player_minimap(t_main *main)
 	t_point			player;
 
 	player.x = (main->player->pos.x) * main->mlx->width / MINIMAP_SIZE
-		/ main->map_data->map_width;
+		/ (main->map_data->map_width + 1);
 	player.y = (main->player->pos.y) * main->mlx->height / MINIMAP_SIZE
-		/ main->map_data->map_height;
+		/ (main->map_data->map_height + 1);
 	y_i = -3;
 	while (y_i < 4)
 	{
