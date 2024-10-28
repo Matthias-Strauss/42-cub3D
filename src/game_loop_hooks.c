@@ -6,19 +6,20 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:38:24 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 22:45:40 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:12:15 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// ft_bzero(main->image->pixels, main->mlx->width * main->mlx->height
+// 	* sizeof(uint32_t));
+// crouch((t_main *)main);
 void	loop_hooks(void *param)
 {
 	t_main	*main;
 
 	main = (t_main *)param;
-	// ft_bzero(main->image->pixels, main->mlx->width * main->mlx->height
-	// 	* sizeof(uint32_t));
 	if (main->texture_toggle_floor == true)
 	{
 		draw_floor_textured(main);
@@ -35,7 +36,5 @@ void	loop_hooks(void *param)
 	arrow_keys((t_main *)main);
 	if (main->mouse_toggle == true)
 		mouse_movement((t_main *)main);
-	change_player_height((t_main *)main);
 	main->frame++;
-	// crouch((t_main *)main);
 }

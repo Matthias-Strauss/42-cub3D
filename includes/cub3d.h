@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:20:01 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 22:59:36 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/28 14:11:00 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ typedef struct s_z_ray
 	t_point			pixel;
 	t_point			map_tile;
 	t_point			texture;
+	uint32_t		*px_src;
+	uint32_t		*px_dst;
 }					t_z_ray;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -178,6 +180,17 @@ typedef struct s_main
 	bool			fullscreen_toggle;
 }					t_main;
 
+typedef struct s_render_helper
+{
+	int_fast32_t	y;
+	int_fast32_t	texture_y;
+	int_fast32_t	texture_size;
+	uint32_t		*px_src;
+	uint32_t		*px_dst;
+	float			step;
+	float			texture_pos;
+}					t_render_helper;
+
 //////////////////////////////////////////////////////////////////////////////
 // Raycaster rewrite
 //////////////////////////////////////////////////////////////////////////////
@@ -193,13 +206,16 @@ void				load_textures(t_main *main);
 void				draw_floor_textured(t_main *main);
 void				draw_ceiling_textured(t_main *main);
 void				mouse_movement(t_main *main);
-void				change_player_height(t_main *main);
 void				toggle_wall_texture(mlx_key_data_t keydata, t_main *main);
 void				toggle_sky(mlx_key_data_t keydata, t_main *main);
 void				pre_calc_colors(t_main *main);
 void				render_3d_colored(t_main *main);
 void				*copy_pixel(void *dst, const void *src, size_t n);
 void				toggle_fullscreen(mlx_key_data_t keydata, t_main *main);
+void				init_new_ray(t_player *player, t_ray *ray, int_fast32_t x,
+						int_fast32_t width);
+void				get_texture_x(t_main *main, t_ray *ray);
+void				draw_vert_stripe(t_ray *ray, t_main *main, int_fast32_t x);
 //////////////////////////////////////////////////////////////////////////////
 
 // init.c

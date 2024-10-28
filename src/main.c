@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:36:14 by kklockow          #+#    #+#             */
-/*   Updated: 2024/10/27 17:10:11 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:09:54 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	leaks(void)
 	system("leaks cub3D");
 }
 
+// atexit(leaks);
 int_fast32_t	main(int_fast32_t ac, char **av)
 {
 	t_main	*main;
 
-	// atexit(leaks);
 	main = init_structs();
 	parse_arguments(ac, av, main);
 	init_data(main);
